@@ -89,6 +89,20 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 @keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
 
 /* ════════════════════════════════════
+   FIELD ANALYSIS — visual essay
+   ════════════════════════════════════ */
+.analysis{padding:80px 20px 60px;max-width:1100px;margin:0 auto}
+.analysis-head{text-align:center;margin-bottom:48px}
+.analysis-head .sec-mark{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:8px;opacity:0.6}
+.analysis-head h2{font-family:var(--type);font-size:20px;letter-spacing:4px;font-weight:400;margin-bottom:6px}
+.analysis-head p{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-dim);line-height:1.6;max-width:620px;margin:0 auto}
+.fa-list{display:flex;flex-direction:column;gap:56px}
+.fa-plate{position:relative}
+.fa-num{font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:10px;text-transform:uppercase}
+.fa-img{width:100%;display:block;border:1px solid var(--aged);box-shadow:0 2px 18px rgba(0,0,0,0.08);background:var(--parchment-light)}
+.fa-cap{font-family:var(--serif);font-size:11px;font-style:italic;color:var(--ink-dim);margin-top:10px;text-align:center}
+
+/* ════════════════════════════════════
    DOSSIER — INTERVIEW LIST
    ════════════════════════════════════ */
 .dossier{min-height:100vh;padding:60px 20px;max-width:700px;margin:0 auto}
@@ -431,6 +445,32 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
         <text x="22" y="722" class="type blue" font-size="9" opacity="0.5">P-016 / 2026-04</text>
       </g>
     </svg>
+  </div>
+</section>
+
+<!-- ═══════ FIELD ANALYSIS ═══════ -->
+<section class="analysis" id="analysis">
+  <div class="analysis-head fade-in">
+    <div class="sec-mark">PART I · FIELD ANALYSIS</div>
+    <h2>THE DYNAMISM DOSSIER</h2>
+    <p>Twelve plates tracing the legacy trajectory, the catalysts, and the path forward.<br>Read top to bottom — then drop into the primary sources below.</p>
+  </div>
+  <div class="fa-list">
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 01 · The Legacy Trajectory</div><img class="fa-img" src="img/frame1.webp" alt="The Dynamism Dossier: Re-industrializing for Global Deterrence — a diagnostic of the legacy trajectory" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 02 · 1993 — The Last Supper</div><img class="fa-img" src="img/frame2.webp" alt="1993 The Last Supper: 51 prime contractors reduced to 5; the peace dividend; 70M labor-hour shortage" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 03 · The Catalysts</div><img class="fa-img" src="img/frame3.webp" alt="COVID-19 TSMC dependency, Ukraine software-defined iteration, China's industrial buildup" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 04 · Legacy Prime vs. Dynamism</div><img class="fa-img" src="img/frame4.webp" alt="Legacy Prime model vs Dynamism model: Soviet-style 5-year planning vs permissionless innovation" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 05 · The Dynamism Triangle</div><img class="fa-img" src="img/frame5.webp" alt="American Dynamism triangle: Urgent Customer, Downstream Capital, Agile Founders" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 06 · Exquisite vs. Attritable</div><img class="fa-img" src="img/frame6.webp" alt="The $16 Billion exquisite platform vs attritable mass: software dictates lethality" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 06A · Capacity Reclaimed</div><img class="fa-img" src="img/frame6-1.webp" alt="Software-defined attritable mass — continuation" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 07 · Space 1.0 → Space 2.0</div><img class="fa-img" src="img/frame7.webp" alt="Procurement bottleneck and wartime-speed acquisition" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 08 · Intelligence-Based Policing</div><img class="fa-img" src="img/frame8.webp" alt="Advanced manufacturing and the workforce deficit" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 08A · Energy Sovereignty</div><img class="fa-img" src="img/frame8-1.webp" alt="Software-augmented manufacturing labor" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 09 · The Dynamism Ecosystem</div><img class="fa-img" src="img/frame9.webp" alt="The heretical founder archetype" loading="lazy"></figure>
+    <figure class="fa-plate fade-in"><div class="fa-num">Plate 10 · Becoming More Like Us</div><img class="fa-img" src="img/frame10.webp" alt="Strategic deterrence as the ultimate outcome" loading="lazy"></figure>
+  </div>
+  <div class="launch-wrap fade-in" style="text-align:center;margin-top:60px">
+    <a href="#dossier" class="launch-btn" style="display:inline-block;text-decoration:none">Continue to Primary Sources ↓</a>
   </div>
 </section>
 
