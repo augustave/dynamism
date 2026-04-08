@@ -97,9 +97,18 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .dossier-head h2{font-family:var(--type);font-size:20px;letter-spacing:4px;font-weight:400;margin-bottom:6px}
 .dossier-head p{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-dim);line-height:1.6}
 
-.interview{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--aged);position:relative;transition:background 0.2s}
+.interview{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--aged);position:relative;transition:background 0.2s;cursor:pointer}
 .interview:first-child{border-top:1px solid var(--aged)}
-.interview:hover{background:rgba(0,0,0,0.02)}
+.interview:hover{background:rgba(0,0,0,0.025)}
+.interview .iv-meta,.interview .iv-thesis,.interview .iv-launch{display:none}
+.interview.open .iv-meta{display:flex;animation:ivFade .28s ease}
+.interview.open .iv-thesis{display:block;animation:ivFade .28s ease}
+.interview.open .iv-launch{display:inline-block;animation:ivFade .28s ease}
+.interview .iv-caret{float:right;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:var(--ink-ghost);text-transform:uppercase;transition:transform .25s ease;user-select:none}
+.interview.open .iv-caret{transform:rotate(180deg);color:var(--pink)}
+.iv-launch{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--pink);background:transparent;border:1px solid var(--pink);padding:7px 14px 6px;cursor:pointer;text-transform:uppercase;margin-top:14px}
+.iv-launch:hover{background:var(--pink);color:var(--parchment-light)}
+@keyframes ivFade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
 
 .iv-num{font-family:var(--type);font-size:32px;color:var(--aged);line-height:1;padding-top:4px;text-align:right}
 .iv-body{}
@@ -248,9 +257,12 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .qw-filters input{background:var(--parchment-light);border:1px solid var(--aged);padding:6px 10px;font-family:var(--mono);font-size:10px;color:var(--ink);min-width:180px;border-radius:0}
 .qw-filters input:focus{outline:none;border-color:var(--pink)}
 .qw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
-.qw-card{background:var(--parchment-light);border:1px solid var(--aged);padding:16px 18px;position:relative;transition:transform 0.2s,box-shadow 0.2s}
+.qw-card{background:var(--parchment-light);border:1px solid var(--aged);padding:14px 16px;position:relative;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
 .qw-card:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(0,0,0,0.08)}
-.qw-card .qw-q{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.5;color:var(--ink);margin-bottom:10px}
+.qw-card .qw-q{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.5;color:var(--ink);margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.qw-card.open .qw-q{display:block;overflow:visible;-webkit-line-clamp:unset;margin-bottom:10px}
+.qw-card .qw-ctx{display:none;font-size:10px;color:var(--ink-mid);line-height:1.55;margin:8px 0 10px;padding-left:10px;border-left:1px solid var(--aged)}
+.qw-card.open .qw-ctx{display:block;animation:ivFade .28s ease}
 .qw-card .qw-sp{font-size:10px;color:var(--ink-mid);font-weight:400;margin-bottom:8px}
 .qw-card .qw-meta{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink-dim);text-transform:uppercase}
 .qw-card .qw-t{color:var(--pink);text-decoration:none;font-weight:500;border:1px solid var(--pink);padding:2px 6px;border-radius:1px}
@@ -1230,13 +1242,56 @@ function renderQuoteWall(){
     return (q.q+' '+q.sp+' '+q.cat).toLowerCase().includes(term);
   });
   if(!list.length){qwGrid.innerHTML='<div class="qw-empty">No quotes match that filter.</div>';return}
-  qwGrid.innerHTML=list.map(q=>`
-    <div class="qw-card">
+  qwGrid.innerHTML=list.map(q=>{
+    const s=steps[q.t-1]||{};
+    return `<div class="qw-card" data-step="${q.t}">
       <div class="qw-q">"${q.q}"</div>
       <div class="qw-sp">— ${q.sp}</div>
-      <div class="qw-meta"><span>${q.cat}</span><a class="qw-t" href="#t${q.t}" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">T${q.t}</a></div>
-    </div>`).join('');
+      <div class="qw-ctx"><b>${s.title||''}</b> — ${s.qctx||''}</div>
+      <div class="qw-meta"><span>${q.cat}</span><a class="qw-t" href="#t${q.t}" onclick="event.stopPropagation();document.getElementById('tool').scrollIntoView({behavior:'smooth'})">T${q.t}</a></div>
+    </div>`;
+  }).join('');
 }
+// Quote card: click body toggles expansion AND drives the map (feedback loop → graph)
+qwGrid.addEventListener('click',e=>{
+  if(e.target.closest('.qw-t'))return;
+  const card=e.target.closest('.qw-card');if(!card)return;
+  const wasOpen=card.classList.contains('open');
+  qwGrid.querySelectorAll('.qw-card.open').forEach(c=>{if(c!==card)c.classList.remove('open')});
+  card.classList.toggle('open');
+  if(!wasOpen){
+    const step=parseInt(card.dataset.step,10);
+    if(step&&window.goTo)window.goTo(step);
+  }
+});
+// Transcript cards: start collapsed, click to expand, launch button drives map
+document.querySelectorAll('.interview').forEach(el=>{
+  const n=parseInt((el.querySelector('.iv-num')||{}).textContent||'0',10);
+  const tab=el.querySelector('.iv-tab');
+  if(tab&&!tab.querySelector('.iv-caret')){
+    const car=document.createElement('span');car.className='iv-caret';car.textContent='▾ expand';
+    tab.appendChild(car);
+  }
+  const body=el.querySelector('.iv-body');
+  if(body&&!body.querySelector('.iv-launch')){
+    const btn=document.createElement('button');
+    btn.className='iv-launch';
+    btn.type='button';
+    btn.textContent='Open on Thesis Map →';
+    btn.addEventListener('click',ev=>{
+      ev.stopPropagation();
+      document.getElementById('tool').scrollIntoView({behavior:'smooth'});
+      setTimeout(()=>window.goTo&&window.goTo(n),450);
+    });
+    body.appendChild(btn);
+  }
+  el.addEventListener('click',ev=>{
+    if(ev.target.closest('.iv-launch'))return;
+    el.classList.toggle('open');
+    const car=el.querySelector('.iv-caret');
+    if(car)car.textContent=el.classList.contains('open')?'▴ collapse':'▾ expand';
+  });
+});
 document.querySelectorAll('#qwFilters button').forEach(b=>{
   b.addEventListener('click',()=>{
     document.querySelectorAll('#qwFilters button').forEach(x=>x.classList.remove('on'));
