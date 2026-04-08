@@ -96,12 +96,29 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .analysis-head .sec-mark{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:8px;opacity:0.6}
 .analysis-head h2{font-family:var(--type);font-size:20px;letter-spacing:4px;font-weight:400;margin-bottom:6px}
 .analysis-head p{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-dim);line-height:1.6;max-width:620px;margin:0 auto}
-.fa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
-.fa-thumb{cursor:pointer;background:none;border:1px solid var(--aged);padding:10px;text-align:left;font-family:inherit;transition:transform .2s,box-shadow .2s;background:var(--parchment-light)}
-.fa-thumb:hover{transform:translateY(-3px);box-shadow:0 6px 22px rgba(0,0,0,0.1)}
-.fa-thumb img{width:100%;display:block;margin-bottom:8px}
-.fa-thumb .fa-num{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:var(--red-stamp);text-transform:uppercase;display:block}
-.fa-thumb .fa-name{font-family:var(--serif);font-size:11px;color:var(--ink);margin-top:2px;display:block}
+/* Rolodex */
+.fa-rolo{position:relative;height:clamp(340px,52vw,560px);perspective:1600px;margin:0 auto;user-select:none}
+.fa-card{position:absolute;top:50%;left:50%;width:min(72%,760px);aspect-ratio:16/9;background:var(--parchment-light);border:1px solid var(--aged);box-shadow:0 18px 60px rgba(0,0,0,0.25),0 2px 6px rgba(0,0,0,0.15);transform-origin:center center;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .45s ease,filter .45s ease;will-change:transform,opacity;cursor:pointer;overflow:hidden}
+.fa-card img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
+.fa-card .fa-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(25,22,16,0.92),rgba(25,22,16,0));padding:28px 18px 12px;color:var(--parchment);font-family:var(--type);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.fa-card .fa-cap b{color:var(--red-stamp)}
+.fa-card .fa-cap span{font-family:var(--serif);font-size:11px;font-style:italic;letter-spacing:0;text-transform:none;color:var(--parchment)}
+/* card positional states */
+.fa-card[data-pos="center"]{transform:translate(-50%,-50%) translateZ(0) rotateY(0) scale(1);opacity:1;z-index:5}
+.fa-card[data-pos="left"]{transform:translate(-92%,-50%) translateZ(-140px) rotateY(28deg) scale(.82);opacity:.55;z-index:3;filter:saturate(.6)}
+.fa-card[data-pos="right"]{transform:translate(-8%,-50%) translateZ(-140px) rotateY(-28deg) scale(.82);opacity:.55;z-index:3;filter:saturate(.6)}
+.fa-card[data-pos="far-left"]{transform:translate(-130%,-50%) translateZ(-280px) rotateY(40deg) scale(.66);opacity:.18;z-index:1;pointer-events:none;filter:saturate(.3)}
+.fa-card[data-pos="far-right"]{transform:translate(30%,-50%) translateZ(-280px) rotateY(-40deg) scale(.66);opacity:.18;z-index:1;pointer-events:none;filter:saturate(.3)}
+.fa-card[data-pos="hidden"]{transform:translate(-50%,-50%) scale(.5);opacity:0;z-index:0;pointer-events:none}
+/* rolodex spindle line */
+.fa-rolo::before{content:"";position:absolute;left:50%;top:58%;width:min(82%,880px);height:2px;background:repeating-linear-gradient(to right,var(--aged) 0 6px,transparent 6px 12px);transform:translateX(-50%);z-index:0;opacity:.5}
+/* rolodex controls */
+.fa-controls{display:flex;align-items:center;justify-content:center;gap:22px;margin-top:22px}
+.fa-ctrl{background:none;border:1px solid var(--aged);color:var(--ink);font-family:var(--mono);font-size:11px;padding:8px 14px;cursor:pointer;letter-spacing:2px;text-transform:uppercase;transition:background .2s}
+.fa-ctrl:hover{background:var(--ink);color:var(--parchment-light);border-color:var(--ink)}
+.fa-index{font-family:var(--mono);font-size:10px;letter-spacing:3px;color:var(--ink-dim);min-width:60px;text-align:center}
+.fa-index b{color:var(--red-stamp)}
+.fa-hint{text-align:center;font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--ink-ghost);text-transform:uppercase;margin-top:10px}
 /* Plate lightbox */
 .plate-modal{position:fixed;inset:0;background:rgba(18,16,12,0.97);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:120;padding:40px}
 .plate-modal.open{display:flex;animation:ivFade .2s ease}
@@ -466,9 +483,15 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="analysis-head fade-in">
     <div class="sec-mark">PART I · FIELD ANALYSIS</div>
     <h2>THE DYNAMISM DOSSIER</h2>
-    <p>Twelve plates tracing the legacy trajectory, the catalysts, and the path forward.<br>Click any plate to enlarge — then drop into the primary sources below.</p>
+    <p>Twelve plates tracing the legacy trajectory, the catalysts, and the path forward.<br>Flip through the rolodex — click the center plate to enlarge.</p>
   </div>
-  <div class="fa-grid fade-in" id="faGrid"></div>
+  <div class="fa-rolo fade-in" id="faRolo" role="region" aria-label="Field analysis rolodex"></div>
+  <div class="fa-controls fade-in">
+    <button class="fa-ctrl" id="faPrev" aria-label="Previous plate">◂ PREV</button>
+    <div class="fa-index" id="faIndex"><b>01</b> / 12</div>
+    <button class="fa-ctrl" id="faNext" aria-label="Next plate">NEXT ▸</button>
+  </div>
+  <div class="fa-hint fade-in">← → or click · tap center to enlarge</div>
 </section>
 
 <!-- ═══════ PLATE MODAL ═══════ -->
@@ -694,36 +717,81 @@ const PLATES=[
   {f:'frame10.webp',n:'10',t:'Becoming More Like Us'}
 ];
 (function(){
-  const grid=document.getElementById('faGrid');
-  if(!grid)return;
-  grid.innerHTML=PLATES.map((p,i)=>`<button class="fa-thumb" data-idx="${i}" type="button"><img src="img/${p.f}" alt="${p.t}" loading="lazy"><span class="fa-num">Plate ${p.n}</span><span class="fa-name">${p.t}</span></button>`).join('');
+  const rolo=document.getElementById('faRolo');
+  if(!rolo)return;
   const modal=document.getElementById('plateModal');
-  const img=document.getElementById('pmImg');
-  const cap=document.getElementById('pmCap');
+  const mImg=document.getElementById('pmImg');
+  const mCap=document.getElementById('pmCap');
+  const N=PLATES.length;
   let cur=0;
-  function show(i){
-    cur=(i+PLATES.length)%PLATES.length;
-    const p=PLATES[cur];
-    img.src='img/'+p.f;
-    img.alt=p.t;
-    cap.innerHTML=`<b>Plate ${p.n}</b> ${p.t}`;
+  rolo.innerHTML=PLATES.map((p,i)=>`<div class="fa-card" data-idx="${i}" data-pos="hidden" role="group" aria-label="Plate ${p.n} ${p.t}"><img src="img/${p.f}" alt="${p.t}" loading="${i<3?'eager':'lazy'}"><div class="fa-cap"><b>Plate ${p.n}</b><span>${p.t}</span></div></div>`).join('');
+  const cards=Array.from(rolo.querySelectorAll('.fa-card'));
+  function pos(i){
+    const d=((i-cur+N)%N);
+    if(d===0)return'center';
+    if(d===1)return'right';
+    if(d===N-1)return'left';
+    if(d===2)return'far-right';
+    if(d===N-2)return'far-left';
+    return'hidden';
   }
-  function open(i){show(i);modal.classList.add('open')}
-  function close(){modal.classList.remove('open')}
-  grid.addEventListener('click',e=>{
-    const b=e.target.closest('.fa-thumb');
-    if(b)open(parseInt(b.dataset.idx,10));
+  function layout(){
+    cards.forEach((c,i)=>c.dataset.pos=pos(i));
+    const p=PLATES[cur];
+    document.getElementById('faIndex').innerHTML=`<b>${p.n}</b> / 12`;
+  }
+  function go(d){cur=(cur+d+N)%N;layout()}
+  function jump(i){cur=(i+N)%N;layout()}
+  layout();
+  // Clicks: center → modal; sides → advance
+  rolo.addEventListener('click',e=>{
+    const c=e.target.closest('.fa-card');if(!c)return;
+    const i=parseInt(c.dataset.idx,10);
+    if(i===cur){openModal(cur);return}
+    const d=((i-cur+N)%N);
+    if(d===1||d===2)go(1);
+    else if(d===N-1||d===N-2)go(-1);
+    else jump(i);
   });
-  document.getElementById('pmClose').addEventListener('click',close);
-  document.getElementById('pmPrev').addEventListener('click',e=>{e.stopPropagation();show(cur-1)});
-  document.getElementById('pmNext').addEventListener('click',e=>{e.stopPropagation();show(cur+1)});
-  modal.addEventListener('click',e=>{if(e.target===modal)close()});
+  document.getElementById('faPrev').addEventListener('click',()=>go(-1));
+  document.getElementById('faNext').addEventListener('click',()=>go(1));
+  // Keyboard when the rolodex is in view
+  let inView=false;
+  new IntersectionObserver(es=>es.forEach(e=>inView=e.isIntersecting),{threshold:0.3}).observe(rolo);
   addEventListener('keydown',e=>{
-    if(!modal.classList.contains('open'))return;
-    if(e.key==='Escape')close();
-    else if(e.key==='ArrowLeft')show(cur-1);
-    else if(e.key==='ArrowRight')show(cur+1);
+    if(modal.classList.contains('open')){
+      if(e.key==='Escape')closeModal();
+      else if(e.key==='ArrowLeft'){go(-1);syncModal()}
+      else if(e.key==='ArrowRight'){go(1);syncModal()}
+      return;
+    }
+    if(!inView)return;
+    const tag=(e.target&&e.target.tagName)||'';
+    if(tag==='INPUT'||tag==='TEXTAREA')return;
+    if(e.key==='ArrowLeft'){go(-1);e.preventDefault()}
+    else if(e.key==='ArrowRight'){go(1);e.preventDefault()}
   });
+  // Touch swipe
+  let tx=null;
+  rolo.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  rolo.addEventListener('touchend',e=>{
+    if(tx==null)return;
+    const dx=(e.changedTouches[0].clientX)-tx;
+    if(Math.abs(dx)>40)go(dx<0?1:-1);
+    tx=null;
+  });
+  // Modal (zoom) for the current plate
+  function syncModal(){
+    const p=PLATES[cur];
+    mImg.src='img/'+p.f;mImg.alt=p.t;
+    mCap.innerHTML=`<b>Plate ${p.n}</b> ${p.t}`;
+  }
+  function openModal(i){cur=i;layout();syncModal();modal.classList.add('open')}
+  function closeModal(){modal.classList.remove('open')}
+  document.getElementById('pmClose').addEventListener('click',closeModal);
+  document.getElementById('pmPrev').addEventListener('click',e=>{e.stopPropagation();go(-1);syncModal()});
+  document.getElementById('pmNext').addEventListener('click',e=>{e.stopPropagation();go(1);syncModal()});
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 })();
 
 // Scroll fade-in
