@@ -108,6 +108,9 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .interview.open .iv-caret{transform:rotate(180deg);color:var(--pink)}
 .iv-launch{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--pink);background:transparent;border:1px solid var(--pink);padding:7px 14px 6px;cursor:pointer;text-transform:uppercase;margin-top:14px}
 .iv-launch:hover{background:var(--pink);color:var(--parchment-light)}
+.iv-watch{display:none;margin:14px 0 0 10px;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--parchment-light);background:var(--ink);border:1px solid var(--ink);padding:7px 14px 6px;text-transform:uppercase;text-decoration:none}
+.interview.open .iv-watch{display:inline-block;animation:ivFade .28s ease}
+.iv-watch:hover{background:var(--pink);border-color:var(--pink)}
 @keyframes ivFade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
 
 .iv-num{font-family:var(--type);font-size:32px;color:var(--aged);line-height:1;padding-top:4px;text-align:right}
@@ -160,6 +163,9 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .thesis-tool .narr-head{padding:14px 16px 10px 18px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0}
 .thesis-tool .narr-head h1{font-family:var(--serif);font-size:15px;font-weight:400;letter-spacing:-0.2px}
 .thesis-tool .narr-head p{font-size:10px;color:var(--tt-ink-dim);margin-top:2px;font-weight:300;line-height:1.5}
+.thesis-tool .s-watch{display:inline-block;float:right;font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--tt-ink-dim);text-decoration:none;border:1px solid var(--tt-aged);padding:2px 6px;text-transform:uppercase}
+.thesis-tool .step.active .s-watch{color:var(--tt-ink);border-color:var(--tt-ink)}
+.thesis-tool .s-watch:hover{background:var(--tt-ink);color:var(--tt-paper)}
 .thesis-tool .narr-body{flex:1;overflow-y:auto;padding:0}
 .thesis-tool .narr-body::-webkit-scrollbar{width:0}
 
@@ -267,6 +273,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .qw-card .qw-meta{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink-dim);text-transform:uppercase}
 .qw-card .qw-t{color:var(--pink);text-decoration:none;font-weight:500;border:1px solid var(--pink);padding:2px 6px;border-radius:1px}
 .qw-card .qw-t:hover{background:var(--pink);color:var(--parchment-light)}
+.qw-card .qw-yt{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink);text-decoration:none;border:1px solid var(--ink);padding:2px 6px;margin-left:6px;text-transform:uppercase}
+.qw-card .qw-yt:hover{background:var(--ink);color:var(--parchment-light)}
 .qw-empty{grid-column:1/-1;text-align:center;padding:40px;font-family:var(--serif);font-style:italic;color:var(--ink-dim)}
 
 /* Back-to-top */
@@ -633,6 +641,8 @@ document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 // ════════════════════════════════════════
 // THESIS MAP — inline tool
 // ════════════════════════════════════════
+const YT={1:'1LcH4lP9XbA',2:'jHECsr9GCs8',3:'tL3sXpxpCPs',4:'Wj6ttdIeBnE',5:'tR6g3zrk7eM',6:'M7eXyc8GLSo',7:'Uho2GupZSgU',8:'-awTbzrJLvs',9:'OqYUH7r96i4',10:'hf4ZhtJmCyo'};
+const ytUrl=n=>`https://www.youtube.com/watch?v=${YT[n]}&list=PL9fqpZPNJX7eqQvH-Py-QN7bZL6V_PISC`;
 const steps=[
 {id:1,tab:'Transcript 01',title:'Defense Reformation',guest:'Shyam Sankar · CTO, Palantir',
   thesis:'The hollowing out of the American industrial base was caused by consolidation, financialization, and the enforcement of institutional conformity. To restore deterrence, the US must empower heretical founders and co-locate R&D with production.',
@@ -959,6 +969,7 @@ function buildNarrative(){
       return`<div class="s-node" onclick="event.stopPropagation();openEntity('${id}')" title="Click for detail"><div class="sn-d" style="background:${col}"></div>${n.l.replace(/\n/g,' ')}</div>`;
     }).join('');
     h+=`<div class="step${i>=currentStep?' future':''}" data-num="${String(i+1).padStart(2,'0')}" onclick="goTo(${i+1})" id="step${i+1}">
+      <a class="s-watch" href="${ytUrl(i+1)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Watch on YouTube</a>
       <div class="s-tab">${s.tab}</div>
       <div class="s-title">${s.title}</div>
       <div class="s-guest">${s.guest}</div>
@@ -1248,7 +1259,7 @@ function renderQuoteWall(){
       <div class="qw-q">"${q.q}"</div>
       <div class="qw-sp">— ${q.sp}</div>
       <div class="qw-ctx"><b>${s.title||''}</b> — ${s.qctx||''}</div>
-      <div class="qw-meta"><span>${q.cat}</span><a class="qw-t" href="#t${q.t}" onclick="event.stopPropagation();document.getElementById('tool').scrollIntoView({behavior:'smooth'})">T${q.t}</a></div>
+      <div class="qw-meta"><span>${q.cat}</span><span><a class="qw-t" href="#t${q.t}" onclick="event.stopPropagation();document.getElementById('tool').scrollIntoView({behavior:'smooth'})">T${q.t}</a><a class="qw-yt" href="${ytUrl(q.t)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">▶ Watch</a></span></div>
     </div>`;
   }).join('');
 }
@@ -1284,6 +1295,12 @@ document.querySelectorAll('.interview').forEach(el=>{
       setTimeout(()=>window.goTo&&window.goTo(n),450);
     });
     body.appendChild(btn);
+    const yt=document.createElement('a');
+    yt.className='iv-watch';
+    yt.href=ytUrl(n);yt.target='_blank';yt.rel='noopener';
+    yt.textContent='▶ Watch Episode';
+    yt.addEventListener('click',ev=>ev.stopPropagation());
+    body.appendChild(yt);
   }
   el.addEventListener('click',ev=>{
     if(ev.target.closest('.iv-launch'))return;
