@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMINCH P-016 — American Dynamism Field Assessment</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Special+Elite&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --parchment:#D8D0B8;--parchment-light:#E2DABC;--parchment-dark:#C8C0A8;
+  --aged:#B8B098;--foxing:#A09880;
+  --ink:#2A2820;--ink-mid:#4A4838;--ink-dim:#6A6858;--ink-ghost:#8A8878;
+  --red-stamp:#B83030;--blue-stamp:#2848A0;--blue-ink:#1838A0;
+  --pink:#E03878;--yellow:#D4B830;--orange:#D87030;--red:#C83828;--white-dot:#EDE8E0;
+  --type:'Special Elite',monospace;
+  --mono:'IBM Plex Mono',monospace;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'IBM Plex Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--parchment);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.06;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ════════════════════════════════════
+   COVER PAGE
+   ════════════════════════════════════ */
+.cover{min-height:100vh;display:block;padding:0;margin:0;position:relative;background:transparent}
+.cover-svg-wrap{width:100%;margin:0}
+.cover-svg{display:block;width:100vw;height:auto;max-height:none;box-shadow:none;border:none}
+.cover-svg .enter-g{cursor:pointer}
+@media(min-aspect-ratio:4/5){.cover-svg{width:auto;height:100vh;margin:0 auto}}
+.cover-doc{max-width:580px;width:100%;position:relative;padding:60px 50px 50px;
+  background:linear-gradient(145deg,var(--parchment-light) 0%,var(--parchment) 40%,var(--parchment-dark) 100%);
+  box-shadow:0 2px 40px rgba(0,0,0,0.12),inset 0 0 80px rgba(0,0,0,0.03);
+  border:1px solid var(--aged)}
+
+/* Corner annotations */
+.corner-tl{position:absolute;top:14px;left:16px;font-family:var(--type);font-size:10px;color:var(--ink-dim);line-height:1.4;letter-spacing:0.5px}
+.corner-tr{position:absolute;top:14px;right:16px;font-family:var(--type);font-size:11px;color:var(--ink);letter-spacing:1px;text-align:right}
+.corner-tr .pub{font-size:13px;font-weight:600;letter-spacing:2px}
+
+/* Top-right handwritten number */
+.handwritten{position:absolute;top:10px;right:80px;font-family:var(--type);font-size:13px;color:var(--blue-ink);transform:rotate(-2deg);opacity:0.6}
+
+/* SECRET stamp */
+.stamp-secret{position:absolute;top:10px;left:60px;font-family:var(--type);font-size:14px;font-weight:600;color:var(--red-stamp);letter-spacing:4px;border:2px solid var(--red-stamp);padding:1px 8px;transform:rotate(-1deg);opacity:0.7}
+
+/* Main title block */
+.doc-title{text-align:center;margin:40px 0 20px;font-family:var(--type)}
+.doc-title h1{font-size:26px;letter-spacing:6px;margin-bottom:12px;font-weight:400;line-height:1.3}
+.doc-title h2{font-size:16px;letter-spacing:4px;font-weight:400;margin-bottom:6px;color:var(--ink-mid)}
+.doc-title h3{font-size:14px;letter-spacing:3px;font-weight:400;color:var(--ink-mid)}
+
+/* Classification changed stamp */
+.stamp-class{margin:20px auto;width:fit-content;padding:6px 14px;border:2px solid var(--red-stamp);font-family:var(--type);font-size:10px;color:var(--red-stamp);text-align:center;transform:rotate(1deg);line-height:1.5;opacity:0.75}
+.stamp-class .changed{font-size:8px;letter-spacing:2px}
+.stamp-class .level{font-size:13px;font-weight:600;letter-spacing:3px}
+
+/* Date */
+.doc-date{text-align:center;font-family:var(--type);font-size:16px;letter-spacing:3px;margin:20px 0;color:var(--ink)}
+
+/* Library stamp */
+.stamp-library{margin:16px auto;width:fit-content;padding:8px 16px;border:2px solid var(--ink-dim);font-family:var(--type);font-size:9px;text-align:center;letter-spacing:2px;color:var(--ink-dim);line-height:1.6}
+
+/* Warning box */
+.warning-box{margin:24px auto;max-width:340px;padding:14px 20px;border:1.5px solid var(--ink);font-family:var(--type);font-size:11px;text-align:center;letter-spacing:1.5px;line-height:1.7}
+.warning-box em{font-style:italic;letter-spacing:2px}
+
+/* Bottom section */
+.doc-bottom{text-align:center;margin-top:30px;font-family:var(--type);letter-spacing:3px}
+.doc-bottom .fleet{font-size:14px;font-weight:600;margin-bottom:4px}
+.doc-bottom .hq{font-size:11px;color:var(--ink-mid)}
+
+/* Declassified stamps */
+.stamp-declass{position:absolute;bottom:20px;left:16px;font-family:var(--type);font-size:7px;color:var(--ink-ghost);line-height:1.5}
+.stamp-declass2{position:absolute;bottom:20px;right:16px;font-family:var(--type);font-size:7px;color:var(--ink-ghost);text-align:right;line-height:1.5}
+
+/* PO number */
+.po-num{position:absolute;bottom:40px;left:16px;font-family:var(--type);font-size:9px;color:var(--blue-ink);transform:rotate(-1deg);opacity:0.5}
+
+/* Enter button */
+.enter-btn{display:block;margin:30px auto 0;padding:12px 40px;font-family:var(--type);font-size:13px;letter-spacing:4px;background:transparent;border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;transition:all 0.3s;text-transform:uppercase}
+.enter-btn:hover{background:var(--ink);color:var(--parchment)}
+
+/* Scroll indicator */
+.scroll-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--ink-ghost);text-transform:uppercase;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:0.8}}
+
+/* ════════════════════════════════════
+   DOSSIER — INTERVIEW LIST
+   ════════════════════════════════════ */
+.dossier{min-height:100vh;padding:60px 20px;max-width:700px;margin:0 auto}
+.dossier-head{text-align:center;margin-bottom:48px}
+.dossier-head .sec-mark{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:8px;opacity:0.6}
+.dossier-head h2{font-family:var(--type);font-size:20px;letter-spacing:4px;font-weight:400;margin-bottom:6px}
+.dossier-head p{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-dim);line-height:1.6}
+
+.interview{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--aged);position:relative;transition:background 0.2s}
+.interview:first-child{border-top:1px solid var(--aged)}
+.interview:hover{background:rgba(0,0,0,0.02)}
+
+.iv-num{font-family:var(--type);font-size:32px;color:var(--aged);line-height:1;padding-top:4px;text-align:right}
+.iv-body{}
+.iv-tab{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--pink);text-transform:uppercase;margin-bottom:3px;font-weight:500}
+.iv-title{font-family:var(--serif);font-size:15px;font-weight:400;margin-bottom:2px;letter-spacing:-0.2px;line-height:1.35}
+.iv-guest{font-size:11px;color:var(--ink-dim);margin-bottom:6px;font-weight:300}
+.iv-meta{display:flex;gap:12px;font-size:9px;font-family:var(--mono);color:var(--ink-ghost);letter-spacing:0.5px}
+.iv-dur{color:var(--ink-dim)}
+.iv-thesis{font-size:11px;color:var(--ink-mid);line-height:1.55;margin-top:8px;font-weight:300;max-width:520px}
+
+/* Divider */
+.divider{text-align:center;padding:40px 0;font-family:var(--type);font-size:10px;letter-spacing:6px;color:var(--aged)}
+
+/* Launch button */
+.launch-wrap{text-align:center;padding:40px 0 80px}
+.launch-btn{display:inline-block;padding:16px 48px;font-family:var(--type);font-size:14px;letter-spacing:5px;background:var(--ink);color:var(--parchment);border:none;cursor:pointer;transition:all 0.3s;text-transform:uppercase}
+.launch-btn:hover{background:var(--pink);transform:translateY(-1px)}
+.launch-sub{font-family:var(--serif);font-size:11px;font-style:italic;color:var(--ink-dim);margin-top:10px}
+
+/* ════════════════════════════════════
+   TOOL — INLINE THESIS MAP (scoped)
+   ════════════════════════════════════ */
+.thesis-tool{
+  --paper:#D8D0B8;--warm:#CFC7A4;--cool:#C8C0A0;
+  --tt-ink:#1C1A18;--tt-ink-mid:#4A4844;--tt-ink-dim:#8A8680;--tt-ink-ghost:#B8B4AE;
+  --tt-pink:#E03878;--tt-yellow:#D4B830;--tt-orange:#D87030;
+  --white-dot:#EDE8E0;--tt-red:#C83828;
+  --tt-accent:#E03878;
+  position:relative;min-height:100vh;height:100vh;background:var(--paper);color:var(--tt-ink);font-family:var(--sans);overflow:hidden
+}
+.thesis-tool .app{display:grid;grid-template-columns:1fr 380px;grid-template-rows:1fr 48px;height:100%}
+.thesis-tool .chart{position:relative;overflow:hidden}
+.thesis-tool canvas{display:block}
+.thesis-tool .ch-label{position:absolute;top:16px;left:20px;font-family:var(--serif);font-size:12px;font-weight:300;color:var(--tt-ink-mid);line-height:1.4}
+.thesis-tool .ch-label b{font-weight:500;font-style:italic}
+.thesis-tool .pg{position:absolute;top:16px;right:392px;font-family:var(--serif);font-size:13px;color:var(--tt-ink-dim)}
+.thesis-tool .dot-key{position:absolute;bottom:8px;left:20px;display:flex;gap:14px;font-size:8px;font-family:var(--mono);color:var(--tt-ink-dim);letter-spacing:0.5px}
+.thesis-tool .dk-i{display:flex;align-items:center;gap:4px}
+.thesis-tool .dk-d{width:7px;height:7px;border-radius:50%}
+.thesis-tool .scale-wrap{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;align-items:center}
+.thesis-tool .sc-a{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.thesis-tool .sc-a.l{border-right:7px solid var(--tt-accent)}
+.thesis-tool .sc-a.r{border-left:7px solid var(--tt-accent)}
+.thesis-tool .sc-l{width:120px;height:1.5px;background:var(--tt-accent)}
+.thesis-tool .sc-t{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:7px;font-family:var(--mono);color:var(--tt-accent);letter-spacing:2px;white-space:nowrap}
+
+.thesis-tool .narr{border-left:1px solid var(--tt-ink-ghost);background:var(--warm);display:flex;flex-direction:column;overflow:hidden;position:relative}
+.thesis-tool .narr::before{content:'';position:absolute;top:0;left:3px;bottom:0;width:1px;background:rgba(200,56,40,0.1);z-index:1}
+.thesis-tool .narr-head{padding:14px 16px 10px 18px;border-bottom:1px solid rgba(0,0,0,0.06);flex-shrink:0}
+.thesis-tool .narr-head h1{font-family:var(--serif);font-size:15px;font-weight:400;letter-spacing:-0.2px}
+.thesis-tool .narr-head p{font-size:10px;color:var(--tt-ink-dim);margin-top:2px;font-weight:300;line-height:1.5}
+.thesis-tool .narr-body{flex:1;overflow-y:auto;padding:0}
+.thesis-tool .narr-body::-webkit-scrollbar{width:0}
+
+.thesis-tool .step{padding:16px 16px 16px 18px;border-bottom:1px solid rgba(0,0,0,0.04);cursor:pointer;transition:background 0.2s;position:relative}
+.thesis-tool .step::before{content:attr(data-num);position:absolute;left:6px;top:18px;font-size:7px;font-family:var(--mono);color:var(--tt-ink-ghost);letter-spacing:0.5px}
+.thesis-tool .step:hover{background:rgba(0,0,0,0.02)}
+.thesis-tool .step.active{background:rgba(224,56,120,0.04)}
+.thesis-tool .step.active::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--tt-accent)}
+.thesis-tool .step.future{opacity:0.35}
+.thesis-tool .step.future:hover{opacity:0.5}
+.thesis-tool .step .s-tab{font-size:7px;font-family:var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--tt-accent);margin-bottom:3px;font-weight:500}
+.thesis-tool .step .s-title{font-family:var(--serif);font-size:14px;font-weight:400;margin-bottom:2px;letter-spacing:-0.2px}
+.thesis-tool .step .s-guest{font-size:10px;color:var(--tt-ink-dim);margin-bottom:8px;font-weight:300}
+.thesis-tool .step .s-thesis{font-size:10px;color:var(--tt-ink-mid);line-height:1.55;margin-bottom:10px;font-weight:300}
+.thesis-tool .step .s-quote{font-family:var(--serif);font-size:11px;font-style:italic;line-height:1.5;color:var(--tt-ink);padding:8px 10px;border-left:1.5px solid var(--tt-yellow);background:rgba(212,184,48,0.04);margin-bottom:6px}
+.thesis-tool .step .s-quote-ctx{font-size:9px;color:var(--tt-ink-dim);padding-left:12px;font-weight:300;line-height:1.4}
+.thesis-tool .step .s-nodes{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.thesis-tool .step .s-node{display:flex;align-items:center;gap:3px;padding:2px 6px;font-size:8px;font-family:var(--mono);color:var(--tt-ink-dim);letter-spacing:0.5px;background:rgba(0,0,0,0.03);border-radius:1px}
+.thesis-tool .step .s-node .sn-d{width:5px;height:5px;border-radius:50%}
+
+.thesis-tool .prog{grid-column:1/-1;border-top:1px solid var(--tt-ink-ghost);display:flex;align-items:center;padding:0 20px;gap:0;background:var(--warm)}
+.thesis-tool .prog-step{flex:1;height:100%;display:flex;align-items:center;justify-content:center;font-size:9px;font-family:var(--mono);color:var(--tt-ink-ghost);cursor:pointer;transition:all 0.2s;letter-spacing:1px;position:relative;border-right:1px solid rgba(0,0,0,0.04)}
+.thesis-tool .prog-step:last-child{border-right:none}
+.thesis-tool .prog-step.visited{color:var(--tt-ink-mid);background:rgba(0,0,0,0.02)}
+.thesis-tool .prog-step.active{color:var(--tt-accent);font-weight:500;background:rgba(224,56,120,0.06)}
+.thesis-tool .prog-step.active::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--tt-accent)}
+.thesis-tool .prog-step:hover{background:rgba(0,0,0,0.03)}
+.thesis-tool .prog-nav{display:flex;gap:4px;margin-left:12px}
+.thesis-tool .prog-nav button{padding:6px 14px;font-size:9px;font-family:var(--sans);font-weight:500;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--tt-ink-ghost);background:transparent;color:var(--tt-ink-mid);cursor:pointer;transition:all 0.15s}
+.thesis-tool .prog-nav button:hover{border-color:var(--tt-accent);color:var(--tt-accent)}
+.thesis-tool .prog-nav button.primary{background:var(--tt-ink);color:var(--paper);border-color:var(--tt-ink)}
+.thesis-tool .prog-nav button.primary:hover{background:var(--tt-accent);border-color:var(--tt-accent)}
+
+@media(max-width:800px){
+  .thesis-tool{height:auto;min-height:100vh}
+  .thesis-tool .app{grid-template-columns:1fr;grid-template-rows:50vh 1fr 44px;height:100vh}
+  .thesis-tool .narr{border-left:none;border-top:1px solid var(--tt-ink-ghost)}
+  .thesis-tool .pg{display:none}
+}
+
+/* Tool bigger touch targets + a11y tweaks */
+@media(hover:none){
+  .thesis-tool .prog-step{min-height:44px}
+}
+@media(max-width:800px){
+  .thesis-tool .app{grid-template-rows:46vh 1fr 48px}
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.thesis-tool .s-node{cursor:pointer;transition:background 0.15s}
+.thesis-tool .s-node:hover{background:rgba(224,56,120,0.12)!important}
+.thesis-tool canvas{cursor:default}
+.thesis-tool canvas.hot{cursor:pointer}
+
+/* Canvas tooltip */
+.tt-tip{position:fixed;z-index:9998;pointer-events:none;background:#1C1A18;color:#E6E0D2;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.5px;padding:6px 10px;border:1px solid rgba(224,56,120,0.5);border-radius:2px;max-width:220px;line-height:1.4;opacity:0;transition:opacity 0.12s;transform:translate(12px,12px)}
+.tt-tip.on{opacity:1}
+.tt-tip b{display:block;font-family:'Newsreader',serif;font-size:12px;font-weight:500;font-style:italic;margin-bottom:2px;color:#E03878}
+.tt-tip i{font-style:normal;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#8A8680}
+
+/* Per-step quote carousel */
+.thesis-tool .s-quote-nav{display:flex;align-items:center;gap:8px;margin-top:4px;margin-bottom:6px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:1px;color:#8A8680}
+.thesis-tool .s-quote-nav button{background:transparent;border:1px solid rgba(0,0,0,0.15);color:#4A4844;padding:2px 7px;font-family:inherit;font-size:8px;cursor:pointer;border-radius:1px}
+.thesis-tool .s-quote-nav button:hover{border-color:#E03878;color:#E03878}
+
+/* Entity modal */
+.entity-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,18,16,0.55);backdrop-filter:blur(2px)}
+.entity-modal.open{display:flex}
+.entity-modal .em-card{background:#E6E0D2;max-width:520px;width:100%;max-height:85vh;overflow-y:auto;border:1px solid #8A8680;box-shadow:0 20px 60px rgba(0,0,0,0.4);padding:28px 32px 32px;position:relative;font-family:'IBM Plex Sans',sans-serif}
+.entity-modal .em-close{position:absolute;top:10px;right:12px;background:transparent;border:none;font-size:18px;color:#4A4844;cursor:pointer;width:28px;height:28px;line-height:1}
+.entity-modal .em-close:hover{color:#E03878}
+.entity-modal .em-head{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.entity-modal .em-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.entity-modal .em-label{font-family:'Newsreader',serif;font-size:22px;font-weight:400;letter-spacing:-0.3px;color:#1C1A18}
+.entity-modal .em-type{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#8A8680;margin-bottom:14px;padding-left:22px}
+.entity-modal .em-role{font-family:'Newsreader',serif;font-size:13px;font-style:italic;color:#4A4844;margin-bottom:12px}
+.entity-modal .em-bio{font-size:12px;line-height:1.65;color:#2A2820;margin-bottom:16px;font-weight:300}
+.entity-modal .em-section-h{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#8A8680;margin-bottom:6px;padding-bottom:2px;border-bottom:1px solid rgba(0,0,0,0.08)}
+.entity-modal .em-quotes{margin-bottom:16px}
+.entity-modal .em-quote{font-family:'Newsreader',serif;font-size:12px;font-style:italic;line-height:1.5;color:#1C1A18;padding:6px 10px;border-left:1.5px solid #D4B830;background:rgba(212,184,48,0.06);margin-bottom:6px}
+.entity-modal .em-related{display:flex;flex-wrap:wrap;gap:5px}
+.entity-modal .em-related button{background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 8px;cursor:pointer;color:#4A4844;display:flex;align-items:center;gap:4px;border-radius:1px}
+.entity-modal .em-related button:hover{border-color:#E03878;color:#E03878}
+.entity-modal .em-related .rd{width:6px;height:6px;border-radius:50%}
+
+/* Quote Wall */
+.quote-wall{background:var(--parchment);padding:60px 20px 80px;border-top:1px solid var(--aged);border-bottom:1px solid var(--aged)}
+.quote-wall-inner{max-width:1100px;margin:0 auto}
+.qw-head{text-align:center;margin-bottom:32px}
+.qw-head .sec-mark{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:8px;opacity:0.6}
+.qw-head h2{font-family:var(--type);font-size:20px;letter-spacing:4px;font-weight:400;margin-bottom:6px}
+.qw-head p{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-dim)}
+.qw-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;align-items:center}
+.qw-filters button{background:transparent;border:1px solid var(--aged);font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;color:var(--ink-mid);cursor:pointer;transition:all 0.15s}
+.qw-filters button:hover,.qw-filters button.on{background:var(--ink);color:var(--parchment);border-color:var(--ink)}
+.qw-filters input{background:var(--parchment-light);border:1px solid var(--aged);padding:6px 10px;font-family:var(--mono);font-size:10px;color:var(--ink);min-width:180px;border-radius:0}
+.qw-filters input:focus{outline:none;border-color:var(--pink)}
+.qw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.qw-card{background:var(--parchment-light);border:1px solid var(--aged);padding:16px 18px;position:relative;transition:transform 0.2s,box-shadow 0.2s}
+.qw-card:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(0,0,0,0.08)}
+.qw-card .qw-q{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.5;color:var(--ink);margin-bottom:10px}
+.qw-card .qw-sp{font-size:10px;color:var(--ink-mid);font-weight:400;margin-bottom:8px}
+.qw-card .qw-meta{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink-dim);text-transform:uppercase}
+.qw-card .qw-t{color:var(--pink);text-decoration:none;font-weight:500;border:1px solid var(--pink);padding:2px 6px;border-radius:1px}
+.qw-card .qw-t:hover{background:var(--pink);color:var(--parchment-light)}
+.qw-empty{grid-column:1/-1;text-align:center;padding:40px;font-family:var(--serif);font-style:italic;color:var(--ink-dim)}
+
+/* Back-to-top */
+.back-top{text-align:center;padding:24px 0 36px;background:var(--parchment);border-top:1px solid var(--aged)}
+.back-top a{font-family:var(--type);font-size:11px;letter-spacing:3px;color:var(--ink-dim);text-decoration:none;text-transform:uppercase}
+.back-top a:hover{color:var(--ink)}
+
+/* Fade in */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ═══════ COVER ═══════ -->
+<section class="cover" id="cover">
+  <div class="cover-svg-wrap">
+    <svg class="cover-svg" viewBox="0 0 580 780" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="COMINCH P-016 cover sheet — American Dynamism Field Assessment, April 2026">
+      <defs>
+        <linearGradient id="parch" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#E2DABC"/>
+          <stop offset="0.45" stop-color="#D8D0B4"/>
+          <stop offset="1" stop-color="#C4BC98"/>
+        </linearGradient>
+        <filter id="aged" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.30  0 0 0 0 0.22  0 0 0 0.18 0"/>
+          <feComposite in2="SourceGraphic" operator="in"/>
+        </filter>
+        <filter id="fox" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="3"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.32  0 0 0 0 0.18  0 0 0 0.28 0"/>
+        </filter>
+        <style>
+          .type{font-family:'Special Elite',monospace}
+          .serif{font-family:'Newsreader',Georgia,serif}
+          .ink{fill:#2A2820}
+          .ink-mid{fill:#4A4838}
+          .ink-dim{fill:#6A6858}
+          .ink-ghost{fill:#8A8878}
+          .red{fill:#B83030}
+          .red-s{stroke:#B83030;fill:none}
+          .blue{fill:#1F3C94}
+          .blue-s{stroke:#1F3C94;fill:none}
+          .cover-svg .enter-g rect{transition:fill 0.25s}
+          .cover-svg .enter-g:hover rect{fill:#2A2820}
+          .cover-svg .enter-g:hover text{fill:#E2DABC}
+        </style>
+      </defs>
+
+      <!-- (background intentionally transparent — body parchment shows through) -->
+
+      <!-- Corner TL classification stack — hand-typed, drift each line -->
+      <g class="type ink-mid" font-size="11" letter-spacing="1" transform="rotate(-1.4 32 60)">
+        <text x="26" y="34">O</text>
+        <text x="22" y="48" transform="rotate(0.8 22 48)">ND</text>
+        <text x="28" y="62" transform="rotate(-0.6 28 62)">CNO</text>
+        <text x="23" y="76" transform="rotate(1.1 23 76)">AO</text>
+        <text x="27" y="90" transform="rotate(-0.4 27 90)">V.6</text>
+      </g>
+
+      <!-- SECRET rotated stamp — pressed crooked -->
+      <g transform="rotate(-4.2 118 54) translate(-4 2)" opacity="0.82">
+        <rect x="74" y="38" width="96" height="32" class="red-s" stroke-width="2.4"/>
+        <text x="122" y="60" class="type red" font-size="16" font-weight="600" letter-spacing="4" text-anchor="middle">SECRET</text>
+      </g>
+
+      <!-- Handwritten M-number — slanted, drifted right -->
+      <g transform="rotate(-4.5 350 40) translate(6 -2)">
+        <text x="300" y="44" class="type blue" font-size="15" opacity="0.6">M - 279527</text>
+      </g>
+
+      <!-- COMINCH P-016 top-right — slight pitch -->
+      <g class="type ink" text-anchor="end" transform="rotate(0.7 556 70)">
+        <text x="554" y="70" font-size="15" font-weight="600" letter-spacing="3">COMINCH P-016</text>
+      </g>
+
+      <!-- Page number serif italic -->
+      <g transform="rotate(-1.6 556 92)">
+        <text x="558" y="92" class="serif ink-ghost" font-size="13" font-style="italic" text-anchor="end">225</text>
+      </g>
+
+      <!-- MAIN TITLE — each line drifted a hair -->
+      <g class="type ink" text-anchor="middle">
+        <text x="290" y="178" font-size="28" letter-spacing="6" transform="rotate(-0.5 290 178)">AMERICAN DYNAMISM</text>
+      </g>
+      <g class="type ink-mid" text-anchor="middle">
+        <text x="288" y="212" font-size="15" letter-spacing="4" transform="rotate(0.4 288 212)">FIELD ASSESSMENT OF THE</text>
+        <text x="292" y="234" font-size="15" letter-spacing="4" transform="rotate(-0.3 292 234)">THESIS INFRASTRUCTURE</text>
+        <text x="290" y="264" font-size="13" letter-spacing="3" transform="rotate(0.6 290 264)">A16Z PODCAST NETWORK</text>
+      </g>
+
+      <!-- CLASSIFICATION changed stamp — pressed at an angle, smudged -->
+      <g transform="rotate(2.4 290 322) translate(-3 4)" opacity="0.8">
+        <rect x="188" y="298" width="204" height="50" class="red-s" stroke-width="2.2"/>
+        <text x="290" y="316" class="type red" font-size="9" letter-spacing="2" text-anchor="middle">CLASSIFICATION changed to</text>
+        <text x="290" y="338" class="type red" font-size="16" font-weight="600" letter-spacing="4" text-anchor="middle">OPEN SOURCE</text>
+      </g>
+      <!-- Authority hand-scrawl under the stamp -->
+      <g transform="rotate(-1.8 290 372) translate(8 0)">
+        <text x="290" y="372" class="type blue" font-size="8.5" text-anchor="middle" opacity="0.55">Authority ANP/A16Z · Apr 2026 · by Studio</text>
+      </g>
+
+      <!-- DATE -->
+      <g transform="rotate(0.5 290 408)">
+        <text x="288" y="408" class="type ink" font-size="17" letter-spacing="4" text-anchor="middle">APRIL 2026</text>
+      </g>
+
+      <!-- LIBRARY blue double-stamp — pressed off-axis, light pressure -->
+      <g transform="rotate(-2.8 290 460) translate(4 -3)" opacity="0.78">
+        <rect x="208" y="432" width="164" height="56" class="blue-s" stroke-width="1.8"/>
+        <rect x="212" y="436" width="156" height="48" class="blue-s" stroke-width="0.6" opacity="0.6"/>
+        <text x="290" y="452" class="type blue" font-size="9" font-weight="600" letter-spacing="2.4" text-anchor="middle">RESEARCH ARCHIVE</text>
+        <text x="290" y="468" class="type blue" font-size="11" font-weight="600" letter-spacing="2" text-anchor="middle">10 TRANSCRIPTS PROCESSED</text>
+        <text x="290" y="482" class="type blue" font-size="8.5" letter-spacing="2" text-anchor="middle">ANP STUDIO · APRIL 2026</text>
+      </g>
+
+      <!-- WARNING box — slightly tilted on the page -->
+      <g transform="rotate(0.9 290 549)">
+        <rect x="118" y="512" width="344" height="74" fill="none" stroke="#2A2820" stroke-width="1.4"/>
+        <text x="290" y="536" class="type ink" font-size="11" letter-spacing="1.5" text-anchor="middle" transform="rotate(-0.3 290 536)">THIS ASSESSMENT AND THE ANALYSIS</text>
+        <text x="291" y="554" class="type ink" font-size="11" letter-spacing="1.5" text-anchor="middle" transform="rotate(0.4 291 554)">CONTAINED HEREIN <tspan font-style="italic" letter-spacing="2">MUST NOT</tspan></text>
+        <text x="289" y="572" class="type ink" font-size="11" letter-spacing="1.5" text-anchor="middle" transform="rotate(-0.2 289 572)">FALL INTO THE HANDS OF THE UNSERIOUS</text>
+      </g>
+
+      <!-- Bottom fleet block -->
+      <g text-anchor="middle">
+        <text x="290" y="628" class="type ink" font-size="16" font-weight="600" letter-spacing="4" transform="rotate(-0.6 290 628)">ANDREESSEN HOROWITZ</text>
+        <text x="290" y="648" class="type ink-mid" font-size="11" letter-spacing="3" transform="rotate(0.5 290 648)">American Dynamism Practice</text>
+      </g>
+
+      <!-- ENTER button — slightly off-square -->
+      <a href="#dossier" class="enter-g">
+        <g class="enter-g" transform="rotate(0.8 290 693)">
+          <rect x="216" y="676" width="148" height="34" fill="transparent" stroke="#2A2820" stroke-width="1.4"/>
+          <text x="290" y="698" class="type ink" font-size="12" letter-spacing="4" text-anchor="middle">ENTER ASSESSMENT ↓</text>
+        </g>
+      </a>
+
+      <!-- Declassified footers — each line at its own drift -->
+      <g class="type ink-ghost" font-size="7" letter-spacing="0.4">
+        <text x="22" y="742" transform="rotate(-1.2 22 742)">PROCESSED</text>
+        <text x="26" y="752" transform="rotate(0.6 26 752)">E.O. 13652, Sec. 3(D) and 5(D)</text>
+        <text x="23" y="762" transform="rotate(-0.4 23 762)">ANP Studio · April 2026</text>
+      </g>
+      <g class="type ink-ghost" font-size="7" letter-spacing="0.4" text-anchor="end">
+        <text x="556" y="742" transform="rotate(0.8 556 742)">DISTRIBUTION</text>
+        <text x="554" y="752" transform="rotate(-0.5 554 752)">A16Z Design · Greg Truesdell</text>
+        <text x="558" y="762" transform="rotate(0.3 558 762)">Ebenz Augustave · ANP Studio</text>
+      </g>
+
+      <!-- PO number, rotated blue -->
+      <g transform="rotate(-2.4 40 720)">
+        <text x="22" y="722" class="type blue" font-size="9" opacity="0.5">P-016 / 2026-04</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ═══════ DOSSIER ═══════ -->
+<section class="dossier" id="dossier">
+  <div class="dossier-head fade-in">
+    <div class="sec-mark">RESTRICTED — OPEN SOURCE</div>
+    <h2>SOURCE TRANSCRIPTS</h2>
+    <p>10 interviews. 7+ hours of testimony. One thesis: America must dismantle peacetime<br>bureaucracy and unleash capitalist dynamism to re-industrialize the nation.</p>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">01</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">Inside Palantir: Building Software That Matters</div>
+      <div class="iv-guest">Shyam Sankar · CTO, Palantir</div>
+      <div class="iv-meta"><span class="iv-dur">54:16</span><span>Defense Reformation</span></div>
+      <div class="iv-thesis">The hollowing out of the American industrial base was caused by financialization and institutional conformity. To restore deterrence, empower heretical founders and co-locate R&D with production.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">02</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">Inside The $100M Bet on the Future of Space</div>
+      <div class="iv-guest">Bridgit Mendler · CEO, Northwood Space</div>
+      <div class="iv-meta"><span class="iv-dur">40:54</span><span>Space Economy Bottleneck</span></div>
+      <div class="iv-thesis">Launch and satellite manufacturing have accelerated. Ground infrastructure — how you control and download — is stuck in legacy procurement, creating an absurd bottleneck.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">03</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">Emil Michael: The Department of War Is Moving Faster Than You Think</div>
+      <div class="iv-guest">Emil Michael · CTO, Dept of Defense</div>
+      <div class="iv-meta"><span class="iv-dur">26:49</span><span>Wartime Procurement</span></div>
+      <div class="iv-thesis">Sovereign military operations cannot be governed by the arbitrary corporate terms of AI vendors. The DoD must transition from peacetime bureaucracy to wartime-speed acquisition.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">04</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">Palantir CEO on Iran, AI Weapons and American Domination</div>
+      <div class="iv-guest">Alex Karp · CEO, Palantir</div>
+      <div class="iv-meta"><span class="iv-dur">32:26</span><span>Military Superiority & Talent</span></div>
+      <div class="iv-thesis">Silicon Valley is culturally disconnected from global conflict. America's asymmetric advantage: protecting neurodivergent, unconventional thinkers who build revolutionary defense tech.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">05</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">"How We Can Eliminate Crime" — America's Crisis Explained</div>
+      <div class="iv-guest">Garrett Langley & Ben Horowitz</div>
+      <div class="iv-meta"><span class="iv-dur">58:22</span><span>Intelligence-Based Policing</span></div>
+      <div class="iv-thesis">A severe police staffing crisis requires a paradigm shift to objective, AI-driven law enforcement. Public-private partnerships bypass sluggish municipal bureaucracy.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">06</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">The Brutal Truth About Biotech: Why $2B Per Drug Is Killing Innovation</div>
+      <div class="iv-guest">Lada Nuzhna & Elliot · Amplify</div>
+      <div class="iv-meta"><span class="iv-dur">1:01:17</span><span>Biotech & Eroom's Law</span></div>
+      <div class="iv-thesis">Drug costs rise exponentially while China uses geographic arbitrage. The US must use AI to invent novel modalities targeting aging and chronic disease.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">07</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">Sacks, Andreessen & Horowitz: How America Wins the AI Race</div>
+      <div class="iv-guest">David Sacks · AI & Crypto Czar, White House</div>
+      <div class="iv-meta"><span class="iv-dur">1:17:30</span><span>Permissionless Innovation</span></div>
+      <div class="iv-thesis">Embrace permissionless innovation and reject regulatory capture. Restricting AI exports to allies drives them into China's Huawei ecosystem.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">08</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Deep Dives</div>
+      <div class="iv-title">Why Modern War Needs Intelligent Power Systems</div>
+      <div class="iv-guest">Adam Warmoth & Alex Miller</div>
+      <div class="iv-meta"><span class="iv-dur">49:36</span><span>Tactical Power & TIC</span></div>
+      <div class="iv-thesis">Legacy diesel generators create lethal signatures. The Army's Transforming in Contact initiative bypasses 5-7 year procurement by flooding units with commercial tech.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">09</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Podcast</div>
+      <div class="iv-title">Ben Horowitz & Marc Andreessen: Can Silicon Valley Save America?</div>
+      <div class="iv-guest">Andreessen, Horowitz, Boyle, Ulevitch</div>
+      <div class="iv-meta"><span class="iv-dur">~60:00</span><span>American Dynamism Origins</span></div>
+      <div class="iv-thesis">Post-Vietnam hostility and Project Maven severed tech from government. To outcompete China, America must reject Soviet-style planning and lean into capitalist dynamism.</div>
+    </div>
+  </div>
+
+  <div class="interview fade-in">
+    <div class="iv-num">10</div>
+    <div class="iv-body">
+      <div class="iv-tab">a16z Deep Dives</div>
+      <div class="iv-title">Submarines and the Future of Defense Manufacturing</div>
+      <div class="iv-guest">Chris Power & Adm. Robert Goucher</div>
+      <div class="iv-meta"><span class="iv-dur">23:59</span><span>Submarine Industrial Base</span></div>
+      <div class="iv-thesis">Post-Cold War dismantling decimated skilled labor. Software-driven manufacturing must augment an insufficient workforce to rebuild the submarine fleet for strategic deterrence.</div>
+    </div>
+  </div>
+
+  <div class="divider">· · ·</div>
+
+  <div class="launch-wrap fade-in">
+    <button class="launch-btn" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.goTo&&window.goTo(1),400)">Launch Thesis Map →</button>
+    <a class="launch-sub-link" href="#quotes" style="display:inline-block;margin-top:14px;font-family:var(--type);font-size:10px;letter-spacing:3px;color:var(--ink-dim);text-decoration:none;text-transform:uppercase;border-bottom:1px solid var(--aged);padding-bottom:2px">Browse the Quote Wall →</a>
+    <div class="launch-sub">Step through each transcript and watch the argument assemble itself.</div>
+  </div>
+</section>
+
+<!-- ═══════ TOOL (inline) ═══════ -->
+<section class="thesis-tool" id="tool">
+  <div class="app">
+    <div class="chart">
+      <canvas id="c"></canvas>
+      <div class="ch-label"><b>2.</b>&ensp;The Theses Are<br>&emsp;Distant Forces</div>
+      <div class="pg">225</div>
+      <div class="dot-key">
+        <div class="dk-i"><div class="dk-d" style="background:var(--tt-orange)"></div>People</div>
+        <div class="dk-i"><div class="dk-d" style="background:var(--tt-pink)"></div>Orgs</div>
+        <div class="dk-i"><div class="dk-d" style="background:var(--tt-yellow)"></div>Strategy</div>
+        <div class="dk-i"><div class="dk-d" style="background:var(--white-dot);border:0.5px solid rgba(0,0,0,0.12)"></div>Outcome</div>
+        <div class="dk-i"><div class="dk-d" style="background:var(--tt-red)"></div>Bottleneck</div>
+      </div>
+      <div class="scale-wrap"><div class="sc-a l"></div><div class="sc-l"></div><div class="sc-a r"></div><div class="sc-t">10 TRANSCRIPTS</div></div>
+    </div>
+    <div class="narr">
+      <div class="narr-head">
+        <h1>American Dynamism</h1>
+        <p>10 interviews. One thesis. Step through each transcript to watch the argument assemble itself.</p>
+      </div>
+      <div class="narr-body" id="narrBody"></div>
+    </div>
+    <div class="prog" id="prog" role="tablist" aria-label="Transcript steps"></div>
+  </div>
+  <ul id="tool-a11y" class="sr-only" aria-live="polite"></ul>
+</section>
+
+<!-- ═══════ QUOTE WALL ═══════ -->
+<section class="quote-wall" id="quotes">
+  <div class="quote-wall-inner">
+    <div class="qw-head">
+      <div class="sec-mark">APPENDIX · TACTICAL QUOTES</div>
+      <h2>THE QUOTE WALL</h2>
+      <p>A curated selection of tactical quotes. Filter by category, search, or click a transcript tag to jump into the map.</p>
+    </div>
+    <div class="qw-filters" id="qwFilters">
+      <button data-f="all" class="on">All</button>
+      <button data-f="people">People</button>
+      <button data-f="strategy">Strategy</button>
+      <button data-f="bottleneck">Bottlenecks</button>
+      <button data-f="outcome">Outcomes</button>
+      <input id="qwSearch" type="search" placeholder="Search quotes, speakers, tags…" aria-label="Search quotes">
+    </div>
+    <div class="qw-grid" id="qwGrid"></div>
+  </div>
+</section>
+
+<!-- Canvas hover tooltip -->
+<div class="tt-tip" id="ttTip" role="status" aria-hidden="true"></div>
+
+<!-- Entity detail modal -->
+<div class="entity-modal" id="entityModal" role="dialog" aria-modal="true" aria-labelledby="emLabel">
+  <div class="em-card" id="emCard" tabindex="-1">
+    <button class="em-close" id="emClose" aria-label="Close">✕</button>
+    <div class="em-head"><div class="em-dot" id="emDot"></div><div class="em-label" id="emLabel"></div></div>
+    <div class="em-type" id="emType"></div>
+    <div class="em-role" id="emRole"></div>
+    <div class="em-bio" id="emBio"></div>
+    <div class="em-section-h" id="emQuotesH" style="display:none">Tactical Quotes</div>
+    <div class="em-quotes" id="emQuotes"></div>
+    <div class="em-section-h" id="emRelatedH" style="display:none">Related</div>
+    <div class="em-related" id="emRelated"></div>
+  </div>
+</div>
+
+<div class="back-top"><a href="#cover">↑ Return to Cover</a></div>
+
+<script>
+// Scroll fade-in
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:0.05});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+// ════════════════════════════════════════
+// THESIS MAP — inline tool
+// ════════════════════════════════════════
+const steps=[
+{id:1,tab:'Transcript 01',title:'Defense Reformation',guest:'Shyam Sankar · CTO, Palantir',
+  thesis:'The hollowing out of the American industrial base was caused by consolidation, financialization, and the enforcement of institutional conformity. To restore deterrence, the US must empower heretical founders and co-locate R&D with production.',
+  quote:'"If you don\'t make the thing, you can\'t innovate on how you make the thing and what the thing is."',
+  qctx:'Critiques the divorce of R&D from manufacturing — true dominance requires co-location.',
+  nodes:['P_Sankar','O_Palantir','C_DefRef','C_Heretic','C_Bur','C_Fusion','P_Cukor','P_Rickover','P_Boyd','O_DoD','O_Navy'],
+  edges:[0,1,2,3,4,5,6,7,8,9]},
+{id:2,tab:'Transcript 02',title:'The Space Bottleneck',guest:'Bridgit Mendler · CEO, Northwood Space',
+  thesis:'Space launch and satellite manufacturing have accelerated dramatically. But ground infrastructure — how you control and download from satellites — is stuck in legacy procurement, creating an absurd bottleneck.',
+  quote:'"You could build a satellite and launch it faster than you could actually connect with it from the ground."',
+  qctx:'The stark disparity between rapid space manufacturing and stagnant ground operations.',
+  nodes:['P_Bridget','O_Northwood','O_SpaceX','O_Starlink','O_SpaceForce','C_Ground','C_SpaceEcon'],
+  edges:[10,11,12,13,14]},
+{id:3,tab:'Transcript 03',title:'Wartime Procurement',guest:'Emil Michael · CTO, Dept of Defense',
+  thesis:'The DoD must transition from peacetime bureaucracy to wartime-speed acquisition. Sovereign military operations cannot be governed by the arbitrary corporate terms of AI vendors — they must answer to the Constitution.',
+  quote:'"Their constitution which is not the US constitution can\'t be dictating our command and control."',
+  qctx:'Military decisions governed by democratic law, not corporate AI terms of service.',
+  nodes:['P_Michael','O_DoD','O_Anthropic','C_Procurement','C_VendorLock','C_DemOversight','C_Det'],
+  edges:[15,16,17,18,19]},
+{id:4,tab:'Transcript 04',title:'Military Superiority & Talent',guest:'Alex Karp · CEO, Palantir',
+  thesis:'Silicon Valley is culturally disconnected from global conflict. If tech displaces jobs without serving national security, it faces nationalization. America\'s asymmetric advantage: protecting neurodivergent, unconventional thinkers.',
+  quote:'"Our single advantage is to augment neurodivergent people to be their absolutely unique best."',
+  qctx:'Constitutional protection of unconventional thinkers is the asymmetric edge over China.',
+  nodes:['P_Karp','O_Palantir','C_Neurodiv','C_TechNat','C_Maven','C_SVCulture','C_AmDyn','C_Det'],
+  edges:[20,21,22,23,24,25,26]},
+{id:5,tab:'Transcript 05',title:'Intelligence-Based Policing',guest:'Garrett Langley & Ben Horowitz',
+  thesis:'A severe police staffing crisis requires a paradigm shift from subjective policing to objective, AI-driven, sensor-powered law enforcement. Public-private partnerships bypass sluggish municipal bureaucracy.',
+  quote:'"If you don\'t enforce crime, what you end up is with lost generations."',
+  qctx:'Removing deterrence disproportionately harms vulnerable communities.',
+  nodes:['P_Langley','P_Horowitz','O_Flock','C_IntPol','C_PPP','C_StaffCrisis','C_Det'],
+  edges:[27,28,29,30,31,32]},
+{id:6,tab:'Transcript 06',title:'Biotech & Eroom\'s Law',guest:'Lada & Elliot · Amplify',
+  thesis:'Drug development costs rise exponentially (Eroom\'s Law) while China uses geographic arbitrage to outcompete. The US must play inventor — using AI to create novel modalities targeting aging and chronic disease.',
+  quote:'"If we rely on existing modality approaches, it would just be an uphill battle."',
+  qctx:'Incremental improvement is insufficient. Novel modalities are required.',
+  nodes:['P_Lada','P_Elliot','O_Amplify','O_FDA','C_AIDrug','C_Erooms','C_GeoArb','C_Aging'],
+  edges:[33,34,35,36,37,38]},
+{id:7,tab:'Transcript 07',title:'Permissionless Innovation',guest:'David Sacks · AI & Crypto Czar',
+  thesis:'America must embrace permissionless innovation and reject regulatory capture by frontier AI companies. Restricting AI exports to allies drives them into China\'s Huawei ecosystem.',
+  quote:'"The whole basis of Silicon Valley\'s success is permissionless innovation."',
+  qctx:'Gatekeeping approval systems destroy the fundamental engine of tech innovation.',
+  nodes:['P_Sacks','O_Anthropic','O_Huawei','C_Permissionless','C_RegCapture','C_TechExports','C_AmDyn'],
+  edges:[39,40,41,42,43]},
+{id:8,tab:'Transcript 08',title:'Tactical Power & TIC',guest:'Adam Warmoth & Alex Miller',
+  thesis:'Legacy diesel generators create lethal thermal and acoustic signatures. The Army\'s Transforming in Contact initiative bypasses 5-7 year procurement cycles by flooding units with commercial tech.',
+  quote:'"Our goal is to actually win and then you field the team that\'s going to win."',
+  qctx:'Outcome-focused rapid procurement replaces years of requirements writing.',
+  nodes:['P_Warmoth','P_Miller','O_Chariot','O_Army','C_TactPower','C_SigMgmt','C_TIC','C_Procurement'],
+  edges:[44,45,46,47,48,49]},
+{id:9,tab:'Transcript 09',title:'American Dynamism Origins',guest:'Andreessen, Horowitz, Boyle, Ulevitch',
+  thesis:'Post-Vietnam cultural hostility and the Google Project Maven protests severed Silicon Valley from the government. To outcompete China, America must reject Soviet-style planning and lean into capitalist dynamism.',
+  quote:'"What if we become more like us?"',
+  qctx:'Marc Andreessen arguing that free-market dynamism — not imitating China — is the advantage.',
+  nodes:['P_Andreessen','P_Horowitz','P_Boyle','P_Ulevitch','O_a16z','O_SpaceX','O_Palantir','C_AmDyn','C_Bur','C_Reind','C_Det','C_Attritable','C_Maven','C_SVCulture'],
+  edges:[50,51,52,53,54,55,56,57,58,59,60,61]},
+{id:10,tab:'Transcript 10',title:'Submarine Industrial Base',guest:'Chris Power & Adm. Robert Goucher',
+  thesis:'The post-Cold War dismantling of manufacturing decimated skilled labor. Money alone can\'t rebuild — software-driven manufacturing must augment an insufficient workforce to rebuild the submarine fleet for strategic deterrence.',
+  quote:'"We have to fuse workforce training and software. It is a people problem."',
+  qctx:'The industrial capacity crisis requires software to augment a labor pool that no longer exists.',
+  nodes:['P_Power','P_Goucher','O_Hadrian','O_Navy','C_AdvMfg','C_Workforce','C_SubProd','C_Det','C_Reind'],
+  edges:[62,63,64,65,66,67,68]},
+];
+
+const N=[
+{id:'C_AmDyn',l:'American\nDynamism',t:'concept',sub:'outcome',x:0,y:0,r:18},
+{id:'C_Det',l:'Global\nDeterrence',t:'concept',sub:'outcome',x:140,y:-60,r:15},
+{id:'C_Reind',l:'Re-industrial-\nization',t:'concept',sub:'strategy',x:100,y:60,r:13},
+{id:'C_Bur',l:'Bureaucracy',t:'concept',sub:'bottleneck',x:-80,y:-40,r:12},
+{id:'C_Procurement',l:'Procurement\nReform',t:'concept',sub:'bottleneck',x:-60,y:100,r:11},
+{id:'C_Permissionless',l:'Permissionless\nInnovation',t:'concept',sub:'strategy',x:-160,y:-100,r:11},
+{id:'C_AI',l:'AI &\nAutonomy',t:'concept',sub:'strategy',x:60,y:120,r:10},
+{id:'C_DefRef',l:'Defense\nReformation',t:'concept',sub:'strategy',x:-200,y:30,r:10},
+{id:'C_Heretic',l:'Heretical\nFounders',t:'concept',sub:'concept',x:-260,y:-20,r:8},
+{id:'C_Fusion',l:'Civil-Military\nFusion',t:'concept',sub:'strategy',x:-240,y:80,r:8},
+{id:'C_Ground',l:'Ground\nInfra',t:'concept',sub:'bottleneck',x:220,y:140,r:9},
+{id:'C_SpaceEcon',l:'Space\nEconomy',t:'concept',sub:'concept',x:280,y:100,r:8},
+{id:'C_VendorLock',l:'Vendor\nLock-In',t:'concept',sub:'bottleneck',x:60,y:-140,r:7},
+{id:'C_DemOversight',l:'Democratic\nOversight',t:'concept',sub:'concept',x:120,y:-120,r:7},
+{id:'C_Neurodiv',l:'Neurodivergent\nTalent',t:'concept',sub:'concept',x:200,y:-120,r:8},
+{id:'C_TechNat',l:'Tech\nNationalization',t:'concept',sub:'bottleneck',x:260,y:-160,r:7},
+{id:'C_Maven',l:'Project\nMaven',t:'concept',sub:'concept',x:180,y:-180,r:7},
+{id:'C_IntPol',l:'Intelligence\nPolicing',t:'concept',sub:'strategy',x:240,y:20,r:9},
+{id:'C_StaffCrisis',l:'Staffing\nCrisis',t:'concept',sub:'bottleneck',x:300,y:-20,r:7},
+{id:'C_PPP',l:'Public-Private\nPartners',t:'concept',sub:'strategy',x:300,y:50,r:7},
+{id:'C_Erooms',l:'Eroom\'s\nLaw',t:'concept',sub:'bottleneck',x:-120,y:180,r:8},
+{id:'C_GeoArb',l:'Geographic\nArbitrage',t:'concept',sub:'bottleneck',x:-180,y:200,r:7},
+{id:'C_AIDrug',l:'AI Drug\nDiscovery',t:'concept',sub:'strategy',x:-80,y:200,r:8},
+{id:'C_Aging',l:'Aging &\nLongevity',t:'concept',sub:'concept',x:-40,y:240,r:7},
+{id:'C_RegCapture',l:'Regulatory\nCapture',t:'concept',sub:'bottleneck',x:-220,y:-120,r:8},
+{id:'C_TechExports',l:'AI\nExports',t:'concept',sub:'strategy',x:-280,y:-140,r:7},
+{id:'C_TactPower',l:'Tactical\nPower',t:'concept',sub:'strategy',x:-160,y:130,r:8},
+{id:'C_SigMgmt',l:'Signature\nMgmt',t:'concept',sub:'concept',x:-200,y:160,r:7},
+{id:'C_TIC',l:'Transforming\nin Contact',t:'concept',sub:'strategy',x:-100,y:140,r:8},
+{id:'C_SubProd',l:'Submarine\nProduction',t:'concept',sub:'concept',x:160,y:100,r:8},
+{id:'C_Workforce',l:'Workforce\nShortage',t:'concept',sub:'bottleneck',x:180,y:160,r:8},
+{id:'C_AdvMfg',l:'Advanced\nMfg',t:'concept',sub:'strategy',x:120,y:140,r:8},
+{id:'C_SVCulture',l:'SV Culture\nGap',t:'concept',sub:'bottleneck',x:240,y:-100,r:7},
+{id:'C_Attritable',l:'Attritable\nSystems',t:'concept',sub:'concept',x:60,y:80,r:7},
+{id:'P_Sankar',l:'Shyam Sankar',t:'people',x:-280,y:30,r:7},
+{id:'P_Cukor',l:'Drew Cukor',t:'people',x:-320,y:-30,r:4},
+{id:'P_Rickover',l:'Hyman Rickover',t:'people',x:-310,y:-60,r:4},
+{id:'P_Boyd',l:'John Boyd',t:'people',x:-330,y:0,r:4},
+{id:'P_Bridget',l:'Bridgit Mendler',t:'people',x:300,y:140,r:6},
+{id:'P_Michael',l:'Emil Michael',t:'people',x:40,y:-180,r:7},
+{id:'P_Karp',l:'Alex Karp',t:'people',x:260,y:-200,r:8},
+{id:'P_Langley',l:'Garrett Langley',t:'people',x:340,y:20,r:6},
+{id:'P_Horowitz',l:'Ben Horowitz',t:'people',x:-40,y:-80,r:8},
+{id:'P_Lada',l:'Lada',t:'people',x:-140,y:240,r:5},
+{id:'P_Elliot',l:'Elliot',t:'people',x:-60,y:260,r:5},
+{id:'P_Sacks',l:'David Sacks',t:'people',x:-260,y:-170,r:7},
+{id:'P_Warmoth',l:'Adam Warmoth',t:'people',x:-200,y:130,r:6},
+{id:'P_Miller',l:'Alex Miller',t:'people',x:-140,y:100,r:6},
+{id:'P_Andreessen',l:'Marc Andreessen',t:'people',x:-80,y:-30,r:9},
+{id:'P_Boyle',l:'Katherine Boyle',t:'people',x:-40,y:-60,r:7},
+{id:'P_Ulevitch',l:'David Ulevitch',t:'people',x:-20,y:-40,r:5},
+{id:'P_Power',l:'Chris Power',t:'people',x:140,y:200,r:7},
+{id:'P_Goucher',l:'Robert Goucher',t:'people',x:200,y:200,r:6},
+{id:'O_Palantir',l:'Palantir',t:'org',x:200,y:-60,r:9},
+{id:'O_DoD',l:'DoD',t:'org',x:0,y:-160,r:9},
+{id:'O_Northwood',l:'Northwood',t:'org',x:260,y:120,r:6},
+{id:'O_SpaceX',l:'SpaceX',t:'org',x:320,y:80,r:8},
+{id:'O_Starlink',l:'Starlink',t:'org',x:340,y:130,r:4},
+{id:'O_SpaceForce',l:'Space Force',t:'org',x:280,y:160,r:4},
+{id:'O_Anthropic',l:'Anthropic',t:'org',x:-200,y:-80,r:6},
+{id:'O_Flock',l:'Flock Safety',t:'org',x:300,y:0,r:6},
+{id:'O_Amplify',l:'Amplify',t:'org',x:-100,y:230,r:4},
+{id:'O_FDA',l:'FDA',t:'org',x:-160,y:180,r:4},
+{id:'O_Huawei',l:'Huawei',t:'org',x:-320,y:-160,r:5},
+{id:'O_Army',l:'US Army',t:'org',x:-120,y:120,r:7},
+{id:'O_a16z',l:'a16z',t:'org',x:-60,y:-10,r:11},
+{id:'O_Hadrian',l:'Hadrian',t:'org',x:160,y:180,r:7},
+{id:'O_Navy',l:'US Navy',t:'org',x:220,y:180,r:6},
+{id:'O_Chariot',l:'Chariot',t:'org',x:-180,y:140,r:5},
+];
+
+const ED=[
+{s:'P_Sankar',t:'C_DefRef'},{s:'P_Sankar',t:'O_Palantir'},{s:'C_DefRef',t:'C_Reind'},{s:'C_DefRef',t:'C_Bur'},
+{s:'C_Bur',t:'C_Heretic'},{s:'P_Cukor',t:'C_Heretic'},{s:'P_Rickover',t:'C_Heretic'},{s:'P_Boyd',t:'C_Heretic'},
+{s:'C_Heretic',t:'C_DefRef'},{s:'C_Fusion',t:'C_DefRef'},
+{s:'P_Bridget',t:'O_Northwood'},{s:'O_Northwood',t:'C_Ground'},{s:'C_Ground',t:'C_SpaceEcon'},
+{s:'O_SpaceX',t:'C_SpaceEcon'},{s:'O_Starlink',t:'C_Ground'},
+{s:'P_Michael',t:'O_DoD'},{s:'P_Michael',t:'C_Procurement'},{s:'O_Anthropic',t:'C_VendorLock'},
+{s:'C_VendorLock',t:'C_DemOversight'},{s:'C_DemOversight',t:'C_Det'},
+{s:'P_Karp',t:'O_Palantir'},{s:'P_Karp',t:'C_Neurodiv'},{s:'P_Karp',t:'C_TechNat'},
+{s:'O_Palantir',t:'C_AmDyn'},{s:'O_Palantir',t:'C_Maven'},{s:'C_Neurodiv',t:'C_Det'},{s:'C_SVCulture',t:'C_TechNat'},
+{s:'P_Langley',t:'O_Flock'},{s:'P_Horowitz',t:'C_IntPol'},{s:'O_Flock',t:'C_IntPol'},
+{s:'C_PPP',t:'C_IntPol'},{s:'C_IntPol',t:'C_StaffCrisis'},{s:'C_IntPol',t:'C_Det'},
+{s:'P_Elliot',t:'O_Amplify'},{s:'P_Lada',t:'C_AIDrug'},{s:'O_FDA',t:'C_Erooms'},
+{s:'C_GeoArb',t:'C_Erooms'},{s:'C_AIDrug',t:'C_Aging'},{s:'P_Elliot',t:'C_AIDrug'},
+{s:'P_Sacks',t:'C_Permissionless'},{s:'P_Sacks',t:'C_TechExports'},{s:'O_Anthropic',t:'C_RegCapture'},
+{s:'C_RegCapture',t:'C_Permissionless'},{s:'C_TechExports',t:'O_Huawei'},
+{s:'P_Warmoth',t:'O_Chariot'},{s:'P_Miller',t:'O_Army'},{s:'O_Chariot',t:'C_TactPower'},
+{s:'C_TactPower',t:'C_SigMgmt'},{s:'O_Army',t:'C_TIC'},{s:'C_TIC',t:'C_Procurement'},
+{s:'P_Andreessen',t:'O_a16z'},{s:'P_Horowitz',t:'O_a16z'},{s:'P_Boyle',t:'O_a16z'},{s:'P_Ulevitch',t:'O_a16z'},
+{s:'O_a16z',t:'C_AmDyn'},{s:'C_AmDyn',t:'C_Bur'},{s:'C_AmDyn',t:'C_Reind'},{s:'C_Reind',t:'C_Det'},
+{s:'C_Reind',t:'C_Attritable'},{s:'C_Maven',t:'C_SVCulture'},
+{s:'O_SpaceX',t:'C_AmDyn'},{s:'O_Palantir',t:'C_AmDyn'},
+{s:'P_Power',t:'O_Hadrian'},{s:'P_Goucher',t:'C_SubProd'},{s:'O_Hadrian',t:'C_AdvMfg'},
+{s:'C_AdvMfg',t:'C_Workforce'},{s:'C_AdvMfg',t:'C_SubProd'},{s:'C_SubProd',t:'C_Det'},
+{s:'O_Navy',t:'O_Hadrian'},
+{s:'C_AI',t:'C_Reind'},{s:'C_Permissionless',t:'C_AmDyn'},
+];
+
+let currentStep=0;
+const DC={people:'#D87030',org:'#E03878',concept:'#D4B830'};
+const SC={outcome:'#EDE8E0',bottleneck:'#C83828',strategy:'#D4B830',concept:'#E03878'};
+
+function getVisibleNodes(){const ids=new Set();for(let i=0;i<currentStep;i++){steps[i].nodes.forEach(id=>ids.add(id))}return ids}
+function getVisibleEdges(){const idxs=new Set();for(let i=0;i<currentStep;i++){steps[i].edges.forEach(idx=>idxs.add(idx))}return idxs}
+function getCurrentNodes(){if(currentStep===0)return new Set();return new Set(steps[currentStep-1].nodes)}
+function getCurrentEdges(){if(currentStep===0)return new Set();return new Set(steps[currentStep-1].edges)}
+
+const cv=document.getElementById('c'),cx=cv.getContext('2d');
+let W,H,dp;
+function resize(){
+  const r=cv.parentElement.getBoundingClientRect();
+  dp=devicePixelRatio||1;W=r.width;H=r.height;
+  cv.width=W*dp;cv.height=H*dp;
+  cv.style.width=W+'px';cv.style.height=H+'px';
+  cx.setTransform(dp,0,0,dp,0,0);
+}
+addEventListener('resize',resize);
+
+// ─── Isometric projection ───
+// n.x = world X (east-west), n.y = world Z (depth), h = height (y-up)
+// Treat existing hand-placed `y` values as ground-plane Z depth.
+const COS30=Math.cos(Math.PI/6),SIN30=Math.sin(Math.PI/6);
+function projH(n){
+  if(n.id==='C_AmDyn')return 0;
+  if(n.t==='people')return 78;
+  if(n.t==='org')return 32;
+  if(n.sub==='outcome')return -8;
+  if(n.sub==='strategy')return 52;
+  if(n.sub==='bottleneck')return -48;
+  return 14;
+}
+function iso(x,h,z){return {px:(x-z)*COS30,py:(x+z)*SIN30-h}}
+function projectNode(n){return iso(n.x,projH(n),n.y)}
+
+function drawCubeFace(pts,fill,stroke){
+  cx.beginPath();
+  cx.moveTo(pts[0].px,pts[0].py);
+  for(let i=1;i<pts.length;i++)cx.lineTo(pts[i].px,pts[i].py);
+  cx.closePath();
+  cx.fillStyle=fill;cx.fill();
+  if(stroke){cx.strokeStyle=stroke;cx.lineWidth=0.6;cx.stroke()}
+}
+
+function draw(){
+  cx.clearRect(0,0,W,H);
+  cx.save();
+  cx.translate(W/2,H/2+36);
+  const scale=Math.min(W/860,H/720)*0.78;
+  cx.scale(scale,scale);
+
+  // ─── Cube planes ───
+  const S=270, FLOOR=-120, CEIL=125;
+  const c={
+    blf:iso(-S,FLOOR,-S), brf:iso(S,FLOOR,-S), brb:iso(S,FLOOR,S), blb:iso(-S,FLOOR,S),
+    tlf:iso(-S,CEIL,-S),  trf:iso(S,CEIL,-S),  trb:iso(S,CEIL,S),  tlb:iso(-S,CEIL,S),
+  };
+  // Back-right wall (most shadow)
+  drawCubeFace([c.trb,c.tlb,c.blb,c.brb],'rgba(48,44,36,0.34)','rgba(28,26,24,0.45)');
+  // Left wall
+  drawCubeFace([c.tlf,c.tlb,c.blb,c.blf],'rgba(68,64,54,0.26)','rgba(28,26,24,0.38)');
+  // Right wall
+  drawCubeFace([c.trf,c.trb,c.brb,c.brf],'rgba(38,34,28,0.40)','rgba(28,26,24,0.48)');
+  // Floor (lightest, through which the parchment shows)
+  drawCubeFace([c.blf,c.brf,c.brb,c.blb],'rgba(110,104,88,0.10)','rgba(28,26,24,0.22)');
+
+  const visN=getVisibleNodes();
+  const curN=getCurrentNodes();
+
+  // Precompute projected positions
+  const proj={};
+  N.forEach(n=>{proj[n.id]=projectNode(n)});
+  const sun=proj['C_AmDyn'];
+
+  // ─── Drop-stems from every visible node to the cube floor ───
+  N.forEach(n=>{
+    if(!visN.has(n.id)||n.id==='C_AmDyn')return;
+    const top=proj[n.id];
+    const foot=iso(n.x,FLOOR,n.y);
+    cx.beginPath();cx.moveTo(top.px,top.py);cx.lineTo(foot.px,foot.py);
+    cx.strokeStyle='rgba(28,26,24,0.20)';cx.lineWidth=0.45;cx.stroke();
+    cx.beginPath();cx.arc(foot.px,foot.py,1.4,0,Math.PI*2);
+    cx.fillStyle='rgba(28,26,24,0.5)';cx.fill();
+  });
+
+  // ─── Radial spokes from the Sun to every visible node ───
+  N.forEach(n=>{
+    if(!visN.has(n.id)||n.id==='C_AmDyn')return;
+    const p=proj[n.id];
+    const isCurrent=curN.has(n.id);
+    cx.beginPath();cx.moveTo(sun.px,sun.py);cx.lineTo(p.px,p.py);
+    cx.strokeStyle=isCurrent?'rgba(28,26,24,0.55)':'rgba(28,26,24,0.18)';
+    cx.lineWidth=isCurrent?0.9:0.42;
+    cx.stroke();
+  });
+
+  // ─── Node dots (depth-sorted) ───
+  const sorted=N.slice().filter(n=>visN.has(n.id)).sort((a,b)=>(a.x+a.y)-(b.x+b.y));
+  sorted.forEach(n=>{
+    const p=proj[n.id];
+    const isCurrent=curN.has(n.id);
+    const isSun=n.id==='C_AmDyn';
+    const alpha=isCurrent||isSun?1:0.5;
+    const col=isSun?'#E8B830':(n.t==='concept'?(SC[n.sub]||'#E03878'):DC[n.t]);
+    const r=isSun?13:n.r;
+
+    if(isSun){
+      const g=cx.createRadialGradient(p.px,p.py,0,p.px,p.py,r*3.2);
+      g.addColorStop(0,'rgba(232,184,48,0.55)');
+      g.addColorStop(1,'rgba(232,184,48,0)');
+      cx.fillStyle=g;cx.beginPath();cx.arc(p.px,p.py,r*3.2,0,Math.PI*2);cx.fill();
+    }
+    if(isCurrent&&!isSun){
+      cx.beginPath();cx.arc(p.px,p.py,r+4,0,Math.PI*2);
+      cx.strokeStyle=col==='#EDE8E0'?'rgba(28,26,24,0.18)':(col+'40');
+      cx.lineWidth=1;cx.stroke();
+    }
+
+    cx.globalAlpha=alpha;
+    cx.beginPath();cx.arc(p.px,p.py,r,0,Math.PI*2);cx.fillStyle=col;cx.fill();
+    if(col==='#EDE8E0'){cx.strokeStyle='rgba(0,0,0,0.12)';cx.lineWidth=0.5;cx.stroke()}
+    cx.globalAlpha=1;
+
+    // ─── Label ───
+    if(isSun){
+      cx.font='500 11px "IBM Plex Sans"';
+      cx.fillStyle='rgba(28,26,24,0.92)';
+      cx.textAlign='center';
+      cx.fillText('Sun',p.px,p.py+r+12);
+      cx.font='italic 300 9px "Newsreader"';
+      cx.fillStyle='rgba(28,26,24,0.6)';
+      cx.fillText('(American Dynamism)',p.px,p.py+r+22);
+      return;
+    }
+    const right=p.px>=0;
+    const lx=p.px+(right?r+3:-(r+3));
+    const tx=lx+(right?14:-14);
+    cx.beginPath();cx.moveTo(p.px+(right?r:-r),p.py);cx.lineTo(lx,p.py);cx.lineTo(tx,p.py);
+    cx.strokeStyle=`rgba(28,26,24,${alpha*0.25})`;cx.lineWidth=0.3;cx.stroke();
+    cx.beginPath();cx.moveTo(tx,p.py-2.5);cx.lineTo(tx,p.py+2.5);cx.stroke();
+    const lines=n.l.split('\n');
+    cx.font=`${isCurrent?'500':'300'} ${r>=10?9:8}px "IBM Plex Sans"`;
+    cx.fillStyle=`rgba(28,26,24,${alpha*0.85})`;
+    cx.textAlign=right?'left':'right';
+    lines.forEach((line,i)=>{cx.fillText(line,tx+(right?4:-4),p.py+3+i*10-(lines.length-1)*5)});
+  });
+
+  cx.restore();
+  if(toolVisible)requestAnimationFrame(draw);
+}
+let toolVisible=false;
+
+function buildNarrative(){
+  const body=document.getElementById('narrBody');
+  let h='';
+  steps.forEach((s,i)=>{
+    const nodeData=s.nodes.map(id=>{
+      const n=N.find(nd=>nd.id===id);
+      const col=n.t==='concept'?(SC[n.sub]||'#E03878'):DC[n.t];
+      return`<div class="s-node" onclick="event.stopPropagation();openEntity('${id}')" title="Click for detail"><div class="sn-d" style="background:${col}"></div>${n.l.replace(/\n/g,' ')}</div>`;
+    }).join('');
+    h+=`<div class="step${i>=currentStep?' future':''}" data-num="${String(i+1).padStart(2,'0')}" onclick="goTo(${i+1})" id="step${i+1}">
+      <div class="s-tab">${s.tab}</div>
+      <div class="s-title">${s.title}</div>
+      <div class="s-guest">${s.guest}</div>
+      <div class="s-thesis">${s.thesis}</div>
+      <div class="s-quote">${s.quote}</div>
+      <div class="s-quote-ctx">${s.qctx}</div>
+      <div class="s-nodes">${nodeData}</div>
+    </div>`;
+  });
+  body.innerHTML=h;
+}
+
+function updateUI(){
+  document.querySelectorAll('.thesis-tool .step').forEach((el,i)=>{
+    el.classList.remove('active','future');
+    if(i+1===currentStep)el.classList.add('active');
+    else if(i+1>currentStep)el.classList.add('future');
+  });
+  document.querySelectorAll('.thesis-tool .prog-step').forEach((el,i)=>{
+    el.classList.remove('active','visited');
+    if(i+1===currentStep)el.classList.add('active');
+    else if(i+1<currentStep)el.classList.add('visited');
+  });
+  const activeEl=document.getElementById('step'+currentStep);
+  if(activeEl)activeEl.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+window.goTo=function(step){currentStep=step;updateUI()};
+
+function buildProgress(){
+  const prog=document.getElementById('prog');
+  let h='';
+  for(let i=1;i<=10;i++){h+=`<div class="prog-step" role="tab" tabindex="0" aria-label="Transcript ${i}" onclick="goTo(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();goTo(${i})}">T${i}</div>`}
+  h+=`<div class="prog-nav" role="group" aria-label="Step navigation">
+    <button onclick="goTo(Math.max(1,currentStep-1))" aria-label="Previous transcript">← Prev</button>
+    <button class="primary" onclick="goTo(Math.min(10,currentStep+1))" aria-label="Next transcript">Next →</button>
+  </div>`;
+  prog.innerHTML=h;
+}
+
+resize();
+buildNarrative();
+buildProgress();
+goTo(1);
+draw();
+
+// Re-resize canvas when tool section first scrolls into view (parent rect may have been 0 before layout)
+const toolObs=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(e.isIntersecting){
+    const wasHidden=!toolVisible;
+    toolVisible=true;
+    resize();
+    if(wasHidden)requestAnimationFrame(draw);
+  }else{
+    toolVisible=false;
+  }
+})},{threshold:0.05});
+toolObs.observe(document.getElementById('tool'));
+</script>
+
+<script>
+// ════════════════════════════════════════
+// ENHANCEMENTS: keyboard, hash, tooltip, modal, quote wall, a11y
+// ════════════════════════════════════════
+
+// ---------- Entity metadata (curated subset; falls back gracefully) ----------
+const ENTITY_META = {
+  P_Sankar:{role:'CTO, Palantir Technologies',bio:'Argues the hollowing of the US industrial base stems from financialization and institutional conformity. Advocates empowering heretical founders and co-locating R&D with production.',quotes:[{q:'If you don\'t make the thing, you can\'t innovate on how you make the thing and what the thing is.'}],related:['O_Palantir','C_DefRef','C_Heretic','C_Bur']},
+  P_Bridget:{role:'CEO, Northwood Space',bio:'Tackles the space ground-infrastructure bottleneck: launch and satellite manufacturing have accelerated, but ground stations are stuck in legacy procurement.',quotes:[{q:'You could build a satellite and launch it faster than you could actually connect with it from the ground.'}],related:['O_Northwood','C_Ground','C_SpaceEcon']},
+  P_Michael:{role:'CTO, Department of Defense',bio:'Pushes the DoD from peacetime bureaucracy to wartime-speed acquisition and rejects corporate AI-vendor terms governing sovereign military operations.',quotes:[{q:'Their constitution which is not the US constitution can\'t be dictating our command and control.'}],related:['O_DoD','C_Procurement','C_DemOversight']},
+  P_Karp:{role:'CEO, Palantir Technologies',bio:'Frames Silicon Valley as culturally disconnected from global conflict and identifies America\'s asymmetric advantage as protecting neurodivergent, unconventional thinkers.',quotes:[{q:'Our single advantage is to augment neurodivergent people to be their absolutely unique best.'}],related:['O_Palantir','C_Neurodiv','C_TechNat','C_Det']},
+  P_Langley:{role:'CEO, Flock Safety',bio:'Champions intelligence-based, sensor-driven policing via public-private partnerships to counter the staffing crisis in law enforcement.',quotes:[],related:['O_Flock','C_IntPol','C_PPP']},
+  P_Horowitz:{role:'Co-founder, Andreessen Horowitz',bio:'Co-founder of a16z. Advocate for the American Dynamism thesis and public-private partnerships in public safety.',quotes:[{q:'If you don\'t enforce crime, what you end up is with lost generations.'}],related:['O_a16z','C_AmDyn','C_IntPol']},
+  P_Lada:{role:'Partner, Amplify Bio',bio:'Argues US biotech must invent novel modalities — powered by AI — to beat Eroom\'s Law and Chinese geographic arbitrage, targeting aging and chronic disease.',quotes:[{q:'If we rely on existing modality approaches, it would just be an uphill battle to try and treat [aging].'}],related:['O_Amplify','C_AIDrug','C_Erooms','C_Aging']},
+  P_Elliot:{role:'Partner, Amplify Bio',bio:'Biotech investor focused on next-generation modalities and AI-driven drug discovery.',quotes:[],related:['O_Amplify','C_AIDrug']},
+  P_Sacks:{role:'AI & Crypto Czar, White House',bio:'Defends permissionless innovation against regulatory capture and argues that restricting AI exports drives allies into China\'s Huawei ecosystem.',quotes:[{q:'The whole basis of Silicon Valley\'s success is permissionless innovation.'}],related:['C_Permissionless','C_RegCapture','C_TechExports']},
+  P_Warmoth:{role:'Co-founder, Chariot Defense',bio:'Builds intelligent tactical power systems that cut thermal and acoustic signatures of forward-deployed units.',quotes:[{q:'Our goal is to actually win and then you field the team that\'s going to win.'}],related:['O_Chariot','C_TactPower','C_SigMgmt']},
+  P_Miller:{role:'US Army · Transforming in Contact',bio:'Drives the Army\'s TIC initiative, bypassing 5–7-year procurement cycles by flooding units with commercial tech.',quotes:[],related:['O_Army','C_TIC','C_Procurement']},
+  P_Andreessen:{role:'Co-founder, Andreessen Horowitz',bio:'Co-founder of a16z. Principal voice of the American Dynamism thesis: reject Soviet-style planning, lean into capitalist dynamism.',quotes:[{q:'What if we become more like us?'}],related:['O_a16z','C_AmDyn','C_Reind']},
+  P_Boyle:{role:'General Partner, Andreessen Horowitz',bio:'Defined and leads the American Dynamism practice at a16z, investing in defense, aerospace, public safety, and industrial tech.',quotes:[],related:['O_a16z','C_AmDyn']},
+  P_Ulevitch:{role:'General Partner, Andreessen Horowitz',bio:'Investor in American Dynamism companies, with a focus on national security and enterprise infrastructure.',quotes:[],related:['O_a16z','C_AmDyn']},
+  P_Power:{role:'CEO, Hadrian',bio:'Builds software-driven precision factories to compensate for America\'s depleted skilled manufacturing workforce.',quotes:[{q:'We have to get this productivity uplift by fusing workforce training and software together to go a lot faster. That is the main problem. It is a people problem.'}],related:['O_Hadrian','C_AdvMfg','C_Workforce','C_Reind']},
+  P_Goucher:{role:'Admiral (USN, Ret.)',bio:'Advocates rebuilding the submarine industrial base through software-augmented manufacturing for strategic deterrence.',quotes:[],related:['O_Navy','C_SubProd','C_Det']},
+  P_Cukor:{role:'Former DoD AI Lead',bio:'Exemplar of the "heretical founder" archetype — pushing DoD toward AI adoption from within.',quotes:[],related:['C_Heretic','O_DoD']},
+  P_Rickover:{role:'"Father of the Nuclear Navy"',bio:'Historical exemplar of uncompromising, heretical engineering leadership inside the Navy.',quotes:[],related:['C_Heretic','O_Navy']},
+  P_Boyd:{role:'USAF Colonel · OODA loop theorist',bio:'Historical exemplar of iconoclastic military reform and fast-adaptation doctrine.',quotes:[],related:['C_Heretic']},
+
+  O_Palantir:{role:'Data platform for defense & intelligence',bio:'Pioneer of commercial software for sovereign defense operations. Central to the Defense Reformation thesis.',quotes:[],related:['P_Sankar','P_Karp','C_AmDyn','C_DefRef']},
+  O_DoD:{role:'US Department of Defense',bio:'The customer whose procurement culture must shift from peacetime bureaucracy to wartime-speed acquisition.',quotes:[],related:['P_Michael','C_Procurement','C_Bur']},
+  O_Northwood:{role:'Space ground infrastructure',bio:'Building scalable ground stations to unlock the post-Starlink space economy.',quotes:[],related:['P_Bridget','C_Ground']},
+  O_SpaceX:{role:'Launch & satellite pioneer',bio:'Proof that commercial dynamism can leapfrog incumbents in space.',quotes:[],related:['C_AmDyn','C_SpaceEcon']},
+  O_Starlink:{role:'Satellite broadband',bio:'Mass LEO constellation demonstrating the gap between orbital and ground capability.',quotes:[],related:['O_SpaceX','C_Ground']},
+  O_SpaceForce:{role:'US Space Force',bio:'Newest service branch; customer for sovereign space infrastructure.',quotes:[],related:['C_SpaceEcon']},
+  O_Anthropic:{role:'Frontier AI lab',bio:'Cited as an example of vendor-lock risk when corporate terms of service touch sovereign military decision-making.',quotes:[],related:['C_VendorLock','C_RegCapture']},
+  O_Flock:{role:'Intelligence-based policing',bio:'Sensor-driven law enforcement platform enabling public-private partnerships.',quotes:[],related:['P_Langley','C_IntPol','C_PPP']},
+  O_Amplify:{role:'Biotech investment firm',bio:'Backs next-generation modalities targeting aging and chronic disease.',quotes:[],related:['P_Lada','P_Elliot','C_AIDrug']},
+  O_FDA:{role:'US Food & Drug Administration',bio:'Regulatory bottleneck cited in discussions of Eroom\'s Law.',quotes:[],related:['C_Erooms']},
+  O_Huawei:{role:'Chinese telecom / AI ecosystem',bio:'The alternative stack allies default to when locked out of US AI exports.',quotes:[],related:['C_TechExports']},
+  O_Army:{role:'US Army',bio:'Home of the Transforming in Contact initiative — the procurement-reform proof point.',quotes:[],related:['P_Miller','C_TIC']},
+  O_a16z:{role:'Andreessen Horowitz',bio:'Venture firm championing the American Dynamism thesis across defense, space, biotech, and public safety.',quotes:[],related:['P_Andreessen','P_Horowitz','P_Boyle','P_Ulevitch','C_AmDyn']},
+  O_Hadrian:{role:'Precision manufacturing',bio:'Software-driven factories building defense components at scale despite the labor shortage.',quotes:[],related:['P_Power','C_AdvMfg','C_SubProd']},
+  O_Navy:{role:'US Navy',bio:'Strategic deterrence customer whose submarine industrial base must be rebuilt.',quotes:[],related:['P_Goucher','C_SubProd']},
+  O_Chariot:{role:'Chariot Defense',bio:'Intelligent tactical power systems reducing forward-deployed signatures.',quotes:[],related:['P_Warmoth','C_TactPower']},
+
+  C_AmDyn:{role:'Macro movement',bio:'The unifying thesis: reject Soviet-style central planning, embrace capitalist dynamism, and re-industrialize across defense, space, biotech, and public safety.',quotes:[{q:'Every time somebody stands up and says we need to get to be more like China, I always ask... What if we become more like us?'}],related:['C_Reind','C_Bur','C_Det','O_a16z']},
+  C_Det:{role:'Strategic outcome',bio:'Global deterrence — the ultimate strategic outcome that re-industrialization and defense reformation are meant to guarantee.',quotes:[],related:['C_Reind','C_SubProd','C_IntPol']},
+  C_Reind:{role:'Economic strategy',bio:'Re-industrialization of the US economy via commercial-to-defense crossover, software-augmented manufacturing, and heretical founders.',quotes:[],related:['C_AmDyn','C_AdvMfg','C_Workforce','C_Det']},
+  C_Bur:{role:'Systemic bottleneck',bio:'Peacetime bureaucracy and institutional conformity — the primary obstacle the thesis seeks to dismantle.',quotes:[],related:['C_AmDyn','C_Procurement','C_RegCapture']},
+  C_Procurement:{role:'Bottleneck',bio:'Legacy DoD procurement cycles (5–7 years) that TIC and wartime-speed acquisition aim to replace.',quotes:[],related:['C_Bur','C_TIC']},
+  C_Permissionless:{role:'Strategy',bio:'The founding principle of Silicon Valley success: no gatekeepers, no prior approval.',quotes:[{q:'The whole basis of Silicon Valley\'s success is permissionless innovation.'}],related:['P_Sacks','C_RegCapture','C_AmDyn']},
+  C_DefRef:{role:'Strategy',bio:'Defense Reformation — co-locating R&D with production and empowering heretical founders inside the defense ecosystem.',quotes:[],related:['P_Sankar','C_Heretic','C_Fusion','C_Reind']},
+  C_Heretic:{role:'Archetype',bio:'The heretical founder: the iconoclast who ignores institutional conformity and builds what the bureaucracy says is impossible.',quotes:[],related:['P_Cukor','P_Rickover','P_Boyd','C_DefRef']},
+  C_Fusion:{role:'Strategy',bio:'Civil-military fusion: the commercial tech stack becomes the defense stack.',quotes:[],related:['C_DefRef']},
+  C_Ground:{role:'Bottleneck',bio:'Ground infrastructure for space: the absurd stagnation downstream of rapid orbital progress.',quotes:[],related:['O_Northwood','O_Starlink','C_SpaceEcon']},
+  C_SpaceEcon:{role:'Concept',bio:'The emerging commercial space economy enabled by cheap launch and mass-produced satellites.',quotes:[],related:['O_SpaceX','C_Ground']},
+  C_VendorLock:{role:'Bottleneck',bio:'The risk that sovereign military decisions end up governed by corporate AI vendor terms of service.',quotes:[],related:['O_Anthropic','C_DemOversight']},
+  C_DemOversight:{role:'Concept',bio:'Democratic constitutional oversight of military AI decisions, as opposed to corporate terms of service.',quotes:[],related:['P_Michael','C_Det']},
+  C_Neurodiv:{role:'Concept',bio:'Protecting neurodivergent, unconventional thinkers is framed as America\'s asymmetric advantage over China.',quotes:[],related:['P_Karp','C_Det']},
+  C_TechNat:{role:'Bottleneck',bio:'The threat of tech nationalization if Silicon Valley displaces jobs without serving national security.',quotes:[],related:['P_Karp','C_SVCulture']},
+  C_Maven:{role:'Historical event',bio:'Project Maven — Google\'s 2018 Pentagon contract protest that severed much of Silicon Valley from defense work.',quotes:[],related:['C_SVCulture','C_AmDyn']},
+  C_IntPol:{role:'Strategy',bio:'Intelligence-based policing: objective, sensor-driven, AI-augmented law enforcement.',quotes:[],related:['P_Langley','O_Flock','C_StaffCrisis']},
+  C_StaffCrisis:{role:'Bottleneck',bio:'Severe police staffing shortfall that forces the paradigm shift to intelligence-based policing.',quotes:[],related:['C_IntPol']},
+  C_PPP:{role:'Strategy',bio:'Public-private partnerships that bypass sluggish municipal bureaucracy.',quotes:[],related:['C_IntPol']},
+  C_Erooms:{role:'Bottleneck',bio:"Eroom's Law — the observation that drug development costs rise exponentially, the inverse of Moore's Law.",quotes:[],related:['P_Lada','C_AIDrug','C_GeoArb']},
+  C_GeoArb:{role:'Bottleneck',bio:'Geographic arbitrage — China\'s cost advantage in biotech clinical operations.',quotes:[],related:['C_Erooms']},
+  C_AIDrug:{role:'Strategy',bio:'AI-driven drug discovery and novel modality design.',quotes:[],related:['P_Lada','O_Amplify','C_Aging']},
+  C_Aging:{role:'Concept',bio:'Aging and chronic disease as the central targets for next-generation biotech.',quotes:[],related:['C_AIDrug']},
+  C_RegCapture:{role:'Bottleneck',bio:'Regulatory capture — when frontier AI companies lobby for rules that entrench them.',quotes:[],related:['P_Sacks','C_Permissionless']},
+  C_TechExports:{role:'Strategy',bio:'US AI export policy: over-restriction pushes allies toward China\'s Huawei ecosystem.',quotes:[],related:['P_Sacks','O_Huawei']},
+  C_TactPower:{role:'Strategy',bio:'Intelligent tactical power systems: quieter, cooler, lower signature than legacy diesel generators.',quotes:[],related:['O_Chariot','C_SigMgmt']},
+  C_SigMgmt:{role:'Concept',bio:'Signature management — reducing the thermal and acoustic footprint of forward units.',quotes:[],related:['C_TactPower']},
+  C_TIC:{role:'Strategy',bio:'Transforming in Contact — the Army\'s rapid-fielding initiative that floods units with commercial tech.',quotes:[],related:['P_Miller','O_Army','C_Procurement']},
+  C_SubProd:{role:'Concept',bio:'Submarine production capacity — the linchpin of strategic deterrence that the industrial base must rebuild.',quotes:[],related:['P_Power','C_AdvMfg','C_Det']},
+  C_Workforce:{role:'Bottleneck',bio:'Critical shortage of skilled manufacturing workforce — money alone cannot rebuild it.',quotes:[],related:['P_Power','C_AdvMfg']},
+  C_AdvMfg:{role:'Strategy',bio:'Advanced, software-driven manufacturing that augments a depleted labor pool.',quotes:[],related:['O_Hadrian','C_SubProd','C_Workforce']},
+  C_SVCulture:{role:'Bottleneck',bio:'The cultural gap between Silicon Valley and the armed forces that Project Maven made visible.',quotes:[],related:['C_Maven','C_TechNat']},
+  C_Attritable:{role:'Concept',bio:'Attritable systems — cheap, expendable platforms that change the cost math of war.',quotes:[],related:['C_Reind']},
+  C_AI:{role:'Strategy',bio:'AI and autonomy as the accelerant across every thesis.',quotes:[],related:['C_AIDrug','C_Reind']},
+};
+
+// ---------- Curated quote wall (subset, seeded from sources) ----------
+const QUOTES=[
+  {q:'The whole basis of Silicon Valley\'s success is permissionless innovation.',sp:'David Sacks',t:7,cat:'strategy'},
+  {q:'What if we become more like us?',sp:'Marc Andreessen',t:9,cat:'strategy'},
+  {q:'We have to get this productivity uplift by fusing workforce training and software together to go a lot faster. That is the main problem. It is a people problem.',sp:'Chris Power',t:10,cat:'bottleneck'},
+  {q:'If you see a company with a five-year plan, short it.',sp:'a16z Partners',t:9,cat:'strategy'},
+  {q:'If you don\'t make the thing, you can\'t innovate on how you make the thing and what the thing is.',sp:'Shyam Sankar',t:1,cat:'strategy'},
+  {q:'You could build a satellite and launch it faster than you could actually connect with it from the ground.',sp:'Bridgit Mendler',t:2,cat:'bottleneck'},
+  {q:'Their constitution which is not the US constitution can\'t be dictating our command and control.',sp:'Emil Michael',t:3,cat:'outcome'},
+  {q:'Our single advantage is to augment neurodivergent people to be their absolutely unique best.',sp:'Alex Karp',t:4,cat:'people'},
+  {q:'If you don\'t enforce crime, what you end up is with lost generations.',sp:'Ben Horowitz',t:5,cat:'outcome'},
+  {q:'If we rely on existing modality approaches, it would just be an uphill battle to try and treat aging.',sp:'Lada',t:6,cat:'strategy'},
+  {q:'Our goal is to actually win and then you field the team that\'s going to win.',sp:'Adam Warmoth',t:8,cat:'strategy'},
+  {q:'Every time somebody stands up and says we need to get to be more like China, I always ask… What if we become more like us?',sp:'Marc Andreessen',t:9,cat:'strategy'},
+  {q:'The heretical founders are the people the bureaucracy couldn\'t contain.',sp:'Shyam Sankar (paraphrase)',t:1,cat:'people'},
+  {q:'You can\'t regulate your way to innovation — you have to invent your way out.',sp:'David Sacks (paraphrase)',t:7,cat:'strategy'},
+  {q:'The industrial base is a people problem before it is a capital problem.',sp:'Chris Power',t:10,cat:'bottleneck'},
+  {q:'Ground is where the space economy gets stuck.',sp:'Bridgit Mendler (paraphrase)',t:2,cat:'bottleneck'},
+  {q:'AI at wartime speed will not tolerate peacetime paperwork.',sp:'Emil Michael (paraphrase)',t:3,cat:'outcome'},
+  {q:'Defending the unconventional mind is the most strategic thing America does.',sp:'Alex Karp (paraphrase)',t:4,cat:'people'},
+  {q:'Public safety is a public-private problem now, whether cities like it or not.',sp:'Garrett Langley (paraphrase)',t:5,cat:'strategy'},
+  {q:'Eroom\'s Law is a choice, not a destiny.',sp:'Lada (paraphrase)',t:6,cat:'bottleneck'},
+];
+
+// ---------- Helpers ----------
+const typeLabel={people:'Person',org:'Organization',concept:'Concept'};
+function nodeById(id){return N.find(n=>n.id===id)}
+function nodeColor(n){return n.t==='concept'?(SC[n.sub]||'#E03878'):DC[n.t]}
+
+// ---------- SR-only live region ----------
+function updateA11yList(){
+  const ul=document.getElementById('tool-a11y');if(!ul)return;
+  ul.innerHTML=steps.map((s,i)=>`<li>${i+1===currentStep?'Currently viewing: ':''}Transcript ${i+1}: ${s.title} — ${s.guest}</li>`).join('');
+}
+
+// ---------- Wrap goTo to add hash, a11y, quote reset ----------
+const _goTo=window.goTo;
+window.goTo=function(step){
+  step=Math.max(1,Math.min(10,step|0));
+  _goTo(step);
+  try{history.replaceState(null,'','#t'+step)}catch(e){}
+  updateA11yList();
+};
+
+// ---------- Hash sync on load & history ----------
+function hashToStep(){const m=(location.hash||'').match(/^#t(\d+)/i);return m?parseInt(m[1],10):null}
+const initStep=hashToStep();
+if(initStep)window.goTo(initStep); else updateA11yList();
+addEventListener('hashchange',()=>{const s=hashToStep();if(s&&s!==currentStep)window.goTo(s)});
+
+// ---------- Keyboard navigation ----------
+addEventListener('keydown',e=>{
+  if(document.getElementById('entityModal').classList.contains('open')){
+    if(e.key==='Escape'){closeEntity();e.preventDefault()}
+    return;
+  }
+  if(!toolVisible)return;
+  const tag=(e.target&&e.target.tagName)||'';
+  if(tag==='INPUT'||tag==='TEXTAREA')return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){window.goTo(currentStep+1);e.preventDefault()}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){window.goTo(currentStep-1);e.preventDefault()}
+  else if(/^[0-9]$/.test(e.key)){const d=parseInt(e.key,10);window.goTo(d===0?10:d);e.preventDefault()}
+});
+
+// ---------- Canvas hover tooltip + click ----------
+const ttTip=document.getElementById('ttTip');
+function pickNode(clientX,clientY){
+  const r=cv.getBoundingClientRect();
+  const scale=Math.min(r.width/860,r.height/720)*0.78;
+  const wx=(clientX-r.left-r.width/2)/scale;
+  const wy=(clientY-r.top-r.height/2-36)/scale;
+  const vis=getVisibleNodes();
+  let best=null,bestD=Infinity;
+  N.forEach(n=>{
+    if(!vis.has(n.id))return;
+    const p=projectNode(n);
+    const dx=p.px-wx,dy=p.py-wy;const d=Math.hypot(dx,dy);
+    const hitR=(n.id==='C_AmDyn'?14:n.r)+5;
+    if(d<=hitR&&d<bestD){best=n;bestD=d}
+  });
+  return best;
+}
+cv.addEventListener('mousemove',e=>{
+  const n=pickNode(e.clientX,e.clientY);
+  if(n){
+    cv.classList.add('hot');
+    ttTip.innerHTML=`<b>${n.l.replace(/\n/g,' ')}</b><i>${typeLabel[n.t]||n.t}</i>`;
+    ttTip.style.left=e.clientX+'px';
+    ttTip.style.top=e.clientY+'px';
+    ttTip.classList.add('on');
+  }else{
+    cv.classList.remove('hot');
+    ttTip.classList.remove('on');
+  }
+});
+cv.addEventListener('mouseleave',()=>{ttTip.classList.remove('on');cv.classList.remove('hot')});
+cv.addEventListener('click',e=>{const n=pickNode(e.clientX,e.clientY);if(n)openEntity(n.id)});
+
+// ---------- Entity modal ----------
+let lastFocus=null;
+window.openEntity=function(id){
+  const n=nodeById(id);if(!n)return;
+  const meta=ENTITY_META[id]||{role:'',bio:'No additional context available for this node yet.',quotes:[],related:[]};
+  lastFocus=document.activeElement;
+  document.getElementById('emDot').style.background=nodeColor(n);
+  document.getElementById('emLabel').textContent=n.l.replace(/\n/g,' ');
+  document.getElementById('emType').textContent=typeLabel[n.t]||n.t;
+  document.getElementById('emRole').textContent=meta.role||'';
+  document.getElementById('emBio').textContent=meta.bio||'';
+  const qh=document.getElementById('emQuotesH'),qw=document.getElementById('emQuotes');
+  if(meta.quotes&&meta.quotes.length){
+    qh.style.display='block';
+    qw.innerHTML=meta.quotes.map(x=>`<div class="em-quote">"${x.q}"</div>`).join('');
+  }else{qh.style.display='none';qw.innerHTML=''}
+  const rh=document.getElementById('emRelatedH'),rw=document.getElementById('emRelated');
+  const rel=(meta.related||[]).filter(r=>nodeById(r));
+  if(rel.length){
+    rh.style.display='block';
+    rw.innerHTML=rel.map(r=>{const rn=nodeById(r);return`<button onclick="openEntity('${r}')"><span class="rd" style="background:${nodeColor(rn)}"></span>${rn.l.replace(/\n/g,' ')}</button>`}).join('');
+  }else{rh.style.display='none';rw.innerHTML=''}
+  const m=document.getElementById('entityModal');
+  m.classList.add('open');
+  setTimeout(()=>document.getElementById('emCard').focus(),0);
+};
+window.closeEntity=function(){
+  document.getElementById('entityModal').classList.remove('open');
+  if(lastFocus&&lastFocus.focus)try{lastFocus.focus()}catch(e){}
+};
+document.getElementById('emClose').addEventListener('click',closeEntity);
+document.getElementById('entityModal').addEventListener('click',e=>{if(e.target.id==='entityModal')closeEntity()});
+
+// ---------- Quote wall ----------
+const qwGrid=document.getElementById('qwGrid');
+const qwSearch=document.getElementById('qwSearch');
+let qwFilter='all';
+function renderQuoteWall(){
+  const term=(qwSearch.value||'').trim().toLowerCase();
+  const list=QUOTES.filter(q=>{
+    if(qwFilter!=='all'&&q.cat!==qwFilter)return false;
+    if(!term)return true;
+    return (q.q+' '+q.sp+' '+q.cat).toLowerCase().includes(term);
+  });
+  if(!list.length){qwGrid.innerHTML='<div class="qw-empty">No quotes match that filter.</div>';return}
+  qwGrid.innerHTML=list.map(q=>`
+    <div class="qw-card">
+      <div class="qw-q">"${q.q}"</div>
+      <div class="qw-sp">— ${q.sp}</div>
+      <div class="qw-meta"><span>${q.cat}</span><a class="qw-t" href="#t${q.t}" onclick="document.getElementById('tool').scrollIntoView({behavior:'smooth'})">T${q.t}</a></div>
+    </div>`).join('');
+}
+document.querySelectorAll('#qwFilters button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#qwFilters button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    qwFilter=b.dataset.f;
+    renderQuoteWall();
+  });
+});
+qwSearch.addEventListener('input',renderQuoteWall);
+renderQuoteWall();
+</script>
+</body>
+</html>
