@@ -25,9 +25,10 @@ Every layer cross-links. A quote drives the map. A map node opens an entity moda
 |---|---|---|
 | 1 | **Cover** | Inline SVG facsimile of a COMINCH declassified document. Every element is individually rotated ±0.5°–4.5° to break grid illusion — the "organic stamp." |
 | 2 | **Part I · Field Analysis** | Twelve archival plates rendered as a 3D **rolodex**. Center card in focus, neighbors peek at reduced scale/rotation/opacity, far cards dim. Click the center → lightbox zoom. |
-| 3 | **Source Transcripts** | Ten interview cards, collapsed by default. Expand for full thesis, then either **Launch on Thesis Map** or **Watch Episode** on YouTube. |
-| 4 | **Thesis Map** | Interactive Canvas 2D isometric graph. ~66 nodes (People, Orgs, Concepts) positioned on a shaded cube around a central "American Dynamism" sun. Step through 10 transcripts to watch the argument assemble. |
-| 5 | **Quote Wall** | Twenty tactical quotes, 2-line clamped. Click to expand full context *and* auto-drive the thesis map to the corresponding transcript — the feedback loop with the graph at the center. |
+| 3 | **Part II · Doctrine** | Eight strategic doctrines extracted from the corpus via a reusable template. Tabbed card per doctrine showing core claim, primary enemy, mechanism of advantage, causal chain, replacement model, key tensions, and a live Mermaid causal graph. Each tab links back to its matching transcript step on the thesis map. |
+| 4 | **Source Transcripts** | Ten interview cards, collapsed by default. Expand for full thesis, then either **Launch on Thesis Map** or **Watch Episode** on YouTube. |
+| 5 | **Thesis Map** | Interactive Canvas 2D isometric graph. ~66 nodes (People, Orgs, Concepts) positioned on a shaded cube around a central "American Dynamism" sun. Step through 10 transcripts to watch the argument assemble. |
+| 6 | **Quote Wall** | Twenty tactical quotes, 2-line clamped. Click to expand full context *and* auto-drive the thesis map to the corresponding transcript — the feedback loop with the graph at the center. |
 
 ---
 
@@ -68,6 +69,9 @@ const ytUrl=n=>`https://www.youtube.com/watch?v=${YT[n]}&list=PL9fqpZPNJX7eqQvH-
 ```
 
 Keeping `&list=` in every href means a single click drops the viewer *into the playlist in order* — "link the links."
+
+### 6. Doctrine extraction
+The raw corpus was also processed through a reusable **Doctrine Extraction Template** (`docs/doctrine-extraction-template.md`) — an 18-field YAML schema (Core_Claim, Primary_Enemy, Mechanism_of_Advantage, Causal_Chain, Replacement_Model, Key_Tensions, Core_Bottleneck, …) plus a Mermaid causal graph per doctrine. The output (`docs/doctrine-source.md`) contains eight filled doctrines — an umbrella "American Dynamism Cohort" worldview plus seven domain theses (Defense, Space 2.0, Biotech, Public Safety, Karp/Palantir, Sacks/Policy, Tactical/Industrial). These are parsed offline into a JS literal baked into `index.html` as `DOCTRINES[]`, then rendered in Part II as a tabbed card with a live Mermaid graph per tab. Rule of the template: prefer mechanism and causal logic over quotes, name tensions explicitly, avoid taxonomy — see the `analysis_rules` and `failure_modes_to_avoid` sections of the template file.
 
 ---
 
@@ -148,6 +152,7 @@ Each commit represents a meaningful design iteration, not just a mechanical edit
 | 4 | [`288305c`](https://github.com/augustave/dynamism/commit/288305c) | **Part I · Field Analysis** | Twelve archival plates (COVID/TSMC catalysts, Legacy Prime vs. Dynamism model, the triangle, exquisite vs. attritable, Space 1.0→2.0, intelligence-based policing, energy sovereignty, the ecosystem cycle, the "more like us" closer) added as an inline visual essay. PDF → PNG (`sips`) → WebP (`cwebp -q 78`). |
 | 5 | [`3ce711f`](https://github.com/augustave/dynamism/commit/3ce711f) | **Lightbox grid** | The inline essay doubled page length. Collapsed to a compact 4-column thumbnail grid with a full-screen lightbox modal — prev/next, keyboard, `Esc`. |
 | 6 | [`6ed3ebf`](https://github.com/augustave/dynamism/commit/6ed3ebf) | **3D rolodex** | Thumbnail grid reframed as a perspective-3D rolodex: one plate centered, two plates peeking on each side, far plates dimmed. Click a side card → flip; click the center → lightbox zoom. Arrow keys, buttons, and touch-swipe all drive the same transition. |
+| 7 | *pending* | **Part II · Doctrine** | Ran the corpus through a reusable 18-field Doctrine Extraction Template; parsed the 8 filled YAML doctrines + Mermaid causal graphs offline into a `DOCTRINES[]` JS literal; rendered as a tabbed card with live Mermaid graphs (lazy-loaded from CDN). Each tab links back to its matching transcript step on the thesis map — the top-down analytical entry point complementing the bottom-up transcript/quote entries. |
 
 ---
 
