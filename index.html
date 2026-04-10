@@ -652,7 +652,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       </g>
 
       <!-- ENTER button — slightly off-square -->
-      <a href="#dossier" class="enter-g">
+      <a href="#spine" class="enter-g">
         <g class="enter-g" transform="rotate(0.8 290 693)">
           <rect x="216" y="676" width="148" height="34" fill="transparent" stroke="#2A2820" stroke-width="1.4"/>
           <text x="290" y="698" class="type ink" font-size="12" letter-spacing="4" text-anchor="middle">ENTER ASSESSMENT ↓</text>
@@ -2138,10 +2138,6 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   document.getElementById('mapClose').addEventListener('click',()=>closeMap());
   mapModal.addEventListener('click',e=>{if(e.target===mapModal)closeMap()});
   document.getElementById('openMapBtn').addEventListener('click',()=>switchDashTab('map'));
-  const esBtn=document.getElementById('exploreSystemBtn');
-  if(esBtn)esBtn.addEventListener('click',()=>openMap(1));
-  const esBtn2=document.getElementById('exploreSystemBtn2');
-  if(esBtn2)esBtn2.addEventListener('click',()=>openMap(1));
 
   /* Keyboard: Esc closes map */
   document.addEventListener('keydown',e=>{
