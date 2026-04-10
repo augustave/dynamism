@@ -485,6 +485,18 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .dash-panel.hidden{display:none}
 .dash-map-wrap{position:relative;width:100%;height:65vh;min-height:480px;overflow:hidden;background:var(--parchment);border:1px solid var(--aged);border-top:none}
 .dash-map-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+.dash-map-wrap .ch-label{position:absolute;top:16px;left:20px;font-family:var(--serif);font-size:12px;font-weight:300;color:var(--tt-ink-mid);line-height:1.4;z-index:2}
+.dash-map-wrap .ch-label b{font-weight:500;font-style:italic}
+.dash-map-wrap .pg{position:absolute;top:16px;right:20px;font-family:var(--serif);font-size:13px;color:var(--tt-ink-dim);z-index:2}
+.dash-map-wrap .dot-key{position:absolute;bottom:8px;left:20px;display:flex;gap:14px;font-size:8px;font-family:var(--mono);color:var(--tt-ink-dim);letter-spacing:.5px;z-index:2}
+.dash-map-wrap .dk-i{display:flex;align-items:center;gap:4px}
+.dash-map-wrap .dk-d{width:7px;height:7px;border-radius:50%}
+.dash-map-wrap .scale-wrap{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;align-items:center;z-index:2}
+.dash-map-wrap .sc-a{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.dash-map-wrap .sc-a.l{border-right:7px solid var(--tt-accent)}
+.dash-map-wrap .sc-a.r{border-left:7px solid var(--tt-accent)}
+.dash-map-wrap .sc-l{width:120px;height:1.5px;background:var(--tt-accent)}
+.dash-map-wrap .sc-t{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:7px;font-family:var(--mono);color:var(--tt-accent);letter-spacing:2px;white-space:nowrap}
 .dash-map-controls{display:flex;align-items:center;padding:8px 16px;border:1px solid var(--aged);border-top:none;background:var(--parchment-light);gap:6px;flex-wrap:wrap}
 .dash-step{font-family:var(--mono);font-size:9px;padding:4px 8px;border:1px solid var(--aged);background:none;cursor:pointer;color:var(--ink-dim);transition:all .15s}
 .dash-step.active{background:var(--pink);color:var(--parchment);border-color:var(--pink)}
@@ -1900,9 +1912,13 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   const dashControls=document.getElementById('dashMapControls');
   if(dashMapWrap&&cv){
     dashMapWrap.appendChild(cv);
-    // Also move dot-key and scale-wrap
+    // Also move overlay elements from the tool section
+    const chLabel=document.querySelector('.thesis-tool .ch-label');
+    const pgEl=document.querySelector('.thesis-tool .pg');
     const dotKey=document.querySelector('.dot-key');
     const scaleWrap=document.querySelector('.scale-wrap');
+    if(chLabel)dashMapWrap.appendChild(chLabel);
+    if(pgEl)dashMapWrap.appendChild(pgEl);
     if(dotKey)dashMapWrap.appendChild(dotKey);
     if(scaleWrap)dashMapWrap.appendChild(scaleWrap);
     // Build step bar
