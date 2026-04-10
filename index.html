@@ -476,6 +476,60 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .spine-quote{margin:24px 0;padding:14px 20px;border-left:2px solid var(--yellow);background:rgba(212,184,48,.04)}
 .spine-quote blockquote{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.5;color:var(--ink);margin:0 0 6px}
 .spine-quote cite{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:var(--ink-dim);text-transform:uppercase;font-style:normal}
+/* ═══ GRAPH SECTION (dominant) ═══ */
+.spine-graph-sec{margin-left:-20px;margin-right:-20px;max-width:none;padding:40px 20px 50px}
+.spine-graph-sec .doc-mer-wrap{max-width:900px;margin:0 auto;min-height:360px;border:1px solid var(--aged);padding:28px}
+.spine-graph-sec .spine-marker{text-align:center}
+.graph-actions{text-align:center;margin-top:24px}
+.graph-actions button{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
+.graph-actions button:hover{background:var(--ink);color:var(--parchment)}
+/* ═══ RAIL TRIGGERS ═══ */
+.rail-triggers{display:flex;flex-direction:column;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--aged)}
+.rail-trig{width:28px;height:28px;border-radius:50%;border:1px solid var(--aged);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink-dim);background:none;cursor:pointer;transition:all .2s;position:relative}
+.rail-trig::after{content:attr(data-label);position:absolute;right:38px;white-space:nowrap;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-ghost);opacity:0;transition:opacity .2s;pointer-events:none}
+.rail-trig:hover::after{opacity:1}
+.rail-trig:hover{border-color:var(--pink);color:var(--pink)}
+/* ═══ EVIDENCE STRIP (lightweight) ═══ */
+.ev-preview-strip{display:flex;gap:10px;overflow-x:auto;padding:8px 0;margin:20px 0}
+.ev-preview-strip img{height:120px;width:auto;border:1px solid var(--aged);cursor:pointer;transition:transform .2s;flex-shrink:0}
+.ev-preview-strip img:hover{transform:scale(1.05)}
+.ev-quote-highlights{margin:24px 0}
+.ev-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.ev-actions button{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
+.ev-actions button:hover{background:var(--ink);color:var(--parchment)}
+/* ═══ PLATE VIEWER MODAL ═══ */
+.pv-modal{position:fixed;inset:0;z-index:10002;background:rgba(42,40,32,.92);display:none;flex-direction:column;align-items:center;justify-content:center}
+.pv-modal.open{display:flex}
+.pv-inner{width:100%;max-width:960px;padding:20px}
+.pv-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.pv-counter{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--parchment);opacity:.6}
+.pv-close{background:none;border:1px solid var(--parchment);font-family:var(--mono);font-size:10px;padding:6px 14px;cursor:pointer;letter-spacing:2px;color:var(--parchment);transition:all .2s}
+.pv-close:hover{background:var(--parchment);color:var(--ink)}
+.pv-stage{display:flex;align-items:center;gap:16px;position:relative}
+.pv-img{max-width:100%;max-height:70vh;display:block;margin:0 auto;border:1px solid rgba(226,218,188,.2)}
+.pv-nav{background:none;border:1px solid rgba(226,218,188,.3);color:var(--parchment);font-size:28px;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.pv-nav:hover{background:rgba(226,218,188,.1);border-color:var(--parchment)}
+.pv-cap{text-align:center;margin-top:12px;font-family:var(--type);font-size:10px;letter-spacing:2px;color:var(--parchment);opacity:.7}
+/* ═══ QUOTE WALL MODAL ═══ */
+.qw-modal{position:fixed;inset:0;z-index:10002;background:rgba(42,40,32,.85);display:none;align-items:center;justify-content:center;padding:30px}
+.qw-modal.open{display:flex}
+.qw-modal-inner{background:var(--parchment);border:1px solid var(--aged);max-width:960px;width:100%;max-height:85vh;overflow-y:auto;padding:32px 36px}
+.qw-modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.qw-modal-header h2{font-family:var(--type);font-size:14px;letter-spacing:4px;font-weight:400;margin:0}
+.qw-modal-close{background:none;border:1px solid var(--ink);font-family:var(--mono);font-size:10px;padding:6px 14px;cursor:pointer;letter-spacing:2px;transition:all .2s}
+.qw-modal-close:hover{background:var(--ink);color:var(--parchment)}
+.qw-modal-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.qw-modal-filters button{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border:1px solid var(--aged);background:none;cursor:pointer;color:var(--ink-dim);transition:all .15s}
+.qw-modal-filters button.on{background:var(--ink);color:var(--parchment);border-color:var(--ink)}
+.qw-modal-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.qwm-card{border:1px solid var(--aged);padding:16px 20px;background:var(--parchment-light);transition:all .2s}
+.qwm-card:hover{border-color:var(--ink-dim)}
+.qwm-q{font-family:var(--serif);font-size:14px;font-style:italic;line-height:1.5;color:var(--ink);margin-bottom:8px}
+.qwm-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.qwm-sp{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:var(--ink-dim);text-transform:uppercase}
+.qwm-tag{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--pink);text-transform:uppercase;border:1px solid rgba(224,56,120,.2);padding:2px 6px}
+.qwm-yt{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink-dim);text-decoration:none;border:1px solid var(--aged);padding:2px 8px;transition:all .15s}
+.qwm-yt:hover{border-color:var(--pink);color:var(--pink)}
 </style>
 </head>
 <body>
@@ -631,16 +685,23 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="spine-rail" id="spineRail">
     <nav class="rail-nav" aria-label="Spine navigation">
       <a href="#spine-thesis" class="rail-dot active" data-label="Thesis">I</a>
-      <a href="#spine-problem" class="rail-dot" data-label="Problem">II</a>
-      <a href="#spine-enemy" class="rail-dot" data-label="Enemy">III</a>
-      <a href="#spine-mechanism" class="rail-dot" data-label="Mechanism">IV</a>
-      <a href="#spine-evidence" class="rail-dot" data-label="Evidence">V</a>
-      <a href="#spine-implication" class="rail-dot" data-label="Implication">VI</a>
+      <a href="#spine-graph" class="rail-dot" data-label="System">II</a>
+      <a href="#spine-problem" class="rail-dot" data-label="Problem">III</a>
+      <a href="#spine-enemy" class="rail-dot" data-label="Enemy">IV</a>
+      <a href="#spine-mechanism" class="rail-dot" data-label="Mechanism">V</a>
+      <a href="#spine-evidence" class="rail-dot" data-label="Evidence">VI</a>
+      <a href="#spine-implication" class="rail-dot" data-label="Implication">VII</a>
     </nav>
-    <button class="rail-map-btn" id="openMapBtn">Open Thesis Map</button>
+    <div class="rail-triggers" id="railTriggers">
+      <button class="rail-trig" id="openMapBtn" data-label="Thesis Map">◈</button>
+      <button class="rail-trig" id="openPlatesBtn" data-label="Plates">◻</button>
+      <button class="rail-trig" id="openQuotesBtn" data-label="Quotes">❝</button>
+      <button class="rail-trig" id="openSourcesBtn" data-label="Sources">⊞</button>
+    </div>
   </div>
   <div class="spine-inner">
     <article class="spine-sec" id="spine-thesis"></article>
+    <article class="spine-sec spine-graph-sec" id="spine-graph"></article>
     <article class="spine-sec" id="spine-problem"></article>
     <article class="spine-sec" id="spine-enemy"></article>
     <article class="spine-sec" id="spine-mechanism"></article>
@@ -903,6 +964,40 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="tm-card">
     <button class="tm-close" id="tmClose">✕</button>
     <div id="tmContent"></div>
+  </div>
+</div>
+
+<!-- ═══════ PLATE VIEWER MODAL ═══════ -->
+<div class="pv-modal" id="plateViewerModal" role="dialog" aria-modal="true">
+  <div class="pv-inner">
+    <div class="pv-header">
+      <div class="pv-counter" id="pvCounter">01 / 12</div>
+      <button class="pv-close" id="pvClose">✕ CLOSE</button>
+    </div>
+    <div class="pv-stage">
+      <button class="pv-nav pv-prev" id="pvPrev">‹</button>
+      <img class="pv-img" id="pvImg" alt="">
+      <button class="pv-nav pv-next" id="pvNext">›</button>
+    </div>
+    <div class="pv-cap" id="pvCap"></div>
+  </div>
+</div>
+
+<!-- ═══════ QUOTE WALL MODAL ═══════ -->
+<div class="qw-modal" id="quoteWallModal" role="dialog" aria-modal="true">
+  <div class="qw-modal-inner">
+    <div class="qw-modal-header">
+      <h2>THE QUOTE WALL</h2>
+      <button class="qw-modal-close" id="qwClose">✕ CLOSE</button>
+    </div>
+    <div class="qw-modal-filters" id="qwmFilters">
+      <button data-f="all" class="on">All</button>
+      <button data-f="people">People</button>
+      <button data-f="strategy">Strategy</button>
+      <button data-f="bottleneck">Bottlenecks</button>
+      <button data-f="outcome">Outcomes</button>
+    </div>
+    <div class="qw-modal-grid" id="qwmGrid"></div>
   </div>
 </div>
 
@@ -1807,9 +1902,27 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     <div class="spine-marker">I · THESIS</div>
     <h2 class="spine-h">${esc(D.Core_Claim)}</h2>`;
 
-  /* II. PROBLEM */
+  /* II. THE SYSTEM (dominant graph) */
+  document.getElementById('spine-graph').innerHTML=`
+    <div class="spine-marker">II · THE SYSTEM</div>
+    <div class="doc-mer-wrap" id="spineGraphWrap"><div id="spineGraphMer"></div></div>
+    <div class="graph-actions">
+      <button id="exploreSystemBtn">Explore Interactive System →</button>
+    </div>`;
+  if(D._mermaid){
+    loadMermaid(()=>{
+      const id='spineGraph_'+(++_merCounter);
+      const target=document.getElementById('spineGraphMer');
+      if(!target)return;
+      try{
+        mermaid.render(id,D._mermaid).then(({svg})=>{target.innerHTML=svg}).catch(()=>{});
+      }catch(e){}
+    });
+  }
+
+  /* III. PROBLEM */
   document.getElementById('spine-problem').innerHTML=`
-    <div class="spine-marker">II · THE PROBLEM</div>
+    <div class="spine-marker">III · THE PROBLEM</div>
     <div class="spine-body">${esc(D.Real_Problem_Statement)}</div>
     <aside class="spine-aside">
       <div class="spine-aside-label">Defense Reformers</div>
@@ -1820,74 +1933,52 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
       <div class="spine-aside-text">${esc(DOCTRINES[7].Real_Problem_Statement)}</div>
     </aside>`;
 
-  /* III. ENEMY */
+  /* IV. ENEMY */
   const enemies=D.Primary_Enemy.map((e,i)=>`
     <div class="enemy-card">
       <h4>ENEMY ${i+1}</h4>
       <p>${esc(e)}</p>
     </div>`).join('');
   document.getElementById('spine-enemy').innerHTML=`
-    <div class="spine-marker">III · THE ENEMY</div>
+    <div class="spine-marker">IV · THE ENEMY</div>
     ${enemies}`;
 
-  /* IV. MECHANISM */
+  /* V. MECHANISM */
   const mechs=D.Doctrine.map((d,i)=>`
     <div class="mech-tile">
       <div class="mech-num">DOCTRINE ${i+1}</div>
       <div class="mech-text">${esc(d)}</div>
     </div>`).join('');
   document.getElementById('spine-mechanism').innerHTML=`
-    <div class="spine-marker">IV · THE MECHANISM</div>
+    <div class="spine-marker">V · THE MECHANISM</div>
     <div class="mech-grid">${mechs}</div>`;
 
-  /* V. EVIDENCE — plates + sub-doctrine beats */
-  const groups=[
-    {plates:[0,1,2],injects:[{i:1,label:'Defense Doctrine'}]},
-    {plates:[3,4,5],injects:[{i:2,label:'Space 2.0 Thesis'}]},
-    {plates:[6,7,8],injects:[{i:3,label:'Biotech'},{i:4,label:'Public Safety'}]},
-    {plates:[9,10,11],injects:[{i:5,label:'Alex Karp'},{i:6,label:'David Sacks'}]}
-  ];
-  let evHTML='<div class="spine-marker">V · THE EVIDENCE</div><p class="spine-body" style="margin-bottom:28px">Twelve plates tracing the legacy trajectory, the catalysts, and the path forward — with doctrine injections across domains.</p>';
-  groups.forEach(g=>{
-    evHTML+='<div class="plate-grid">';
-    g.plates.forEach(pi=>{
-      if(pi>=PLATES.length)return;
-      const p=PLATES[pi];
-      evHTML+=`<div class="plate-inline" data-plate="${pi}">
-        <img src="img/${p.f}" alt="${esc(p.t)}" loading="lazy">
-        <div class="plate-cap"><b>${esc(p.n)}</b> ${esc(p.t)}</div>
-      </div>`;
-    });
-    evHTML+='</div>';
-    g.injects.forEach(inj=>{
-      evHTML+=`<aside class="spine-aside">
-        <div class="spine-aside-label">${esc(inj.label)}</div>
-        <div class="spine-aside-text">${esc(DOCTRINES[inj.i].Core_Claim)}</div>
-      </aside>`;
-    });
-  });
-  document.getElementById('spine-evidence').innerHTML=evHTML;
-
-  /* VI. IMPLICATION */
-  document.getElementById('spine-implication').innerHTML=`
-    <div class="spine-marker">VI · THE IMPLICATION</div>
-    <h2 class="spine-h">${esc(D.Strategic_Imperative)}</h2>
-    <div class="doc-mer-wrap" id="spineMerWrap"><div id="spineMer"></div></div>
-    <div style="text-align:center;margin-top:40px">
-      <button class="spine-cta" id="exploreSystemBtn">Explore the System →</button>
+  /* VI. EVIDENCE — lightweight: preview strip + key quotes + action buttons */
+  const previewImgs=PLATES.slice(0,6).map((p,i)=>
+    `<img src="img/${p.f}" alt="${esc(p.t)}" loading="lazy" data-plate="${i}" onclick="openPlateViewer(${i})">`
+  ).join('');
+  const keyQuotes=[0,2,5].map(qi=>{
+    const q=QUOTES[qi]; if(!q)return '';
+    return `<div class="spine-quote"><blockquote>"${esc(q.q)}"</blockquote><cite>${esc(q.sp)} · <a href="#" onclick="event.preventDefault();openTranscript(${q.t})" style="color:var(--pink);text-decoration:none">T${q.t}</a></cite></div>`;
+  }).join('');
+  document.getElementById('spine-evidence').innerHTML=`
+    <div class="spine-marker">VI · THE EVIDENCE</div>
+    <p class="spine-body" style="margin-bottom:20px">Visual proof, human proof, source authority.</p>
+    <div class="ev-preview-strip">${previewImgs}</div>
+    <div class="ev-quote-highlights">${keyQuotes}</div>
+    <div class="ev-actions">
+      <button onclick="openPlateViewer(0)">View All Plates →</button>
+      <button onclick="openQuoteWall()">Browse Quotes →</button>
+      <button onclick="openTranscript(1)">Open Transcripts →</button>
     </div>`;
 
-  /* Render umbrella mermaid graph */
-  if(D._mermaid){
-    loadMermaid(()=>{
-      const id='spineMer_'+(++_merCounter);
-      const target=document.getElementById('spineMer');
-      if(!target)return;
-      try{
-        mermaid.render(id,D._mermaid).then(({svg})=>{target.innerHTML=svg}).catch(()=>{});
-      }catch(e){}
-    });
-  }
+  /* VII. IMPLICATION */
+  document.getElementById('spine-implication').innerHTML=`
+    <div class="spine-marker">VII · THE IMPLICATION</div>
+    <h2 class="spine-h">${esc(D.Strategic_Imperative)}</h2>
+    <div style="text-align:center;margin-top:40px">
+      <button class="spine-cta" id="exploreSystemBtn2">Explore the System →</button>
+    </div>`;
 
   /* Progressive reveal */
   const revealObs=new IntersectionObserver(entries=>{
@@ -1915,9 +2006,9 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   },{threshold:.02});
   railVisObs.observe(spineEl);
 
-  /* Plate expand */
-  document.querySelectorAll('.plate-inline').forEach(el=>{
-    el.addEventListener('click',()=>el.classList.toggle('expanded'));
+  /* Plate preview strip click → plate viewer */
+  document.querySelectorAll('.ev-preview-strip img').forEach(el=>{
+    el.addEventListener('click',()=>openPlateViewer(parseInt(el.dataset.plate,10)||0));
   });
 
   /* Sticky thesis header */
@@ -2006,7 +2097,10 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   document.getElementById('mapClose').addEventListener('click',()=>closeMap());
   mapModal.addEventListener('click',e=>{if(e.target===mapModal)closeMap()});
   document.getElementById('openMapBtn').addEventListener('click',()=>openMap());
-  document.getElementById('exploreSystemBtn').addEventListener('click',()=>openMap(1));
+  const esBtn=document.getElementById('exploreSystemBtn');
+  if(esBtn)esBtn.addEventListener('click',()=>openMap(1));
+  const esBtn2=document.getElementById('exploreSystemBtn2');
+  if(esBtn2)esBtn2.addEventListener('click',()=>openMap(1));
 
   /* Keyboard: Esc closes map */
   document.addEventListener('keydown',e=>{
@@ -2046,26 +2140,6 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   document.getElementById('tmClose').addEventListener('click',closeTranscript);
   tmModal.addEventListener('click',e=>{if(e.target===tmModal)closeTranscript()});
 
-  /* --- Contextual quotes in spine --- */
-  const SPINE_QUOTE_MAP={
-    'spine-problem':[1,10],
-    'spine-enemy':[3,9],
-    'spine-mechanism':[1,6],
-    'spine-evidence':[2,4,7],
-  };
-  Object.entries(SPINE_QUOTE_MAP).forEach(([secId,tNums])=>{
-    const sec=document.getElementById(secId);
-    if(!sec)return;
-    tNums.forEach(t=>{
-      const q=QUOTES.find(qq=>qq.t===t);
-      if(!q)return;
-      const quoteEl=document.createElement('div');
-      quoteEl.className='spine-quote';
-      quoteEl.innerHTML=`<blockquote>"${esc(q.q)}"</blockquote><cite>${esc(q.sp)} · <a href="#" onclick="event.preventDefault();openTranscript(${t})" style="color:var(--pink);text-decoration:none">T${t}</a></cite>`;
-      sec.appendChild(quoteEl);
-    });
-  });
-
   /* --- Bi-directional: spine aside labels link to transcript modal --- */
   document.querySelectorAll('.spine-aside-label').forEach(el=>{
     const labelMap={'Defense Reformers':1,'Industrial Base':10,'Defense Doctrine':1,'Space 2.0 Thesis':4,'Biotech':7,'Public Safety':6,'Alex Karp':3,'David Sacks':8};
@@ -2074,6 +2148,93 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     el.style.cursor='pointer';
     el.title='View transcript';
     el.addEventListener('click',()=>openTranscript(t));
+  });
+
+  /* ═══ PLATE VIEWER MODAL ═══ */
+  const pvModal=document.getElementById('plateViewerModal');
+  const pvImg=document.getElementById('pvImg');
+  const pvCap=document.getElementById('pvCap');
+  const pvCounter=document.getElementById('pvCounter');
+  let pvIdx=0;
+
+  function pvShow(i){
+    pvIdx=((i%PLATES.length)+PLATES.length)%PLATES.length;
+    const p=PLATES[pvIdx];
+    pvImg.src='img/'+p.f;
+    pvImg.alt=p.t;
+    pvCap.textContent=p.n+' — '+p.t;
+    pvCounter.textContent=String(pvIdx+1).padStart(2,'0')+' / '+PLATES.length;
+  }
+
+  window.openPlateViewer=function(i){
+    pvShow(i||0);
+    pvModal.classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  window.closePlateViewer=function(){
+    pvModal.classList.remove('open');
+    document.body.style.overflow='';
+  };
+
+  document.getElementById('pvClose').addEventListener('click',closePlateViewer);
+  document.getElementById('pvPrev').addEventListener('click',()=>pvShow(pvIdx-1));
+  document.getElementById('pvNext').addEventListener('click',()=>pvShow(pvIdx+1));
+  pvModal.addEventListener('click',e=>{if(e.target===pvModal)closePlateViewer()});
+  document.getElementById('openPlatesBtn').addEventListener('click',()=>openPlateViewer(0));
+
+  /* ═══ QUOTE WALL MODAL ═══ */
+  const qwModal=document.getElementById('quoteWallModal');
+  const qwmGrid=document.getElementById('qwmGrid');
+  const qwmFilters=document.getElementById('qwmFilters');
+  let qwmFilter='all';
+
+  function renderQWM(){
+    const filtered=qwmFilter==='all'?QUOTES:QUOTES.filter(q=>q.cat===qwmFilter);
+    qwmGrid.innerHTML=filtered.map(q=>`
+      <div class="qwm-card">
+        <div class="qwm-q">"${esc(q.q)}"</div>
+        <div class="qwm-meta">
+          <span class="qwm-sp">${esc(q.sp)}</span>
+          <span class="qwm-tag">${esc(q.cat)}</span>
+          <a class="qwm-yt" href="${ytUrl(q.t)}" target="_blank" rel="noopener">▶ T${q.t}</a>
+        </div>
+      </div>`).join('');
+  }
+
+  window.openQuoteWall=function(){
+    renderQWM();
+    qwModal.classList.add('open');
+    document.body.style.overflow='hidden';
+  };
+  window.closeQuoteWall=function(){
+    qwModal.classList.remove('open');
+    document.body.style.overflow='';
+  };
+
+  qwmFilters.addEventListener('click',e=>{
+    const btn=e.target.closest('button[data-f]');
+    if(!btn)return;
+    qwmFilter=btn.dataset.f;
+    qwmFilters.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b===btn));
+    renderQWM();
+  });
+  document.getElementById('qwClose').addEventListener('click',closeQuoteWall);
+  qwModal.addEventListener('click',e=>{if(e.target===qwModal)closeQuoteWall()});
+  document.getElementById('openQuotesBtn').addEventListener('click',()=>openQuoteWall());
+
+  /* ═══ SOURCES (transcript list modal) ═══ */
+  document.getElementById('openSourcesBtn').addEventListener('click',()=>openTranscript(1));
+
+  /* ═══ Global keyboard for all modals ═══ */
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      if(pvModal.classList.contains('open')){closePlateViewer();e.preventDefault();return}
+      if(qwModal.classList.contains('open')){closeQuoteWall();e.preventDefault();return}
+    }
+    if(pvModal.classList.contains('open')){
+      if(e.key==='ArrowRight'){pvShow(pvIdx+1);e.preventDefault()}
+      if(e.key==='ArrowLeft'){pvShow(pvIdx-1);e.preventDefault()}
+    }
   });
 
 })();
