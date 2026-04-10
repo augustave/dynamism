@@ -375,6 +375,107 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .doc-mer-wrap .mer-err{font-family:var(--mono);font-size:10px;color:var(--red-stamp);white-space:pre-wrap;padding:20px}
 .doc-launch{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:var(--ink);text-decoration:none;border:1px solid var(--ink);padding:6px 12px;text-transform:uppercase;transition:all .2s}
 .doc-launch:hover{background:var(--ink);color:var(--parchment-light)}
+/* ═══ V2: SPINE LAYOUT ═══ */
+.v2-hidden{display:none!important}
+.spine{position:relative}
+.spine-inner{max-width:720px;margin:0 auto;padding:80px 20px 120px}
+.spine-sec{margin-bottom:100px;opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.spine-sec.revealed{opacity:1;transform:translateY(0)}
+/* rail */
+.spine-rail{position:fixed;right:24px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;align-items:center;gap:18px;opacity:0;pointer-events:none;transition:opacity .3s}
+.spine-rail.visible{opacity:1;pointer-events:auto}
+.rail-nav{display:flex;flex-direction:column;gap:14px;align-items:center}
+.rail-dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--aged);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:var(--ink-dim);text-decoration:none;transition:all .2s;position:relative}
+.rail-dot::after{content:attr(data-label);position:absolute;right:38px;white-space:nowrap;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-ghost);opacity:0;transition:opacity .2s;pointer-events:none}
+.rail-dot:hover::after{opacity:1}
+.rail-dot.active{border-color:var(--pink);color:var(--pink);background:rgba(224,56,120,.06)}
+.rail-map-btn{writing-mode:vertical-lr;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim);background:none;border:1px solid var(--aged);padding:12px 6px;cursor:pointer;margin-top:12px;transition:all .2s}
+.rail-map-btn:hover{border-color:var(--pink);color:var(--pink)}
+/* spine section styles */
+.spine-marker{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:12px;opacity:.6;text-transform:uppercase}
+.spine-h{font-family:var(--serif);font-size:28px;font-style:italic;font-weight:400;line-height:1.35;color:var(--ink);margin-bottom:24px}
+.spine-body{font-family:var(--serif);font-size:15px;line-height:1.7;color:var(--ink-mid)}
+/* sub-doctrine aside */
+.spine-aside{margin:28px 0;padding:16px 20px;border-left:2px solid var(--pink);background:rgba(224,56,120,.03)}
+.spine-aside-label{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:6px}
+.spine-aside-text{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.6;color:var(--ink-mid)}
+/* enemy cards */
+.enemy-card{border:1.5px solid var(--red-stamp);padding:18px 22px;margin-bottom:16px;background:rgba(184,48,48,.04)}
+.enemy-card:nth-child(2){transform:rotate(.4deg)}
+.enemy-card:nth-child(3){transform:rotate(-.3deg)}
+.enemy-card:nth-child(4){transform:rotate(.6deg)}
+.enemy-card h4{font-family:var(--type);font-size:11px;letter-spacing:2px;color:var(--red-stamp);margin-bottom:8px}
+.enemy-card p{font-family:var(--serif);font-size:13px;line-height:1.5;color:var(--ink)}
+/* mechanism tiles */
+.mech-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.mech-tile{background:var(--parchment);border:1px dashed var(--aged);padding:18px 20px;transform:rotate(-.2deg)}
+.mech-tile:nth-child(2){transform:rotate(.3deg)}
+.mech-tile:nth-child(3){transform:rotate(-.4deg)}
+.mech-tile:nth-child(4){transform:rotate(.2deg)}
+.mech-num{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px}
+.mech-text{font-family:var(--serif);font-size:14px;line-height:1.5;color:var(--ink);font-weight:500}
+/* inline plates */
+.plate-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.plate-inline{border:1px solid var(--aged);background:var(--parchment-light);cursor:pointer;overflow:hidden;transition:all .3s}
+.plate-inline img{width:100%;display:block}
+.plate-cap{padding:8px 12px;font-family:var(--type);font-size:9px;letter-spacing:2px;color:var(--ink-dim)}
+.plate-cap b{color:var(--red-stamp)}
+.plate-inline.expanded{grid-column:1/-1}
+/* implication dark */
+.spine-sec.implication-dark{background:var(--ink);color:var(--parchment);margin-left:-20px;margin-right:-20px;padding:60px 40px;border-radius:2px}
+.spine-sec.implication-dark .spine-marker{color:var(--parchment);opacity:.4}
+.spine-sec.implication-dark .spine-h{color:var(--parchment)}
+.spine-sec.implication-dark .spine-body{color:var(--parchment-dark)}
+.spine-sec.implication-dark .doc-mer-wrap{background:rgba(226,218,188,.08);border-color:rgba(226,218,188,.15)}
+.spine-sec.implication-dark .doc-mer-wrap::before{color:rgba(226,218,188,.3)}
+.spine-cta{display:inline-block;margin-top:32px;font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--parchment);border:1px solid var(--parchment);padding:10px 20px;cursor:pointer;background:none;transition:all .2s}
+.spine-cta:hover{background:var(--parchment);color:var(--ink)}
+/* sticky thesis header */
+.spine-sticky{position:fixed;top:0;left:0;right:0;z-index:99;background:var(--parchment);border-bottom:1px solid var(--aged);padding:8px 20px;font-family:var(--type);font-size:10px;letter-spacing:2px;color:var(--ink-dim);text-align:center;transform:translateY(-100%);transition:transform .3s;pointer-events:none}
+.spine-sticky.show{transform:translateY(0);pointer-events:auto}
+@media(max-width:900px){.spine-rail{display:none}}
+/* ═══ MAP MODAL ═══ */
+.map-modal{position:fixed;inset:0;z-index:10001;background:var(--parchment);display:none;flex-direction:column}
+.map-modal.open{display:flex}
+.map-modal-inner{display:flex;flex-direction:column;width:100%;height:100%}
+.map-header{display:flex;align-items:center;gap:16px;padding:12px 24px;border-bottom:1px solid var(--aged)}
+.map-header h2{font-family:var(--type);font-size:14px;letter-spacing:4px;font-weight:400;margin:0}
+.map-header-sub{font-family:var(--mono);font-size:9px;color:var(--ink-dim);letter-spacing:1px;flex:1}
+.map-close{background:none;border:1px solid var(--ink);font-family:var(--mono);font-size:10px;padding:6px 14px;cursor:pointer;letter-spacing:2px;transition:all .2s}
+.map-close:hover{background:var(--ink);color:var(--parchment)}
+.map-body{flex:1 1 0;display:grid;grid-template-columns:1fr 360px;grid-template-rows:1fr;overflow:hidden;min-height:0}
+.map-canvas-wrap{position:relative;overflow:hidden;min-height:0}
+.map-canvas-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+.map-narr-wrap{display:flex;flex-direction:column;border-left:1px solid var(--aged);overflow:hidden}
+.map-narr{flex:1;overflow-y:auto;padding:16px 20px}
+.map-narr .step{padding:10px 12px;margin-bottom:6px;border-radius:3px;cursor:pointer;font-family:var(--serif);font-size:13px;line-height:1.4;color:var(--ink-mid);transition:all .15s}
+.map-narr .step:hover{background:rgba(224,56,120,.04)}
+.map-narr .step.active{background:rgba(224,56,120,.08);color:var(--ink);border-left:2px solid var(--pink)}
+.map-narr .step .step-num{font-family:var(--mono);font-size:9px;color:var(--pink);letter-spacing:1.5px;display:block;margin-bottom:3px}
+.map-narr .step .step-title{font-weight:500}
+.map-narr .step .step-guest{font-size:11px;color:var(--ink-dim);margin-top:2px}
+.map-nav{padding:12px 20px;border-top:1px solid var(--aged);display:flex;gap:8px}
+.map-nav button{flex:1;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;padding:8px;border:1px solid var(--aged);background:none;cursor:pointer;transition:all .15s}
+.map-nav button:hover{border-color:var(--pink);color:var(--pink)}
+@media(max-width:800px){.map-body{grid-template-columns:1fr}.map-narr-wrap{max-height:200px;border-left:none;border-top:1px solid var(--aged)}}
+/* ═══ TRANSCRIPT MODAL ═══ */
+.tm-modal{position:fixed;inset:0;z-index:10002;background:rgba(42,40,32,.7);display:none;align-items:center;justify-content:center;padding:40px}
+.tm-modal.open{display:flex}
+.tm-card{background:var(--parchment);border:1px solid var(--aged);max-width:680px;width:100%;max-height:80vh;overflow-y:auto;padding:36px 40px;position:relative}
+.tm-close{position:absolute;top:12px;right:14px;background:none;border:none;font-family:var(--mono);font-size:14px;cursor:pointer;color:var(--ink-dim);padding:4px 8px}
+.tm-close:hover{color:var(--ink)}
+.tm-card .tm-num{font-family:var(--mono);font-size:10px;color:var(--pink);letter-spacing:2px;margin-bottom:4px}
+.tm-card .tm-title{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:6px}
+.tm-card .tm-guest{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--ink-dim);margin-bottom:4px}
+.tm-card .tm-meta{font-family:var(--mono);font-size:9px;color:var(--ink-ghost);margin-bottom:16px}
+.tm-card .tm-thesis{font-family:var(--serif);font-size:14px;line-height:1.6;color:var(--ink-mid);border-left:2px solid var(--pink);padding-left:16px;margin-bottom:20px}
+.tm-card .tm-actions{display:flex;gap:10px;flex-wrap:wrap}
+.tm-card .tm-action{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border:1px solid var(--ink);color:var(--ink);text-decoration:none;cursor:pointer;background:none;transition:all .2s}
+.tm-card .tm-action:hover{background:var(--ink);color:var(--parchment)}
+/* ═══ INLINE QUOTES ═══ */
+.spine-quote{margin:24px 0;padding:14px 20px;border-left:2px solid var(--yellow);background:rgba(212,184,48,.04)}
+.spine-quote blockquote{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.5;color:var(--ink);margin:0 0 6px}
+.spine-quote cite{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:var(--ink-dim);text-transform:uppercase;font-style:normal}
 </style>
 </head>
 <body>
@@ -524,8 +625,32 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   </div>
 </section>
 
+<!-- ═══════ SPINE (V2) ═══════ -->
+<div class="spine-sticky" id="spineSticky">PROBLEM → MECHANISM → OUTCOME</div>
+<section class="spine" id="spine">
+  <div class="spine-rail" id="spineRail">
+    <nav class="rail-nav" aria-label="Spine navigation">
+      <a href="#spine-thesis" class="rail-dot active" data-label="Thesis">I</a>
+      <a href="#spine-problem" class="rail-dot" data-label="Problem">II</a>
+      <a href="#spine-enemy" class="rail-dot" data-label="Enemy">III</a>
+      <a href="#spine-mechanism" class="rail-dot" data-label="Mechanism">IV</a>
+      <a href="#spine-evidence" class="rail-dot" data-label="Evidence">V</a>
+      <a href="#spine-implication" class="rail-dot" data-label="Implication">VI</a>
+    </nav>
+    <button class="rail-map-btn" id="openMapBtn">Open Thesis Map</button>
+  </div>
+  <div class="spine-inner">
+    <article class="spine-sec" id="spine-thesis"></article>
+    <article class="spine-sec" id="spine-problem"></article>
+    <article class="spine-sec" id="spine-enemy"></article>
+    <article class="spine-sec" id="spine-mechanism"></article>
+    <article class="spine-sec" id="spine-evidence"></article>
+    <article class="spine-sec implication-dark" id="spine-implication"></article>
+  </div>
+</section>
+
 <!-- ═══════ FIELD ANALYSIS ═══════ -->
-<section class="analysis" id="analysis">
+<section class="analysis v2-hidden" id="analysis">
   <div class="analysis-head fade-in">
     <div class="sec-mark">PART I · FIELD ANALYSIS</div>
     <h2>THE DYNAMISM DOSSIER</h2>
@@ -552,7 +677,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 </div>
 
 <!-- ═══════ PART II · DOCTRINE ═══════ -->
-<section class="doctrine" id="doctrine" aria-labelledby="doctrineH">
+<section class="doctrine v2-hidden" id="doctrine" aria-labelledby="doctrineH">
   <div class="doctrine-head fade-in">
     <div class="sec-mark">PART II · STRATEGIC DOCTRINE</div>
     <h2 id="doctrineH">THE EXTRACTED WORLDVIEW</h2>
@@ -563,7 +688,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 </section>
 
 <!-- ═══════ DOSSIER ═══════ -->
-<section class="dossier" id="dossier">
+<section class="dossier v2-hidden" id="dossier">
   <div class="dossier-head fade-in">
     <div class="sec-mark">RESTRICTED — OPEN SOURCE</div>
     <h2>SOURCE TRANSCRIPTS</h2>
@@ -690,7 +815,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 </section>
 
 <!-- ═══════ TOOL (inline) ═══════ -->
-<section class="thesis-tool" id="tool">
+<section class="thesis-tool v2-hidden" id="tool">
   <div class="app">
     <div class="chart">
       <canvas id="c"></canvas>
@@ -718,7 +843,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 </section>
 
 <!-- ═══════ QUOTE WALL ═══════ -->
-<section class="quote-wall" id="quotes">
+<section class="quote-wall v2-hidden" id="quotes">
   <div class="quote-wall-inner">
     <div class="qw-head">
       <div class="sec-mark">APPENDIX · TACTICAL QUOTES</div>
@@ -752,6 +877,32 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     <div class="em-quotes" id="emQuotes"></div>
     <div class="em-section-h" id="emRelatedH" style="display:none">Related</div>
     <div class="em-related" id="emRelated"></div>
+  </div>
+</div>
+
+<!-- ═══════ THESIS MAP MODAL ═══════ -->
+<div class="map-modal" id="mapModal" role="dialog" aria-modal="true">
+  <div class="map-modal-inner">
+    <div class="map-header">
+      <h2>THESIS MAP</h2>
+      <div class="map-header-sub">10 interviews · ~66 nodes · one thesis</div>
+      <button class="map-close" id="mapClose">✕ CLOSE</button>
+    </div>
+    <div class="map-body">
+      <div class="map-canvas-wrap" id="mapCanvasWrap"></div>
+      <div class="map-narr-wrap">
+        <div class="map-narr" id="mapNarr"></div>
+        <div class="map-nav" id="mapNav"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ TRANSCRIPT MODAL ═══════ -->
+<div class="tm-modal" id="transcriptModal" role="dialog" aria-modal="true">
+  <div class="tm-card">
+    <button class="tm-close" id="tmClose">✕</button>
+    <div id="tmContent"></div>
   </div>
 </div>
 
@@ -1640,9 +1791,292 @@ function initDoctrine(){
   });
   renderDoctrine(0);
 }
-initDoctrine();
+if(!document.getElementById('doctrine').classList.contains('v2-hidden'))initDoctrine();
 
-renderQuoteWall();
+if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuoteWall();
+
+/* ═══════ SPINE BUILDER ═══════ */
+(function buildSpine(){
+  const spineEl=document.getElementById('spine');
+  if(!spineEl||spineEl.classList.contains('v2-hidden'))return;
+  const D=DOCTRINES[0];
+  const esc=s=>String(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]);
+
+  /* I. THESIS */
+  document.getElementById('spine-thesis').innerHTML=`
+    <div class="spine-marker">I · THESIS</div>
+    <h2 class="spine-h">${esc(D.Core_Claim)}</h2>`;
+
+  /* II. PROBLEM */
+  document.getElementById('spine-problem').innerHTML=`
+    <div class="spine-marker">II · THE PROBLEM</div>
+    <div class="spine-body">${esc(D.Real_Problem_Statement)}</div>
+    <aside class="spine-aside">
+      <div class="spine-aside-label">Defense Reformers</div>
+      <div class="spine-aside-text">${esc(DOCTRINES[1].Real_Problem_Statement)}</div>
+    </aside>
+    <aside class="spine-aside">
+      <div class="spine-aside-label">Industrial Base</div>
+      <div class="spine-aside-text">${esc(DOCTRINES[7].Real_Problem_Statement)}</div>
+    </aside>`;
+
+  /* III. ENEMY */
+  const enemies=D.Primary_Enemy.map((e,i)=>`
+    <div class="enemy-card">
+      <h4>ENEMY ${i+1}</h4>
+      <p>${esc(e)}</p>
+    </div>`).join('');
+  document.getElementById('spine-enemy').innerHTML=`
+    <div class="spine-marker">III · THE ENEMY</div>
+    ${enemies}`;
+
+  /* IV. MECHANISM */
+  const mechs=D.Doctrine.map((d,i)=>`
+    <div class="mech-tile">
+      <div class="mech-num">DOCTRINE ${i+1}</div>
+      <div class="mech-text">${esc(d)}</div>
+    </div>`).join('');
+  document.getElementById('spine-mechanism').innerHTML=`
+    <div class="spine-marker">IV · THE MECHANISM</div>
+    <div class="mech-grid">${mechs}</div>`;
+
+  /* V. EVIDENCE — plates + sub-doctrine beats */
+  const groups=[
+    {plates:[0,1,2],injects:[{i:1,label:'Defense Doctrine'}]},
+    {plates:[3,4,5],injects:[{i:2,label:'Space 2.0 Thesis'}]},
+    {plates:[6,7,8],injects:[{i:3,label:'Biotech'},{i:4,label:'Public Safety'}]},
+    {plates:[9,10,11],injects:[{i:5,label:'Alex Karp'},{i:6,label:'David Sacks'}]}
+  ];
+  let evHTML='<div class="spine-marker">V · THE EVIDENCE</div><p class="spine-body" style="margin-bottom:28px">Twelve plates tracing the legacy trajectory, the catalysts, and the path forward — with doctrine injections across domains.</p>';
+  groups.forEach(g=>{
+    evHTML+='<div class="plate-grid">';
+    g.plates.forEach(pi=>{
+      if(pi>=PLATES.length)return;
+      const p=PLATES[pi];
+      evHTML+=`<div class="plate-inline" data-plate="${pi}">
+        <img src="img/${p.f}" alt="${esc(p.t)}" loading="lazy">
+        <div class="plate-cap"><b>${esc(p.n)}</b> ${esc(p.t)}</div>
+      </div>`;
+    });
+    evHTML+='</div>';
+    g.injects.forEach(inj=>{
+      evHTML+=`<aside class="spine-aside">
+        <div class="spine-aside-label">${esc(inj.label)}</div>
+        <div class="spine-aside-text">${esc(DOCTRINES[inj.i].Core_Claim)}</div>
+      </aside>`;
+    });
+  });
+  document.getElementById('spine-evidence').innerHTML=evHTML;
+
+  /* VI. IMPLICATION */
+  document.getElementById('spine-implication').innerHTML=`
+    <div class="spine-marker">VI · THE IMPLICATION</div>
+    <h2 class="spine-h">${esc(D.Strategic_Imperative)}</h2>
+    <div class="doc-mer-wrap" id="spineMerWrap"><div id="spineMer"></div></div>
+    <div style="text-align:center;margin-top:40px">
+      <button class="spine-cta" id="exploreSystemBtn">Explore the System →</button>
+    </div>`;
+
+  /* Render umbrella mermaid graph */
+  if(D._mermaid){
+    loadMermaid(()=>{
+      const id='spineMer_'+(++_merCounter);
+      const target=document.getElementById('spineMer');
+      if(!target)return;
+      try{
+        mermaid.render(id,D._mermaid).then(({svg})=>{target.innerHTML=svg}).catch(()=>{});
+      }catch(e){}
+    });
+  }
+
+  /* Progressive reveal */
+  const revealObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('revealed');revealObs.unobserve(e.target)}});
+  },{threshold:.08});
+  document.querySelectorAll('.spine-sec').forEach(el=>revealObs.observe(el));
+
+  /* Rail scroll tracking */
+  const railDots=document.querySelectorAll('.rail-dot');
+  const railObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        railDots.forEach(d=>d.classList.remove('active'));
+        const dot=document.querySelector('.rail-dot[href="#'+e.target.id+'"]');
+        if(dot)dot.classList.add('active');
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.spine-sec').forEach(s=>railObs.observe(s));
+
+  /* Rail visibility */
+  const rail=document.getElementById('spineRail');
+  const railVisObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>rail.classList.toggle('visible',e.isIntersecting));
+  },{threshold:.02});
+  railVisObs.observe(spineEl);
+
+  /* Plate expand */
+  document.querySelectorAll('.plate-inline').forEach(el=>{
+    el.addEventListener('click',()=>el.classList.toggle('expanded'));
+  });
+
+  /* Sticky thesis header */
+  const sticky=document.getElementById('spineSticky');
+  const stickyObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>sticky.classList.toggle('show',!e.isIntersecting));
+  },{threshold:.1});
+  stickyObs.observe(document.getElementById('spine-thesis'));
+
+  /* ═══════ COMMIT 3: MAP MODAL + TRANSCRIPT MODAL + QUOTES ═══════ */
+
+  /* --- Map modal --- */
+  const mapModal=document.getElementById('mapModal');
+  const mapCanvasWrap=document.getElementById('mapCanvasWrap');
+  const mapNarrEl=document.getElementById('mapNarr');
+  const mapNavEl=document.getElementById('mapNav');
+  let _mapScrollY=0;
+
+  function buildMapNarrative(){
+    let h='';
+    steps.forEach((s,i)=>{
+      h+=`<div class="step${i>=currentStep?' future':''}" data-step="${i+1}" id="mapStep${i+1}">
+        <span class="step-num">T${i+1}</span>
+        <div class="step-title">${s.title}</div>
+        <div class="step-guest">${s.guest}</div>
+      </div>`;
+    });
+    mapNarrEl.innerHTML=h;
+    mapNarrEl.addEventListener('click',e=>{
+      const el=e.target.closest('.step[data-step]');
+      if(!el)return;
+      const s=parseInt(el.dataset.step,10);
+      mapGoTo(s);
+    });
+    mapNavEl.innerHTML=`
+      <button onclick="mapGoTo(Math.max(1,currentStep-1))">← PREV</button>
+      <button onclick="mapGoTo(Math.min(10,currentStep+1))">NEXT →</button>`;
+  }
+
+  function updateMapNarr(){
+    mapNarrEl.querySelectorAll('.step').forEach((el,i)=>{
+      el.classList.remove('active','future');
+      if(i+1===currentStep)el.classList.add('active');
+      else if(i+1>currentStep)el.classList.add('future');
+    });
+    const activeEl=document.getElementById('mapStep'+currentStep);
+    if(activeEl)activeEl.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  window.mapGoTo=function(step){
+    step=Math.max(1,Math.min(10,step|0));
+    currentStep=step;
+    updateUI();
+    updateMapNarr();
+    draw();
+  };
+
+  window.openMap=function(step){
+    _mapScrollY=window.scrollY;
+    /* Move canvas into modal */
+    mapCanvasWrap.appendChild(cv);
+    buildMapNarrative();
+    mapModal.classList.add('open');
+    document.body.style.overflow='hidden';
+    requestAnimationFrame(()=>{
+      resize();
+      if(step)mapGoTo(step); else{mapGoTo(currentStep||1);}
+      draw();
+    });
+  }
+
+  window.closeMap=function(sectionId){
+    mapModal.classList.remove('open');
+    document.body.style.overflow='';
+    /* Move canvas back */
+    const origChart=document.querySelector('.thesis-tool .chart');
+    if(origChart)origChart.appendChild(cv);
+    if(sectionId){
+      const target=document.getElementById(sectionId);
+      if(target)target.scrollIntoView({behavior:'smooth'});
+    }else{
+      window.scrollTo(0,_mapScrollY);
+    }
+  }
+
+  document.getElementById('mapClose').addEventListener('click',()=>closeMap());
+  mapModal.addEventListener('click',e=>{if(e.target===mapModal)closeMap()});
+  document.getElementById('openMapBtn').addEventListener('click',()=>openMap());
+  document.getElementById('exploreSystemBtn').addEventListener('click',()=>openMap(1));
+
+  /* Keyboard: Esc closes map */
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&mapModal.classList.contains('open')){closeMap();e.preventDefault()}
+    if(mapModal.classList.contains('open')){
+      if(e.key==='ArrowRight'){mapGoTo(Math.min(10,currentStep+1));e.preventDefault()}
+      if(e.key==='ArrowLeft'){mapGoTo(Math.max(1,currentStep-1));e.preventDefault()}
+    }
+  });
+
+  /* --- Transcript modal --- */
+  const tmModal=document.getElementById('transcriptModal');
+  const tmContent=document.getElementById('tmContent');
+
+  window.openTranscript=function(num){
+    const s=steps[num-1];
+    if(!s)return;
+    tmContent.innerHTML=`
+      <div class="tm-num">TRANSCRIPT ${String(num).padStart(2,'0')}</div>
+      <div class="tm-title">${s.title}</div>
+      <div class="tm-guest">${s.guest}</div>
+      <div class="tm-meta">${s.tab}</div>
+      <div class="tm-thesis">${s.thesis}</div>
+      <div class="tm-actions">
+        <button class="tm-action" onclick="closeTranscript();openMap(${num})">Open on Thesis Map →</button>
+        <a class="tm-action" href="${ytUrl(num)}" target="_blank" rel="noopener">▶ Watch Episode</a>
+      </div>`;
+    tmModal.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  window.closeTranscript=function(){
+    tmModal.classList.remove('open');
+    if(!mapModal.classList.contains('open'))document.body.style.overflow='';
+  };
+
+  document.getElementById('tmClose').addEventListener('click',closeTranscript);
+  tmModal.addEventListener('click',e=>{if(e.target===tmModal)closeTranscript()});
+
+  /* --- Contextual quotes in spine --- */
+  const SPINE_QUOTE_MAP={
+    'spine-problem':[1,10],
+    'spine-enemy':[3,9],
+    'spine-mechanism':[1,6],
+    'spine-evidence':[2,4,7],
+  };
+  Object.entries(SPINE_QUOTE_MAP).forEach(([secId,tNums])=>{
+    const sec=document.getElementById(secId);
+    if(!sec)return;
+    tNums.forEach(t=>{
+      const q=QUOTES.find(qq=>qq.t===t);
+      if(!q)return;
+      const quoteEl=document.createElement('div');
+      quoteEl.className='spine-quote';
+      quoteEl.innerHTML=`<blockquote>"${esc(q.q)}"</blockquote><cite>${esc(q.sp)} · <a href="#" onclick="event.preventDefault();openTranscript(${t})" style="color:var(--pink);text-decoration:none">T${t}</a></cite>`;
+      sec.appendChild(quoteEl);
+    });
+  });
+
+  /* --- Bi-directional: spine aside labels link to transcript modal --- */
+  document.querySelectorAll('.spine-aside-label').forEach(el=>{
+    const labelMap={'Defense Reformers':1,'Industrial Base':10,'Defense Doctrine':1,'Space 2.0 Thesis':4,'Biotech':7,'Public Safety':6,'Alex Karp':3,'David Sacks':8};
+    const t=labelMap[el.textContent.trim()];
+    if(!t)return;
+    el.style.cursor='pointer';
+    el.title='View transcript';
+    el.addEventListener('click',()=>openTranscript(t));
+  });
+
+})();
 </script>
 </body>
 </html>
