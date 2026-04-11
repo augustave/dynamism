@@ -392,28 +392,28 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .rail-map-btn{writing-mode:vertical-lr;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim);background:none;border:1px solid var(--aged);padding:12px 6px;cursor:pointer;margin-top:12px;transition:all .2s}
 .rail-map-btn:hover{border-color:var(--pink);color:var(--pink)}
 /* spine section styles */
-.spine-marker{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:12px;opacity:.6;text-transform:uppercase}
-.spine-h{font-family:var(--serif);font-size:28px;font-style:italic;font-weight:400;line-height:1.35;color:var(--ink);margin-bottom:24px}
-.spine-body{font-family:var(--serif);font-size:15px;line-height:1.7;color:var(--ink-mid)}
+.spine-marker{font-family:var(--type);font-size:9px;letter-spacing:3px;color:var(--red-stamp);margin-bottom:12px;opacity:.6;text-transform:uppercase;text-align:center}
+.spine-h{font-family:var(--serif);font-size:28px;font-style:italic;font-weight:400;line-height:1.35;color:var(--ink);margin-bottom:24px;text-align:center;max-width:720px;margin-left:auto;margin-right:auto}
+.spine-body{font-family:var(--serif);font-size:15px;line-height:1.7;color:var(--ink-mid);text-align:center;max-width:720px;margin-left:auto;margin-right:auto}
 /* sub-doctrine aside */
-.spine-aside{margin:28px 0;padding:16px 20px;border-left:2px solid var(--pink);background:rgba(224,56,120,.03)}
-.spine-aside-label{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:6px}
-.spine-aside-text{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.6;color:var(--ink-mid)}
+.spine-aside{margin:28px auto;padding:16px 20px;border-left:none;border-top:2px solid var(--pink);background:rgba(224,56,120,.03);text-align:center;max-width:720px}
+.spine-aside-label{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--pink);margin-bottom:6px;text-align:center}
+.spine-aside-text{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.6;color:var(--ink-mid);text-align:center}
 /* enemy cards */
-.enemy-card{border:1.5px solid var(--red-stamp);padding:18px 22px;margin-bottom:16px;background:rgba(184,48,48,.04)}
+.enemy-card{border:1.5px solid var(--red-stamp);padding:18px 22px;margin-bottom:16px;background:rgba(184,48,48,.04);text-align:center;max-width:720px;margin-left:auto;margin-right:auto}
 .enemy-card:nth-child(2){transform:rotate(.4deg)}
 .enemy-card:nth-child(3){transform:rotate(-.3deg)}
 .enemy-card:nth-child(4){transform:rotate(.6deg)}
-.enemy-card h4{font-family:var(--type);font-size:11px;letter-spacing:2px;color:var(--red-stamp);margin-bottom:8px}
-.enemy-card p{font-family:var(--serif);font-size:13px;line-height:1.5;color:var(--ink)}
+.enemy-card h4{font-family:var(--type);font-size:11px;letter-spacing:2px;color:var(--red-stamp);margin-bottom:8px;text-align:center}
+.enemy-card p{font-family:var(--serif);font-size:13px;line-height:1.5;color:var(--ink);text-align:center}
 /* mechanism tiles */
-.mech-grid{display:grid;grid-template-columns:1fr;gap:18px}
-.mech-tile{background:var(--parchment);border:1px dashed var(--aged);padding:18px 20px;transform:rotate(-.2deg)}
+.mech-grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:720px;margin:0 auto}
+.mech-tile{background:var(--parchment);border:1px dashed var(--aged);padding:18px 20px;text-align:center;transform:rotate(-.2deg)}
 .mech-tile:nth-child(2){transform:rotate(.3deg)}
 .mech-tile:nth-child(3){transform:rotate(-.4deg)}
 .mech-tile:nth-child(4){transform:rotate(.2deg)}
-.mech-num{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px}
-.mech-text{font-family:var(--serif);font-size:14px;line-height:1.5;color:var(--ink);font-weight:500}
+.mech-num{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--pink);margin-bottom:6px;text-align:center}
+.mech-text{font-family:var(--serif);font-size:14px;line-height:1.5;color:var(--ink);font-weight:500;text-align:center}
 /* inline plates */
 .plate-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
 .plate-inline{border:1px solid var(--aged);background:var(--parchment-light);cursor:pointer;overflow:hidden;transition:all .3s}
@@ -516,11 +516,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 @media(max-width:768px){.spine-sec.implication-dark .spine-h{font-size:22px}}
 /* ═══ AXIS: TRANSCRIPT ARCHIVE ═══ */
 .transcript-stack{width:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-.ts-card{border:1px solid var(--aged);padding:18px 22px;background:var(--parchment-light);cursor:pointer;transition:all .2s}
+.ts-card{border:1px solid var(--aged);padding:18px 22px;background:var(--parchment-light);cursor:pointer;transition:all .2s;text-align:center}
 .ts-card:hover{border-color:var(--ink-dim);background:var(--parchment)}
-.ts-num{font-family:var(--mono);font-size:10px;color:var(--pink);letter-spacing:2px;margin-bottom:4px}
-.ts-title{font-family:var(--serif);font-size:15px;font-weight:500;margin-bottom:3px}
-.ts-guest{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--ink-dim)}
+.ts-num{font-family:var(--mono);font-size:10px;color:var(--pink);letter-spacing:2px;margin-bottom:4px;text-align:center}
+.ts-title{font-family:var(--serif);font-size:15px;font-weight:500;margin-bottom:3px;text-align:center}
+.ts-guest{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--ink-dim);text-align:center}
 /* ═══ AXIS: QUOTE APPENDIX ═══ */
 .quote-appendix{width:100%;max-width:760px;margin:0 auto}
 /* ═══ RAIL TRIGGERS ═══ */
