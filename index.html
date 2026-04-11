@@ -707,11 +707,10 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       <a href="#spine-problem" class="rail-dot" data-label="Problem">III</a>
       <a href="#spine-enemy" class="rail-dot" data-label="Enemy">IV</a>
       <a href="#spine-mechanism" class="rail-dot" data-label="Mechanism">V</a>
-      <a href="#spine-evidence" class="rail-dot" data-label="Evidence">VI</a>
+      <a href="#spine-field-monument" class="rail-dot" data-label="Field">&#9723;</a>
+      <a href="#spine-map-monument" class="rail-dot" data-label="Map">&#9672;</a>
       <a href="#spine-implication" class="rail-dot" data-label="Implication">VII</a>
       <a href="#spine-graph" class="rail-dot" data-label="System">&#9670;</a>
-      <a href="#spine-map-monument" class="rail-dot" data-label="Map">&#9672;</a>
-      <a href="#spine-field-monument" class="rail-dot" data-label="Field">&#9723;</a>
     </nav>
     <div class="rail-triggers" id="railTriggers">
       <button class="rail-trig" id="openQuotesBtn" data-label="Quotes">&#10077;</button>
@@ -723,11 +722,10 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     <article class="spine-sec" id="spine-problem"></article>
     <article class="spine-sec" id="spine-enemy"></article>
     <article class="spine-sec" id="spine-mechanism"></article>
-    <article class="spine-sec" id="spine-evidence"></article>
+    <article class="spine-sec" id="spine-field-monument"></article>
+    <article class="spine-sec" id="spine-map-monument"></article>
     <article class="spine-sec implication-dark" id="spine-implication"></article>
     <article class="spine-sec" id="spine-graph"></article>
-    <article class="spine-sec" id="spine-map-monument"></article>
-    <article class="spine-sec" id="spine-field-monument"></article>
     <article class="spine-sec" id="spine-transcripts"></article>
     <article class="spine-sec" id="spine-quotes"></article>
   </div>
@@ -1927,22 +1925,6 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   document.getElementById('spine-mechanism').innerHTML=`
     <div class="spine-marker">V · THE MECHANISM</div>
     <div class="mech-grid">${mechs}</div>`;
-
-  /* VI. EVIDENCE — stacked plate deck */
-  const plateDeck=PLATES.map(p=>`
-    <div class="plate-deck-item">
-      <img src="img/${p.f}" alt="${esc(p.t)}" loading="lazy">
-      <div class="plate-deck-cap"><b>Plate ${p.n}</b> &mdash; ${esc(p.t)}</div>
-    </div>`).join('');
-  const keyQuotes=[0,2,5].map(qi=>{
-    const q=QUOTES[qi]; if(!q)return '';
-    return `<div class="spine-quote"><blockquote>"${esc(q.q)}"</blockquote><cite>${esc(q.sp)} · <a href="#" onclick="event.preventDefault();openTranscript(${q.t})" style="color:var(--pink);text-decoration:none">T${q.t}</a></cite></div>`;
-  }).join('');
-  document.getElementById('spine-evidence').innerHTML=`
-    <div class="spine-marker">VI · THE EVIDENCE</div>
-    <p class="spine-body" style="margin-bottom:32px">Visual proof, human proof, source authority.</p>
-    <div class="plate-deck">${plateDeck}</div>
-    <div style="margin-top:48px">${keyQuotes}</div>`;
 
   /* VII. IMPLICATION — centered directive */
   document.getElementById('spine-implication').innerHTML=`
