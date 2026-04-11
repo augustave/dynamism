@@ -483,14 +483,30 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .plate-deck-cap{margin-top:8px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim)}
 .plate-deck-cap b{color:var(--red-stamp)}
 @media(max-width:768px){.plate-deck{gap:32px}}
-/* ═══ AXIS: MONUMENT BLOCKS ═══ */
-.monument{width:100%;max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;border:1px solid var(--aged);padding:56px 40px;cursor:pointer;transition:all .3s;background:var(--parchment-light)}
-.monument:hover{border-color:var(--ink-dim);background:var(--parchment)}
-.monument-marker{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:16px}
-.monument-title{font-family:var(--type);font-size:16px;letter-spacing:4px;font-weight:400;text-align:center;margin-bottom:12px}
-.monument-sub{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--ink-dim);text-align:center;max-width:600px;line-height:1.6}
-.monument-cta{margin-top:24px;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
-.monument-cta:hover{background:var(--ink);color:var(--parchment)}
+/* ═══ AXIS: INLINE THESIS MAP ═══ */
+.inline-map-wrap{position:relative;width:100%;max-width:960px;margin:0 auto;height:65vh;min-height:480px;overflow:hidden;background:var(--parchment);border:1px solid var(--aged)}
+.inline-map-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+.inline-map-wrap .dot-key{position:absolute;bottom:8px;left:20px;display:flex;gap:14px;font-size:8px;font-family:var(--mono);color:var(--ink-dim);letter-spacing:0.5px;z-index:2}
+.inline-map-wrap .dk-i{display:flex;align-items:center;gap:4px}
+.inline-map-wrap .dk-d{width:7px;height:7px;border-radius:50%}
+.inline-map-wrap .scale-wrap{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;align-items:center;z-index:2}
+.inline-map-wrap .sc-a{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.inline-map-wrap .sc-a.l{border-right:7px solid var(--tt-accent)}
+.inline-map-wrap .sc-a.r{border-left:7px solid var(--tt-accent)}
+.inline-map-wrap .sc-l{width:120px;height:1.5px;background:var(--tt-accent)}
+.inline-map-wrap .sc-t{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:7px;font-family:var(--mono);color:var(--tt-accent);letter-spacing:2px;white-space:nowrap}
+.inline-map-wrap .ch-label{position:absolute;top:16px;left:20px;font-family:var(--serif);font-size:12px;font-weight:300;color:var(--tt-ink-mid);line-height:1.4;z-index:2}
+.inline-map-wrap .ch-label b{font-weight:500;font-style:italic}
+.inline-map-wrap .pg{position:absolute;top:16px;right:20px;font-family:var(--serif);font-size:13px;color:var(--tt-ink-dim);z-index:2}
+.inline-map-controls{display:flex;align-items:center;padding:8px 16px;border:1px solid var(--aged);border-top:none;background:var(--parchment-light);gap:6px;flex-wrap:wrap;max-width:960px;margin:0 auto}
+.map-step{font-family:var(--mono);font-size:9px;padding:4px 8px;border:1px solid var(--aged);background:none;cursor:pointer;color:var(--ink-dim);transition:all .15s}
+.map-step.active{background:var(--pink);color:var(--parchment);border-color:var(--pink)}
+.map-step.visited{border-color:var(--ink-dim);color:var(--ink)}
+.map-fullscreen{margin-left:auto;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;padding:4px 10px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
+.map-fullscreen:hover{background:var(--ink);color:var(--parchment)}
+@media(max-width:768px){.inline-map-wrap{height:50vh;min-height:340px}}
+/* ═══ AXIS: FIELD ANALYSIS ROLODEX ═══ */
+.field-analysis-inline{width:100%;max-width:960px;margin:0 auto}
 /* ═══ AXIS: CAUSAL GRAPH STANDALONE ═══ */
 .graph-standalone{width:100%;max-width:900px;margin:0 auto}
 .graph-standalone .doc-mer-wrap{min-height:400px;padding:28px;border:1px solid var(--aged);background:var(--parchment-light)}
@@ -996,7 +1012,7 @@ const PLATES=[
   {f:'frame9.webp',n:'09',t:'The Dynamism Ecosystem'},
   {f:'frame10.webp',n:'10',t:'Becoming More Like Us'}
 ];
-(function(){
+window.initRolodex=function(){
   const rolo=document.getElementById('faRolo');
   if(!rolo)return;
   const modal=document.getElementById('plateModal');
@@ -1023,7 +1039,6 @@ const PLATES=[
   function go(d){cur=(cur+d+N)%N;layout()}
   function jump(i){cur=(i+N)%N;layout()}
   layout();
-  // Clicks: center → modal; sides → advance
   rolo.addEventListener('click',e=>{
     const c=e.target.closest('.fa-card');if(!c)return;
     const i=parseInt(c.dataset.idx,10);
@@ -1035,7 +1050,6 @@ const PLATES=[
   });
   document.getElementById('faPrev').addEventListener('click',()=>go(-1));
   document.getElementById('faNext').addEventListener('click',()=>go(1));
-  // Keyboard when the rolodex is in view
   let inView=false;
   new IntersectionObserver(es=>es.forEach(e=>inView=e.isIntersecting),{threshold:0.3}).observe(rolo);
   addEventListener('keydown',e=>{
@@ -1051,7 +1065,6 @@ const PLATES=[
     if(e.key==='ArrowLeft'){go(-1);e.preventDefault()}
     else if(e.key==='ArrowRight'){go(1);e.preventDefault()}
   });
-  // Touch swipe
   let tx=null;
   rolo.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
   rolo.addEventListener('touchend',e=>{
@@ -1060,7 +1073,6 @@ const PLATES=[
     if(Math.abs(dx)>40)go(dx<0?1:-1);
     tx=null;
   });
-  // Modal (zoom) for the current plate
   function syncModal(){
     const p=PLATES[cur];
     mImg.src='img/'+p.f;mImg.alt=p.t;
@@ -1072,38 +1084,11 @@ const PLATES=[
   document.getElementById('pmPrev').addEventListener('click',e=>{e.stopPropagation();go(-1);syncModal()});
   document.getElementById('pmNext').addEventListener('click',e=>{e.stopPropagation();go(1);syncModal()});
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-})();
-
-/* Global plate viewer fallback — works even without rolodex */
-if(!window.openPlateViewer){
-  (function(){
-    const modal=document.getElementById('plateModal');
-    const mImg=document.getElementById('pmImg');
-    const mCap=document.getElementById('pmCap');
-    const prevBtn=document.getElementById('pmPrev');
-    const nextBtn=document.getElementById('pmNext');
-    const closeBtn=document.getElementById('pmClose');
-    if(!modal)return;
-    let ci=0;
-    function sync(){const p=PLATES[ci];mImg.src='img/'+p.f;mImg.alt=p.t;mCap.innerHTML='<b>Plate '+p.n+'</b> '+p.t}
-    function closePV(){modal.classList.remove('open')}
-    window.openPlateViewer=function(startIdx){
-      ci=Math.max(0,Math.min((startIdx||0),PLATES.length-1));
-      sync();
-      modal.classList.add('open');
-    };
-    prevBtn.addEventListener('click',function(e){e.stopPropagation();ci=(ci-1+PLATES.length)%PLATES.length;sync()});
-    nextBtn.addEventListener('click',function(e){e.stopPropagation();ci=(ci+1)%PLATES.length;sync()});
-    closeBtn.addEventListener('click',closePV);
-    modal.addEventListener('click',function(e){if(e.target===modal)closePV()});
-    addEventListener('keydown',function(e){
-      if(!modal.classList.contains('open'))return;
-      if(e.key==='Escape'){closePV();e.preventDefault()}
-      else if(e.key==='ArrowLeft'){ci=(ci-1+PLATES.length)%PLATES.length;sync();e.preventDefault()}
-      else if(e.key==='ArrowRight'){ci=(ci+1)%PLATES.length;sync();e.preventDefault()}
-    });
-  })();
-}
+  /* Expose for external use */
+  window.openPlateViewer=function(startIdx){jump(startIdx||0);openModal(cur)};
+};
+/* Try immediate init (for non-spine page), else called from buildSpine */
+initRolodex();
 
 // Scroll fade-in
 const obs=new IntersectionObserver(entries=>{
@@ -1502,7 +1487,7 @@ const toolObs=new IntersectionObserver(es=>{es.forEach(e=>{
     toolVisible=false;
   }
 })},{threshold:0.05});
-toolObs.observe(document.getElementById('tool'));
+toolObs.observe(document.getElementById('inlineMapWrap')||document.getElementById('tool'));
 </script>
 
 <script>
@@ -1979,23 +1964,65 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     });
   }
 
-  /* THESIS MAP MONUMENT */
-  document.getElementById('spine-map-monument').innerHTML=`
-    <div class="monument" onclick="openMap(1)">
-      <div class="monument-marker">INTERACTIVE SYSTEM</div>
-      <div class="monument-title">THESIS MAP</div>
-      <div class="monument-sub">10 interviews. ~66 nodes. One thesis.<br>Step through each transcript and watch the argument assemble itself.</div>
-      <button class="monument-cta">Enter Thesis Map &rarr;</button>
-    </div>`;
+  /* THESIS MAP — inline canvas */
+  {
+    const mapSec=document.getElementById('spine-map-monument');
+    let stepBtns='';
+    steps.forEach((_,i)=>{stepBtns+=`<button class="map-step${i===0?' active':''}" data-step="${i+1}">T${i+1}</button>`});
+    mapSec.innerHTML=`
+      <div class="spine-marker" style="text-align:center">THE THESIS MAP</div>
+      <p class="spine-body" style="text-align:center;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto">10 interviews. ~66 nodes. One thesis. Step through each transcript and watch the argument assemble itself.</p>
+      <div class="inline-map-wrap" id="inlineMapWrap"></div>
+      <div class="inline-map-controls" id="inlineMapControls">
+        ${stepBtns}
+        <button class="map-fullscreen" onclick="openMap(window._inlineMapStep||1)">FULL SCREEN &rarr;</button>
+      </div>`;
+    /* Move canvas + overlays from #tool into inline wrap */
+    const cv=document.getElementById('c');
+    const wrap=document.getElementById('inlineMapWrap');
+    const toolChart=document.querySelector('.thesis-tool .chart');
+    if(cv&&wrap&&toolChart){
+      wrap.appendChild(cv);
+      const dk=toolChart.querySelector('.dot-key');if(dk)wrap.appendChild(dk);
+      const sw=toolChart.querySelector('.scale-wrap');if(sw)wrap.appendChild(sw);
+      const cl=toolChart.querySelector('.ch-label');if(cl)wrap.appendChild(cl);
+      const pg=toolChart.querySelector('.pg');if(pg)wrap.appendChild(pg);
+      /* Re-observe inline wrap for canvas visibility */
+      if(window.toolObs){toolObs.observe(wrap)}
+      requestAnimationFrame(()=>{if(window.resize)resize();if(window.draw)draw()});
+    }
+    /* Step buttons */
+    window._inlineMapStep=1;
+    document.getElementById('inlineMapControls').addEventListener('click',e=>{
+      const btn=e.target.closest('.map-step[data-step]');
+      if(!btn)return;
+      const s=parseInt(btn.dataset.step,10);
+      window._inlineMapStep=s;
+      if(window.goTo)goTo(s);
+      document.querySelectorAll('.map-step').forEach(b=>{
+        const bs=parseInt(b.dataset.step,10);
+        b.classList.toggle('active',bs===s);
+        b.classList.toggle('visited',bs<s);
+      });
+    });
+  }
 
-  /* FIELD ANALYSIS MONUMENT */
+  /* FIELD ANALYSIS — inline rolodex */
   document.getElementById('spine-field-monument').innerHTML=`
-    <div class="monument" onclick="openPlateViewer(0)">
-      <div class="monument-marker">VISUAL ANALYSIS</div>
-      <div class="monument-title">FIELD ANALYSIS</div>
-      <div class="monument-sub">Twelve plates tracing the legacy trajectory, the catalysts, and the path forward.</div>
-      <button class="monument-cta">Browse the Dossier &rarr;</button>
+    <div class="field-analysis-inline">
+      <div class="spine-marker" style="text-align:center">PART I · FIELD ANALYSIS</div>
+      <h2 style="text-align:center;font-family:var(--type);font-size:20px;letter-spacing:4px;font-weight:400;margin-bottom:6px">THE DYNAMISM DOSSIER</h2>
+      <p style="text-align:center;font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-dim);line-height:1.6;max-width:620px;margin:0 auto 24px">Twelve plates tracing the legacy trajectory, the catalysts, and the path forward.<br>Flip through the rolodex &mdash; click the center plate to enlarge.</p>
+      <div class="fa-rolo" id="faRolo"></div>
+      <div class="fa-controls">
+        <button class="fa-ctrl" id="faPrev">&#9666; PREV</button>
+        <div class="fa-index" id="faIndex"><b>01</b> / 12</div>
+        <button class="fa-ctrl" id="faNext">NEXT &#9656;</button>
+      </div>
+      <div class="fa-hint">&larr; &rarr; or click &middot; tap center to enlarge</div>
     </div>`;
+  /* Initialize rolodex now that #faRolo exists */
+  initRolodex();
 
   /* TRANSCRIPT ARCHIVE — card stack */
   let tsCards='';
@@ -2119,9 +2146,9 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   window.closeMap=function(sectionId){
     mapModal.classList.remove('open');
     document.body.style.overflow='';
-    /* Return canvas to hidden #tool section */
-    const toolWrap=document.querySelector('.thesis-tool .chart');
-    if(toolWrap){toolWrap.appendChild(cv);requestAnimationFrame(()=>{resize();draw()})}
+    /* Return canvas to inline map wrap */
+    const inlineWrap=document.getElementById('inlineMapWrap')||document.querySelector('.thesis-tool .chart');
+    if(inlineWrap){inlineWrap.appendChild(cv);requestAnimationFrame(()=>{resize();draw()})}
     if(sectionId){
       const target=document.getElementById(sectionId);
       if(target)target.scrollIntoView({behavior:'smooth'});
