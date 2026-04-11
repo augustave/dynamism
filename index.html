@@ -476,52 +476,43 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .spine-quote{margin:24px 0;padding:14px 20px;border-left:2px solid var(--yellow);background:rgba(212,184,48,.04)}
 .spine-quote blockquote{font-family:var(--serif);font-size:13px;font-style:italic;line-height:1.5;color:var(--ink);margin:0 0 6px}
 .spine-quote cite{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:var(--ink-dim);text-transform:uppercase;font-style:normal}
-/* ═══ CENTRAL DASHBOARD ═══ */
-.dashboard-cluster{margin:40px -20px 60px;max-width:none;position:relative}
-.dash-tabs{display:flex;gap:0;border-bottom:1px solid var(--aged)}
-.dash-tab{flex:1;padding:12px 16px;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--parchment-light);border:1px solid var(--aged);border-bottom:none;color:var(--ink-dim);cursor:pointer;transition:all .2s}
-.dash-tab.active{background:var(--parchment);color:var(--pink);border-bottom:2px solid var(--pink)}
-.dash-panel{min-height:50vh;position:relative}
-.dash-panel.hidden{display:none}
-.dash-map-wrap{position:relative;width:100%;height:65vh;min-height:480px;overflow:hidden;background:var(--parchment);border:1px solid var(--aged);border-top:none}
-.dash-map-wrap canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
-.dash-map-wrap .ch-label{position:absolute;top:16px;left:20px;font-family:var(--serif);font-size:12px;font-weight:300;color:var(--tt-ink-mid);line-height:1.4;z-index:2}
-.dash-map-wrap .ch-label b{font-weight:500;font-style:italic}
-.dash-map-wrap .pg{position:absolute;top:16px;right:20px;font-family:var(--serif);font-size:13px;color:var(--tt-ink-dim);z-index:2}
-.dash-map-wrap .dot-key{position:absolute;bottom:8px;left:20px;display:flex;gap:14px;font-size:8px;font-family:var(--mono);color:var(--tt-ink-dim);letter-spacing:.5px;z-index:2}
-.dash-map-wrap .dk-i{display:flex;align-items:center;gap:4px}
-.dash-map-wrap .dk-d{width:7px;height:7px;border-radius:50%}
-.dash-map-wrap .scale-wrap{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;align-items:center;z-index:2}
-.dash-map-wrap .sc-a{width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent}
-.dash-map-wrap .sc-a.l{border-right:7px solid var(--tt-accent)}
-.dash-map-wrap .sc-a.r{border-left:7px solid var(--tt-accent)}
-.dash-map-wrap .sc-l{width:120px;height:1.5px;background:var(--tt-accent)}
-.dash-map-wrap .sc-t{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:7px;font-family:var(--mono);color:var(--tt-accent);letter-spacing:2px;white-space:nowrap}
-.dash-map-controls{display:flex;align-items:center;padding:8px 16px;border:1px solid var(--aged);border-top:none;background:var(--parchment-light);gap:6px;flex-wrap:wrap}
-.dash-step{font-family:var(--mono);font-size:9px;padding:4px 8px;border:1px solid var(--aged);background:none;cursor:pointer;color:var(--ink-dim);transition:all .15s}
-.dash-step.active{background:var(--pink);color:var(--parchment);border-color:var(--pink)}
-.dash-step.visited{border-color:var(--ink-dim);color:var(--ink)}
-.dash-fullscreen{margin-left:auto;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;padding:4px 10px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
-.dash-fullscreen:hover{border-color:var(--pink);color:var(--pink)}
-.dash-panel .fa-rolo{height:clamp(300px,45vw,480px)}
-.dash-panel .doc-mer-wrap{max-width:900px;margin:0 auto;min-height:400px;border:1px solid var(--aged);padding:28px}
-.spine-crosslinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;padding-top:16px;border-top:1px dashed var(--aged)}
-.spine-xlink{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border:1px solid var(--aged);background:none;cursor:pointer;color:var(--ink-dim);transition:all .15s}
-.spine-xlink:hover{border-color:var(--pink);color:var(--pink)}
+/* ═══ AXIS: STACKED PLATE DECK ═══ */
+.plate-deck{display:flex;flex-direction:column;align-items:center;gap:48px;width:100%;max-width:900px;margin:32px auto 0}
+.plate-deck-item{width:100%;max-width:900px;margin:0 auto}
+.plate-deck-item img{display:block;width:100%;height:auto;border:1px solid var(--aged)}
+.plate-deck-cap{margin-top:8px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim)}
+.plate-deck-cap b{color:var(--red-stamp)}
+@media(max-width:768px){.plate-deck{gap:32px}}
+/* ═══ AXIS: MONUMENT BLOCKS ═══ */
+.monument{width:100%;max-width:880px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;border:1px solid var(--aged);padding:56px 40px;cursor:pointer;transition:all .3s;background:var(--parchment-light)}
+.monument:hover{border-color:var(--ink-dim);background:var(--parchment)}
+.monument-marker{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:16px}
+.monument-title{font-family:var(--type);font-size:16px;letter-spacing:4px;font-weight:400;text-align:center;margin-bottom:12px}
+.monument-sub{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--ink-dim);text-align:center;max-width:600px;line-height:1.6}
+.monument-cta{margin-top:24px;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
+.monument-cta:hover{background:var(--ink);color:var(--parchment)}
+/* ═══ AXIS: CAUSAL GRAPH STANDALONE ═══ */
+.graph-standalone{width:100%;max-width:900px;margin:0 auto}
+.graph-standalone .doc-mer-wrap{min-height:400px;padding:28px;border:1px solid var(--aged);background:var(--parchment-light)}
+/* ═══ AXIS: IMPLICATION (stronger) ═══ */
+.spine-sec.implication-dark{padding:80px 40px}
+.spine-sec.implication-dark .spine-h{font-size:30px;line-height:1.4;max-width:680px;margin:0 auto 20px;text-align:center}
+@media(max-width:768px){.spine-sec.implication-dark .spine-h{font-size:22px}}
+/* ═══ AXIS: TRANSCRIPT ARCHIVE ═══ */
+.transcript-stack{width:100%;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.ts-card{border:1px solid var(--aged);padding:18px 22px;background:var(--parchment-light);cursor:pointer;transition:all .2s}
+.ts-card:hover{border-color:var(--ink-dim);background:var(--parchment)}
+.ts-num{font-family:var(--mono);font-size:10px;color:var(--pink);letter-spacing:2px;margin-bottom:4px}
+.ts-title{font-family:var(--serif);font-size:15px;font-weight:500;margin-bottom:3px}
+.ts-guest{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;color:var(--ink-dim)}
+/* ═══ AXIS: QUOTE APPENDIX ═══ */
+.quote-appendix{width:100%;max-width:760px;margin:0 auto}
 /* ═══ RAIL TRIGGERS ═══ */
 .rail-triggers{display:flex;flex-direction:column;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--aged)}
 .rail-trig{width:28px;height:28px;border-radius:50%;border:1px solid var(--aged);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--ink-dim);background:none;cursor:pointer;transition:all .2s;position:relative}
 .rail-trig::after{content:attr(data-label);position:absolute;right:38px;white-space:nowrap;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-ghost);opacity:0;transition:opacity .2s;pointer-events:none}
 .rail-trig:hover::after{opacity:1}
 .rail-trig:hover{border-color:var(--pink);color:var(--pink)}
-/* ═══ EVIDENCE STRIP (lightweight) ═══ */
-.ev-preview-strip{display:flex;gap:10px;overflow-x:auto;padding:8px 0;margin:20px 0}
-.ev-preview-strip img{height:120px;width:auto;border:1px solid var(--aged);cursor:pointer;transition:transform .2s;flex-shrink:0}
-.ev-preview-strip img:hover{transform:scale(1.05)}
-.ev-quote-highlights{margin:24px 0}
-.ev-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.ev-actions button{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;border:1px solid var(--ink);background:none;cursor:pointer;color:var(--ink);transition:all .2s}
-.ev-actions button:hover{background:var(--ink);color:var(--parchment)}
 /* ═══ QUOTE WALL MODAL ═══ */
 .qw-modal{position:fixed;inset:0;z-index:10002;background:rgba(42,40,32,.85);display:none;align-items:center;justify-content:center;padding:30px}
 .qw-modal.open{display:flex}
@@ -697,50 +688,32 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="spine-rail" id="spineRail">
     <nav class="rail-nav" aria-label="Spine navigation">
       <a href="#spine-thesis" class="rail-dot active" data-label="Thesis">I</a>
-      <a href="#dashboardCluster" class="rail-dot" data-label="Dashboard">II</a>
       <a href="#spine-problem" class="rail-dot" data-label="Problem">III</a>
       <a href="#spine-enemy" class="rail-dot" data-label="Enemy">IV</a>
       <a href="#spine-mechanism" class="rail-dot" data-label="Mechanism">V</a>
       <a href="#spine-evidence" class="rail-dot" data-label="Evidence">VI</a>
       <a href="#spine-implication" class="rail-dot" data-label="Implication">VII</a>
+      <a href="#spine-graph" class="rail-dot" data-label="System">&#9670;</a>
+      <a href="#spine-map-monument" class="rail-dot" data-label="Map">&#9672;</a>
+      <a href="#spine-field-monument" class="rail-dot" data-label="Field">&#9723;</a>
     </nav>
     <div class="rail-triggers" id="railTriggers">
-      <button class="rail-trig" id="openMapBtn" data-label="Thesis Map">◈</button>
-      <button class="rail-trig" id="openPlatesBtn" data-label="Plates">◻</button>
-      <button class="rail-trig" id="openQuotesBtn" data-label="Quotes">❝</button>
-      <button class="rail-trig" id="openSourcesBtn" data-label="Sources">⊞</button>
+      <button class="rail-trig" id="openQuotesBtn" data-label="Quotes">&#10077;</button>
+      <button class="rail-trig" id="openSourcesBtn" data-label="Sources">&#8862;</button>
     </div>
   </div>
   <div class="spine-inner">
     <article class="spine-sec" id="spine-thesis"></article>
-    <div class="dashboard-cluster spine-sec" id="dashboardCluster">
-      <div class="dash-tabs" id="dashTabs">
-        <button class="dash-tab active" data-panel="map" onclick="switchDashTab('map')">&#9672; Thesis Map</button>
-        <button class="dash-tab" data-panel="plates" onclick="switchDashTab('plates')">&#9723; Field Analysis</button>
-        <button class="dash-tab" data-panel="graph" onclick="switchDashTab('graph')">&#8862; Causal Graph</button>
-      </div>
-      <div class="dash-panel" id="dashMap" data-panel="map">
-        <div class="dash-map-wrap" id="dashMapWrap"></div>
-        <div class="dash-map-controls" id="dashMapControls"></div>
-      </div>
-      <div class="dash-panel hidden" id="dashPlates" data-panel="plates">
-        <div class="fa-rolo" id="faRolo" role="region" aria-label="Field analysis rolodex"></div>
-        <div class="fa-controls">
-          <button class="fa-ctrl" id="faPrev" aria-label="Previous plate">&#9666; PREV</button>
-          <div class="fa-index" id="faIndex"><b>01</b> / 12</div>
-          <button class="fa-ctrl" id="faNext" aria-label="Next plate">NEXT &#9656;</button>
-        </div>
-        <div class="fa-hint">&#8592; &#8594; or click &middot; tap center to enlarge</div>
-      </div>
-      <div class="dash-panel hidden" id="dashGraph" data-panel="graph">
-        <div class="doc-mer-wrap" id="dashGraphWrap"><div id="dashGraphMer"></div></div>
-      </div>
-    </div>
     <article class="spine-sec" id="spine-problem"></article>
     <article class="spine-sec" id="spine-enemy"></article>
     <article class="spine-sec" id="spine-mechanism"></article>
     <article class="spine-sec" id="spine-evidence"></article>
     <article class="spine-sec implication-dark" id="spine-implication"></article>
+    <article class="spine-sec" id="spine-graph"></article>
+    <article class="spine-sec" id="spine-map-monument"></article>
+    <article class="spine-sec" id="spine-field-monument"></article>
+    <article class="spine-sec" id="spine-transcripts"></article>
+    <article class="spine-sec" id="spine-quotes"></article>
   </div>
 </section>
 
@@ -1100,6 +1073,37 @@ const PLATES=[
   document.getElementById('pmNext').addEventListener('click',e=>{e.stopPropagation();go(1);syncModal()});
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 })();
+
+/* Global plate viewer fallback — works even without rolodex */
+if(!window.openPlateViewer){
+  (function(){
+    const modal=document.getElementById('plateModal');
+    const mImg=document.getElementById('pmImg');
+    const mCap=document.getElementById('pmCap');
+    const prevBtn=document.getElementById('pmPrev');
+    const nextBtn=document.getElementById('pmNext');
+    const closeBtn=document.getElementById('pmClose');
+    if(!modal)return;
+    let ci=0;
+    function sync(){const p=PLATES[ci];mImg.src='img/'+p.f;mImg.alt=p.t;mCap.innerHTML='<b>Plate '+p.n+'</b> '+p.t}
+    function closePV(){modal.classList.remove('open')}
+    window.openPlateViewer=function(startIdx){
+      ci=Math.max(0,Math.min((startIdx||0),PLATES.length-1));
+      sync();
+      modal.classList.add('open');
+    };
+    prevBtn.addEventListener('click',function(e){e.stopPropagation();ci=(ci-1+PLATES.length)%PLATES.length;sync()});
+    nextBtn.addEventListener('click',function(e){e.stopPropagation();ci=(ci+1)%PLATES.length;sync()});
+    closeBtn.addEventListener('click',closePV);
+    modal.addEventListener('click',function(e){if(e.target===modal)closePV()});
+    addEventListener('keydown',function(e){
+      if(!modal.classList.contains('open'))return;
+      if(e.key==='Escape'){closePV();e.preventDefault()}
+      else if(e.key==='ArrowLeft'){ci=(ci-1+PLATES.length)%PLATES.length;sync();e.preventDefault()}
+      else if(e.key==='ArrowRight'){ci=(ci+1)%PLATES.length;sync();e.preventDefault()}
+    });
+  })();
+}
 
 // Scroll fade-in
 const obs=new IntersectionObserver(entries=>{
@@ -1498,7 +1502,7 @@ const toolObs=new IntersectionObserver(es=>{es.forEach(e=>{
     toolVisible=false;
   }
 })},{threshold:0.05});
-toolObs.observe(document.getElementById('dashMapWrap')||document.getElementById('tool'));
+toolObs.observe(document.getElementById('tool'));
 </script>
 
 <script>
@@ -1904,65 +1908,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   /* I. THESIS */
   document.getElementById('spine-thesis').innerHTML=`
     <div class="spine-marker">I · THESIS</div>
-    <h2 class="spine-h">${esc(D.Core_Claim)}</h2>`;
-
-  /* II. CENTRAL DASHBOARD — init */
-  // Move canvas into dashboard map panel
-  const dashMapWrap=document.getElementById('dashMapWrap');
-  const dashControls=document.getElementById('dashMapControls');
-  if(dashMapWrap&&cv){
-    dashMapWrap.appendChild(cv);
-    // Also move overlay elements from the tool section
-    const chLabel=document.querySelector('.thesis-tool .ch-label');
-    const pgEl=document.querySelector('.thesis-tool .pg');
-    const dotKey=document.querySelector('.dot-key');
-    const scaleWrap=document.querySelector('.scale-wrap');
-    if(chLabel)dashMapWrap.appendChild(chLabel);
-    if(pgEl)dashMapWrap.appendChild(pgEl);
-    if(dotKey)dashMapWrap.appendChild(dotKey);
-    if(scaleWrap)dashMapWrap.appendChild(scaleWrap);
-    // Build step bar
-    let stepBarHtml='';
-    for(let i=1;i<=10;i++){
-      stepBarHtml+=`<button class="dash-step${i===1?' active':''}" data-step="${i}" onclick="dashGoTo(${i})">T${i}</button>`;
-    }
-    stepBarHtml+=`<button class="dash-fullscreen" onclick="openMap(currentStep||1)">FULL SCREEN &#8594;</button>`;
-    dashControls.innerHTML=stepBarHtml;
-    // Trigger resize after layout
-    requestAnimationFrame(()=>{resize();draw()});
-  }
-  // Dashboard tab switcher
-  let _graphRendered=false;
-  window.switchDashTab=function(panel){
-    document.querySelectorAll('.dash-tab').forEach(t=>t.classList.toggle('active',t.dataset.panel===panel));
-    document.querySelectorAll('.dash-panel').forEach(p=>p.classList.toggle('hidden',p.dataset.panel!==panel));
-    if(panel==='map'){requestAnimationFrame(()=>{resize();draw()})}
-    if(panel==='graph'&&!_graphRendered&&D._mermaid){
-      _graphRendered=true;
-      loadMermaid(()=>{
-        const id='dashGraph_'+(++_merCounter);
-        const target=document.getElementById('dashGraphMer');
-        if(!target)return;
-        try{mermaid.render(id,D._mermaid).then(({svg})=>{target.innerHTML=svg}).catch(()=>{})}catch(e){}
-      });
-    }
-    // Scroll dashboard into view
-    const dc=document.getElementById('dashboardCluster');
-    if(dc)dc.scrollIntoView({behavior:'smooth',block:'start'});
-  };
-  window.dashGoTo=function(step){
-    step=Math.max(1,Math.min(10,step|0));
-    currentStep=step;
-    updateUI();
-    draw();
-    // Update step bar active state
-    document.querySelectorAll('.dash-step').forEach(b=>{
-      const s=parseInt(b.dataset.step,10);
-      if(!s)return;
-      b.classList.toggle('active',s===step);
-      b.classList.toggle('visited',s<step);
-    });
-  };
+    <h2 class="spine-h" style="text-align:center;max-width:680px;margin:0 auto">${esc(D.Core_Claim)}</h2>`;
 
   /* III. PROBLEM */
   document.getElementById('spine-problem').innerHTML=`
@@ -1975,11 +1921,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     <aside class="spine-aside">
       <div class="spine-aside-label">Industrial Base</div>
       <div class="spine-aside-text">${esc(DOCTRINES[7].Real_Problem_Statement)}</div>
-    </aside>
-    <div class="spine-crosslinks">
-      <button class="spine-xlink" onclick="switchDashTab('map')">See on Map</button>
-      <button class="spine-xlink" onclick="openQuoteWall()">Related Quotes</button>
-    </div>`;
+    </aside>`;
 
   /* IV. ENEMY */
   const enemies=D.Primary_Enemy.map((e,i)=>`
@@ -1989,11 +1931,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     </div>`).join('');
   document.getElementById('spine-enemy').innerHTML=`
     <div class="spine-marker">IV · THE ENEMY</div>
-    ${enemies}
-    <div class="spine-crosslinks">
-      <button class="spine-xlink" onclick="openTranscript(3)">View Transcripts</button>
-      <button class="spine-xlink" onclick="openQuoteWall()">Related Quotes</button>
-    </div>`;
+    ${enemies}`;
 
   /* V. MECHANISM */
   const mechs=D.Doctrine.map((d,i)=>`
@@ -2003,38 +1941,82 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     </div>`).join('');
   document.getElementById('spine-mechanism').innerHTML=`
     <div class="spine-marker">V · THE MECHANISM</div>
-    <div class="mech-grid">${mechs}</div>
-    <div class="spine-crosslinks">
-      <button class="spine-xlink" onclick="switchDashTab('plates')">See Plates</button>
-      <button class="spine-xlink" onclick="openQuoteWall()">Related Quotes</button>
-    </div>`;
+    <div class="mech-grid">${mechs}</div>`;
 
-  /* VI. EVIDENCE — lightweight: preview strip + key quotes + cross-links */
-  const previewImgs=PLATES.slice(0,6).map((p,i)=>
-    `<img src="img/${p.f}" alt="${esc(p.t)}" loading="lazy" data-plate="${i}" onclick="switchDashTab('plates')">`
-  ).join('');
+  /* VI. EVIDENCE — stacked plate deck */
+  const plateDeck=PLATES.map(p=>`
+    <div class="plate-deck-item">
+      <img src="img/${p.f}" alt="${esc(p.t)}" loading="lazy">
+      <div class="plate-deck-cap"><b>Plate ${p.n}</b> &mdash; ${esc(p.t)}</div>
+    </div>`).join('');
   const keyQuotes=[0,2,5].map(qi=>{
     const q=QUOTES[qi]; if(!q)return '';
     return `<div class="spine-quote"><blockquote>"${esc(q.q)}"</blockquote><cite>${esc(q.sp)} · <a href="#" onclick="event.preventDefault();openTranscript(${q.t})" style="color:var(--pink);text-decoration:none">T${q.t}</a></cite></div>`;
   }).join('');
   document.getElementById('spine-evidence').innerHTML=`
     <div class="spine-marker">VI · THE EVIDENCE</div>
-    <p class="spine-body" style="margin-bottom:20px">Visual proof, human proof, source authority.</p>
-    <div class="ev-preview-strip">${previewImgs}</div>
-    <div class="ev-quote-highlights">${keyQuotes}</div>
-    <div class="spine-crosslinks">
-      <button class="spine-xlink" onclick="switchDashTab('plates')">View All Plates</button>
-      <button class="spine-xlink" onclick="openQuoteWall()">Browse Quotes</button>
-      <button class="spine-xlink" onclick="openTranscript(1)">Open Transcripts</button>
+    <p class="spine-body" style="margin-bottom:32px">Visual proof, human proof, source authority.</p>
+    <div class="plate-deck">${plateDeck}</div>
+    <div style="margin-top:48px">${keyQuotes}</div>`;
+
+  /* VII. IMPLICATION — centered directive */
+  document.getElementById('spine-implication').innerHTML=`
+    <div class="spine-marker" style="text-align:center;color:var(--parchment);opacity:.4">VII · THE IMPLICATION</div>
+    <h2 class="spine-h">${esc(D.Strategic_Imperative)}</h2>`;
+
+  /* CAUSAL GRAPH — standalone after implication */
+  if(D._mermaid){
+    document.getElementById('spine-graph').innerHTML=`
+      <div class="spine-marker" style="text-align:center">THE SYSTEM</div>
+      <div class="graph-standalone">
+        <div class="doc-mer-wrap" id="spineGraphWrap"><div id="spineGraphMer"></div></div>
+      </div>`;
+    loadMermaid(()=>{
+      const id='spineGraph_'+(++_merCounter);
+      const target=document.getElementById('spineGraphMer');
+      if(!target)return;
+      try{mermaid.render(id,D._mermaid).then(({svg})=>{target.innerHTML=svg}).catch(()=>{})}catch(e){}
+    });
+  }
+
+  /* THESIS MAP MONUMENT */
+  document.getElementById('spine-map-monument').innerHTML=`
+    <div class="monument" onclick="openMap(1)">
+      <div class="monument-marker">INTERACTIVE SYSTEM</div>
+      <div class="monument-title">THESIS MAP</div>
+      <div class="monument-sub">10 interviews. ~66 nodes. One thesis.<br>Step through each transcript and watch the argument assemble itself.</div>
+      <button class="monument-cta">Enter Thesis Map &rarr;</button>
     </div>`;
 
-  /* VII. IMPLICATION */
-  document.getElementById('spine-implication').innerHTML=`
-    <div class="spine-marker">VII · THE IMPLICATION</div>
-    <h2 class="spine-h">${esc(D.Strategic_Imperative)}</h2>
-    <div class="spine-crosslinks" style="border-top-color:rgba(226,218,188,.2)">
-      <button class="spine-xlink" style="border-color:rgba(226,218,188,.3);color:var(--parchment-dark)" onclick="switchDashTab('map')">Return to System</button>
-      <button class="spine-xlink" style="border-color:rgba(226,218,188,.3);color:var(--parchment-dark)" onclick="openMap(1)">Explore Full Map</button>
+  /* FIELD ANALYSIS MONUMENT */
+  document.getElementById('spine-field-monument').innerHTML=`
+    <div class="monument" onclick="openPlateViewer(0)">
+      <div class="monument-marker">VISUAL ANALYSIS</div>
+      <div class="monument-title">FIELD ANALYSIS</div>
+      <div class="monument-sub">Twelve plates tracing the legacy trajectory, the catalysts, and the path forward.</div>
+      <button class="monument-cta">Browse the Dossier &rarr;</button>
+    </div>`;
+
+  /* TRANSCRIPT ARCHIVE — card stack */
+  let tsCards='';
+  steps.forEach((s,i)=>{
+    tsCards+=`<div class="ts-card" onclick="openTranscript(${i+1})">
+      <div class="ts-num">TRANSCRIPT ${String(i+1).padStart(2,'0')}</div>
+      <div class="ts-title">${esc(s.title)}</div>
+      <div class="ts-guest">${esc(s.guest)}</div>
+    </div>`;
+  });
+  document.getElementById('spine-transcripts').innerHTML=`
+    <div class="spine-marker" style="text-align:center">SOURCE TRANSCRIPTS</div>
+    <p class="spine-body" style="text-align:center;margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto">10 interviews. 7+ hours of testimony. One thesis.</p>
+    <div class="transcript-stack">${tsCards}</div>`;
+
+  /* QUOTE WALL — appendix */
+  document.getElementById('spine-quotes').innerHTML=`
+    <div class="spine-marker" style="text-align:center">APPENDIX · TACTICAL QUOTES</div>
+    <div class="quote-appendix" style="text-align:center;margin-bottom:24px">
+      <p class="spine-body" style="max-width:600px;margin:0 auto">A curated selection of tactical quotes from the corpus.</p>
+      <button class="monument-cta" style="margin-top:20px" onclick="openQuoteWall()">Open Quote Wall &rarr;</button>
     </div>`;
 
   /* Progressive reveal */
@@ -2063,10 +2045,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   },{threshold:.02});
   railVisObs.observe(spineEl);
 
-  /* Plate preview strip click → switch to plates tab */
-  document.querySelectorAll('.ev-preview-strip img').forEach(el=>{
-    el.addEventListener('click',()=>switchDashTab('plates'));
-  });
+  /* ev-preview-strip removed — axis enforcement */
 
   /* Sticky thesis header */
   const sticky=document.getElementById('spineSticky');
@@ -2140,9 +2119,9 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   window.closeMap=function(sectionId){
     mapModal.classList.remove('open');
     document.body.style.overflow='';
-    /* Move canvas back to dashboard */
-    const dashWrap=document.getElementById('dashMapWrap');
-    if(dashWrap){dashWrap.appendChild(cv);requestAnimationFrame(()=>{resize();draw()})}
+    /* Return canvas to hidden #tool section */
+    const toolWrap=document.querySelector('.thesis-tool .chart');
+    if(toolWrap){toolWrap.appendChild(cv);requestAnimationFrame(()=>{resize();draw()})}
     if(sectionId){
       const target=document.getElementById(sectionId);
       if(target)target.scrollIntoView({behavior:'smooth'});
@@ -2153,7 +2132,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
 
   document.getElementById('mapClose').addEventListener('click',()=>closeMap());
   mapModal.addEventListener('click',e=>{if(e.target===mapModal)closeMap()});
-  document.getElementById('openMapBtn').addEventListener('click',()=>switchDashTab('map'));
+  /* openMapBtn removed — axis enforcement */
 
   /* Keyboard: Esc closes map */
   document.addEventListener('keydown',e=>{
@@ -2203,8 +2182,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
     el.addEventListener('click',()=>openTranscript(t));
   });
 
-  /* ═══ PLATES rail trigger → dashboard tab ═══ */
-  document.getElementById('openPlatesBtn').addEventListener('click',()=>switchDashTab('plates'));
+  /* openPlatesBtn removed — axis enforcement */
 
   /* ═══ QUOTE WALL MODAL ═══ */
   const qwModal=document.getElementById('quoteWallModal');
