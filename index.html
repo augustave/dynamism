@@ -1606,6 +1606,7 @@ const _goTo=window.goTo;
 window.goTo=function(step){
   step=Math.max(1,Math.min(10,step|0));
   _goTo(step);
+  if(window.draw)requestAnimationFrame(draw);
   try{history.replaceState(null,'','#t'+step)}catch(e){}
   updateA11yList();
 };
@@ -1954,7 +1955,12 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
       const pg=toolChart.querySelector('.pg');if(pg)wrap.appendChild(pg);
       /* Re-observe inline wrap for canvas visibility */
       if(window.toolObs){toolObs.observe(wrap)}
-      requestAnimationFrame(()=>{if(window.resize)resize();if(window.draw)draw()});
+      /* Delay resize until layout is complete */
+      setTimeout(()=>{
+        if(window.resize)resize();
+        if(window.goTo)goTo(1);
+        if(window.draw)draw();
+      },100);
     }
     /* Step buttons */
     window._inlineMapStep=1;
@@ -1964,6 +1970,7 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
       const s=parseInt(btn.dataset.step,10);
       window._inlineMapStep=s;
       if(window.goTo)goTo(s);
+      if(window.draw)draw();
       document.querySelectorAll('.map-step').forEach(b=>{
         const bs=parseInt(b.dataset.step,10);
         b.classList.toggle('active',bs===s);
