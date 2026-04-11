@@ -710,7 +710,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       <a href="#spine-field-monument" class="rail-dot" data-label="Field">&#9723;</a>
       <a href="#spine-map-monument" class="rail-dot" data-label="Map">&#9672;</a>
       <a href="#spine-implication" class="rail-dot" data-label="Implication">VII</a>
-      <a href="#spine-graph" class="rail-dot" data-label="System">&#9670;</a>
     </nav>
     <div class="rail-triggers" id="railTriggers">
       <button class="rail-trig" id="openQuotesBtn" data-label="Quotes">&#10077;</button>
@@ -724,10 +723,9 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     <article class="spine-sec" id="spine-mechanism"></article>
     <article class="spine-sec" id="spine-field-monument"></article>
     <article class="spine-sec" id="spine-map-monument"></article>
-    <article class="spine-sec implication-dark" id="spine-implication"></article>
-    <article class="spine-sec" id="spine-graph"></article>
     <article class="spine-sec" id="spine-transcripts"></article>
     <article class="spine-sec" id="spine-quotes"></article>
+    <article class="spine-sec implication-dark" id="spine-implication"></article>
   </div>
 </section>
 
@@ -1930,21 +1928,6 @@ if(!document.getElementById('quotes').classList.contains('v2-hidden'))renderQuot
   document.getElementById('spine-implication').innerHTML=`
     <div class="spine-marker" style="text-align:center;color:var(--parchment);opacity:.4">VII · THE IMPLICATION</div>
     <h2 class="spine-h">${esc(D.Strategic_Imperative)}</h2>`;
-
-  /* CAUSAL GRAPH — standalone after implication */
-  if(D._mermaid){
-    document.getElementById('spine-graph').innerHTML=`
-      <div class="spine-marker" style="text-align:center">THE SYSTEM</div>
-      <div class="graph-standalone">
-        <div class="doc-mer-wrap" id="spineGraphWrap"><div id="spineGraphMer"></div></div>
-      </div>`;
-    loadMermaid(()=>{
-      const id='spineGraph_'+(++_merCounter);
-      const target=document.getElementById('spineGraphMer');
-      if(!target)return;
-      try{mermaid.render(id,D._mermaid).then(({svg})=>{target.innerHTML=svg}).catch(()=>{})}catch(e){}
-    });
-  }
 
   /* THESIS MAP — inline canvas */
   {
